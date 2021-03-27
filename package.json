@@ -1,0 +1,26 @@
+{
+  "name": "Taraana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "antd": "^4.12.3",
+    "emailjs-com": "^2.6.4",
+    "firebase": "^8.2.9",
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-moment": "^1.1.1"
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
+}

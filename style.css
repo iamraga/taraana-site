@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  background-color: #bbbbbb;
+}
+
+/* Admin console styles start */
+
+#admin-header-cont {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 84px;
+  padding: 10px;
+}
+
+.admin-header {
+  font-family: "Poppins";
+  font-size: 22px;
+  text-align: center;
+  color: #fff;
+}
+
+.admin-actionBtn {
+  font-size: 16px;
+  height: auto;
+}
+
+.album-card {
+  transition: ease 0.5s;
+  border: 0px;
+}
+
+.album-card:hover {
+  box-shadow: 0px 0px 20px -5px #1990ff;
+}
+
+.album-card-body {
+  padding: 12px 0px;
+}
+
+.enquiry-card {
+  margin: 10px 0px;
+}
+
+.enquiry-card-data {
+  margin: 5px 0px;
+}
+
+/* Admin console styles end */
