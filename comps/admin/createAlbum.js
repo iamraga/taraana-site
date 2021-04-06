@@ -54,7 +54,6 @@ export default function CreateAlbum({isEdit, album, setAlbum}) {
             currentAlbumRef.update(updatedData);
             message.success(`${albumName} album updated successfully`);
             setAlbum({...album, ...updatedData});
-            console.log({...album, ...updatedData});
         }
         
         setIsModalVisible(false);
@@ -84,7 +83,7 @@ export default function CreateAlbum({isEdit, album, setAlbum}) {
                         <Input placeholder="Enter album name" value={albumName} defaultValue={isEdit ? album.name : ""} onChange={(e) => setAlbumName(e.target.value)} />
                     </Form.Item>
                     <Form.Item name="eventDate" label="Event Date">
-                        <DatePicker placeholder="Select event date" defaultValue={isEdit ? moment(album.eventDate, dateFormat) : ""} style={{width: '100%'}} />
+                        <DatePicker placeholder="Select event date" defaultValue={(isEdit && album.eventDate) ? moment(album.eventDate, dateFormat) : ""} style={{width: '100%'}} />
                     </Form.Item>
                     <Form.Item name="description" label="Description">
                         <Input.TextArea defaultValue={isEdit ? album.description : ""} placeholder="Enter a description" />

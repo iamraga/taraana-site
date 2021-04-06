@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Typography, Divider, Button } from 'antd';
-import { projectFirestore } from '../../utils/firebase';
+import { useRouter } from 'next/router';
+import { Row, Col, Typography, Divider, Button, Modal } from 'antd';
+import { DeleteOutlined, LeftOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { projectFirestore, projectStorage } from '../../utils/firebase';
 import UploadForm from './uploadForm';
 import AlbumImages from './albumImages'
-import AdminLayout from '../../layouts/adminLayout';
 import Link from 'next/link';
 import CreateAlbum from './createAlbum';
+import deleteDoc from '../../hooks/deleteDoc';
+import useFirestore from '../../hooks/useFirestore';
 
 const { Title } = Typography;
+const { confirm } = Modal;
 
 export default function SingleAlbumView({ albumId }) {
     const [album, setAlbum] = useState(null);
+    const router = useRouter();
     
     useEffect(() => {
         const docRef = projectFirestore.doc(`albums/${albumId}`);
@@ -24,15 +29,61 @@ export default function SingleAlbumView({ albumId }) {
         });
     }, [albumId]);
 
-    if(!album) return (<AdminLayout><div>Loading...</div></AdminLayout>)
+    async function deleteAllImageDocs(albumId) {
+        const albumImagesRef = projectFirestore.collection(`albums/${albumId}/images`);
+        const snapshot = await albumImagesRef.get();
+        snapshot.forEach(image => {
+            console.log("inside");
+            deleteDoc(`albums/${albumId}/images/${image.id}`);
+        });
+        console.log("delete");
+        deleteDoc(`albums/${album.albumId}`);
+    }
+
+    function deleteConfirm() {
+        console.log(album);
+        confirm({
+            title: 'Deleting this album will delete all the images in it. Are you sure you want to delete this album?',
+            icon: <ExclamationCircleOutlined />,
+            content: album.name,
+            onOk() {
+                //Deleting all images in the album
+                let imageNames = [];
+                const imagesRef = projectFirestore.collection(`albums/${album.albumId}/images`);
+                imagesRef.get().then(snap => {
+                    snap.docs.map(doc => {
+                        let data = doc.data();
+                        imageNames.push(data.imageNameinStorage);
+                    });
+    
+                    imageNames.map(imageName => {
+                        const storageRef = projectStorage.ref();
+                        var storageFileRef = storageRef.child(`images/${imageName}`);
+    
+                        storageFileRef.delete().then().catch((error) => {
+                            console.log("Error while deleting image : " + error);
+                            return false;
+                        });
+                    });
+                    deleteAllImageDocs(album.albumId);
+                    router.push('/admin');
+                });
+
+            },
+            onCancel() {}
+        });
+    }
+
+    if(!album) return (<div>Loading...</div>)
     return (
         <div>
             <Row>
-                <Col span={16}>
+                <Col span={12}>
                     <Title level={2}>{album.name}</Title>
                 </Col>
-                <Col span={4} style={{textAlign: 'end'}}><CreateAlbum isEdit={true} album={album} setAlbum={setAlbum}/></Col>
-                <Col span={4} style={{textAlign: 'end'}}><Link href="/admin"><a><Button style={{fontSize: '16px', height: 'auto'}}>Back to gallery</Button></a></Link></Col>
+                <Col span={4} style={{textAlign: 'end'}}><Link href="/admin"><a><Button icon={<LeftOutlined />} style={{fontSize: '16px', height: 'auto'}}>Back to gallery</Button></a></Link></Col>
+                <Col span={4} style={{textAlign: 'end', paddingRight: '12px'}}><CreateAlbum isEdit={true} album={album} setAlbum={setAlbum}/></Col>
+                <Col span={4} style={{textAlign: 'end'}}><Button danger icon={<DeleteOutlined style={{fontSize: '16px'}} />} onClick={deleteConfirm} style={{height: 'auto', fontSize: '16px'}}>Delete Album</Button></Col>
                 <Col span={24}>
                     <p style={{margin: '10px 0px'}}>{album.description}</p>
                 </Col>
@@ -45,7 +96,7 @@ export default function SingleAlbumView({ albumId }) {
             </Row>
             <Divider style={{fontSize: '14px', color:'#555', borderTopColor: '#bbb'}} orientation="left">Images ({album.imageCount})</Divider>
             <Row>
-                <Col style={{margin: '10px 0px'}}>
+                <Col span={24} style={{margin: '10px 0px'}}>
                     <AlbumImages albumId={albumId} />
                 </Col>
             </Row>

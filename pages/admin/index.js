@@ -12,22 +12,19 @@ const { Title, Text, Paragraph } = Typography;
 export default function Gallery() {
     let albums = useFirestore('albums').docs;
     albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
-    return (
-        <AdminLayout>
-            <Row justify="space-between">
-                <Col span={8}><Title level={2}>Albums</Title></Col>
-                <Col span={10}>
-                    <Row justify="end">
-                        <Col span={10} style={{textAlign: 'end'}}><CreateAlbum isEdit={false} /></Col>
-                        {/* <Col span={10} style={{textAlign: 'end'}}><ReorderAlbum albums={albums} /></Col> */}
-                    </Row>
-                </Col>
-            </Row>
-            <Row justify="center" style={{marginTop: '20px'}}>
+
+    let albumsComp = (!albums || albums.length === 0) ? (
+        <Row justify="center" style={{marginTop: '20px'}}>
+            <Col span={24}>
+                <Row justify="center">
+                    <Col span={24}>No albums have been created yet!</Col>
+                </Row>
+            </Col>
+        </Row>
+    ) : 
+    (
+        <Row justify="center" style={{marginTop: '20px'}}>
                 <Col span={24}>
-                    <Row>
-                        <Col span={6} offset={6}></Col>
-                    </Row>
                     <Row justify="center">
                         <Col span={24}>
                             <Row gutter={16}>
@@ -56,6 +53,19 @@ export default function Gallery() {
                     </Row>
                 </Col>
             </Row>
+    )
+    return (
+        <AdminLayout>
+            <Row justify="space-between">
+                <Col span={8}><Title level={2}>Albums</Title></Col>
+                <Col span={10}>
+                    <Row justify="end">
+                        <Col span={10} style={{textAlign: 'end'}}><CreateAlbum isEdit={false} /></Col>
+                        {/* <Col span={10} style={{textAlign: 'end'}}><ReorderAlbum albums={albums} /></Col> */}
+                    </Row>
+                </Col>
+            </Row>
+            {albumsComp}
         </AdminLayout>
     )
 }

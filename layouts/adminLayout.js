@@ -14,7 +14,9 @@ export default function AdminLayout({ children }) {
     let currentPath = router.pathname.split('/')[2];
     const tabsMeta = {
         "gallery": '1',
-        "profile": '2'
+        "profile": '2',
+        "enquiries": '3',
+        "events": '4'
     }
     currentPath = (!currentPath || currentPath == "" || currentPath === "album") ? "gallery" : currentPath;
     
@@ -44,7 +46,7 @@ export default function AdminLayout({ children }) {
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="4" icon={<EyeOutlined />} onClick={() => setSelectedKey('4')}>
-                            <Link href="/admin/profile">
+                            <Link href="/admin/events">
                                 <a>Events</a>
                             </Link>
                         </Menu.Item> 

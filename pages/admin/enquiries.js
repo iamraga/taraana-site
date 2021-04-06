@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Typography, Button, Card, Badge } from 'antd';
-import { MailOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import EachEnquiryCard from '../../comps/admin/eachEnquiryCard';
 import Link from 'next/link';
-import Moment from 'react-moment';
 import AdminLayout from '../../layouts/adminLayout';
-import ViewEnquiry from '../../comps/admin/viewEnquiry';
 import { projectFirestore } from '../../utils/firebase';
 
-const { Title, Paragraph, Text } = Typography;
+const { Title } = Typography;
 
 export default function Enquiries() {
     const [enquiries, setEnquiries] = useState(null);
@@ -45,18 +43,7 @@ export default function Enquiries() {
         if(enquiry.isOpened) {
             return (
                 <Col span={12} key={enquiry.id}>
-                    <Card size="small" style={{margin: '10px', padding: '5px 0px'}}>
-                        <Row justify="start">
-                            <Col span={16} offset={1}>
-                                <Paragraph><Title level={4}>{enquiry.name}</Title></Paragraph>
-                                <div className="enquiry-card-data"><Text><ClockCircleOutlined  style={{marginRight: '10px'}} /><Moment format="D MMM YYYY">{enquiry?.createdAt?.seconds * 1000}</Moment></Text></div>
-                                <div className="enquiry-card-data"><MailOutlined style={{marginRight: '10px'}} /><a href={`mailto:${enquiry.email}`}>{enquiry.email}</a></div>
-                            </Col>
-                            <Col span={6} style={{display: 'flex', alignItems: 'center'}}>
-                                <ViewEnquiry enquiry={enquiry} markAsRead={markAsRead} />
-                            </Col>
-                        </Row>
-                    </Card>
+                    <EachEnquiryCard enquiry={enquiry} />
                 </Col>
             );
         }
@@ -64,18 +51,7 @@ export default function Enquiries() {
             return(
                 <Col span={12} key={enquiry.id}>
                     <Badge.Ribbon color="#ff4d4f" placement="start" text="New" size="small">
-                        <Card size="small" style={{margin: '10px 0px', padding: '5px 0px'}}>
-                            <Row justify="center">
-                                <Col span={16} offset={1}>
-                                    <Paragraph><Title level={4}>{enquiry.name}</Title></Paragraph>
-                                    <div className="enquiry-card-data"><Text><ClockCircleOutlined style={{marginRight: '10px'}} /><Moment format="D MMM YYYY">{enquiry?.createdAt?.seconds * 1000}</Moment></Text></div>
-                                    <div className="enquiry-card-data"><MailOutlined style={{marginRight: '10px'}} /><a href={`mailto:${enquiry.email}`}>{enquiry.email}</a></div>
-                                </Col>
-                                <Col span={6} style={{display: 'flex', alignItems: 'center'}}>
-                                    <ViewEnquiry enquiry={enquiry} markAsRead={markAsRead} />
-                                </Col>
-                            </Row>
-                        </Card>
+                        <EachEnquiryCard enquiry={enquiry} markAsRead={markAsRead} />
                     </Badge.Ribbon>
                 </Col>
             )
