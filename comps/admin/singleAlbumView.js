@@ -7,7 +7,7 @@ import UploadForm from './uploadForm';
 import AlbumImages from './albumImages'
 import Link from 'next/link';
 import CreateAlbum from './createAlbum';
-import deleteDoc from '../../hooks/deleteDoc';
+import { deleteDoc } from '../../hooks/common';
 import useFirestore from '../../hooks/useFirestore';
 
 const { Title } = Typography;

@@ -3,7 +3,7 @@ import { Row, Col, Card, Typography, Button, Modal } from 'antd';
 import { MailOutlined, ClockCircleOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import Moment from 'react-moment';
 import ViewEnquiry from '../../comps/admin/viewEnquiry';
-import deleteDoc from '../../hooks/deleteDoc';
+import { deleteDoc } from '../../hooks/common';
 
 const { Title, Paragraph, Text } = Typography;
 const { confirm } = Modal;

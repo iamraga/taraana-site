@@ -3,13 +3,13 @@ import 'firebase/storage';
 import 'firebase/firestore';
 
 var firebaseConfig = {
-    apiKey: "AIzaSyBTwp4JvZKl5xj41mVVirrPXEoYWY6lHmE",
-    authDomain: "taraana-site.firebaseapp.com",
-    projectId: "taraana-site",
-    storageBucket: "taraana-site.appspot.com",
-    messagingSenderId: "781840798245",
-    appId: "1:781840798245:web:48c0732c0460494948a5cc",
-    measurementId: "G-0LX5PTM12W"
+    apiKey: "AIzaSyCTHjYTf55FfcRjy80pzZBHYbs8dnTWbh0",
+    authDomain: "taraana-site-88f82.firebaseapp.com",
+    projectId: "taraana-site-88f82",
+    storageBucket: "taraana-site-88f82.appspot.com",
+    messagingSenderId: "415750904645",
+    appId: "1:415750904645:web:1a6a783b1a0c71b5f7fc2c",
+    measurementId: "G-8XQ39JGNH9"
 };
 
 // Initialize Firebase

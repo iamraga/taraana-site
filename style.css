@@ -4,8 +4,16 @@
   margin: 0px;
   padding: 0px;
 }
-body {
-  background-color: #bbbbbb;
+
+.site-logo {
+  min-height: 100vh;
+  background: radial-gradient(#521746, #36102E, #36102E);
+}
+
+.construction-text {
+  margin: 20px 0px;
+  color: #fff;
+  font-size: 26px;
 }
 
 /* Admin console styles start */

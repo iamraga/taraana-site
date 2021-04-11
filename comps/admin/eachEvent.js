@@ -4,7 +4,7 @@ import { Card, Typography, Button, Modal } from 'antd';
 import Moment from 'react-moment';
 import CreateEvent from './createEvent';
 import Link from 'next/link';
-import deleteDoc from '../../hooks/deleteDoc';
+import { deleteDoc } from '../../hooks/common';
 
 const { Text, Paragraph } = Typography;
 const { confirm } = Modal;
