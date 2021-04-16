@@ -57,6 +57,8 @@ export default function CreateEvent({isEdit, event}) {
             if(eventName && eventName !== event.name) updatedData.name = eventName;
             if(eventDate && eventDate.format('DD-MMM-YYYY') !== event.eventDate) updatedData.eventDate = eventDate.format('DD-MMM-YYYY');
             if(description && description !== event.description) updatedData.description = description;
+            if(venue && venue !== event.venue) updatedData.venue = venue;
+            if(venueUrl && venueUrl !== event.venueUrl) updatedData.venueUrl = venueUrl;
             updatedData.isRange = isRange;
             if(!isRange) {
                 updatedData.eventDate = new Date(eventDate.format('DD-MMM-YYYY'));
@@ -66,6 +68,8 @@ export default function CreateEvent({isEdit, event}) {
                 updatedData.eventDate = new Date(eventDateRange[0].format('DD-MMM-YYYY'));
                 updatedData.toDate = new Date(eventDateRange[1].format('DD-MMM-YYYY'));
             }
+            
+            console.log(updatedData);
 
             currentEventRef.update(updatedData);
             message.success(`${eventName} event updated successfully`);
