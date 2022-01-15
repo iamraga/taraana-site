@@ -14,13 +14,17 @@ export default function Enquiries() {
     useEffect(() => {
         const unsub = projectFirestore.collection(`enquiries`)
             .orderBy('createdAt', 'desc')
-            .onSnapshot((snap) => {
-                let enqDocs = [];
-                snap.forEach((doc) => {
-                    enqDocs.push({...doc.data(), id: doc.id});
+            .onSnapshot(
+                (snap) => {
+                    let enqDocs = [];
+                    snap.forEach((doc) => {
+                        enqDocs.push({...doc.data(), id: doc.id});
+                    });
+                    setEnquiries(enqDocs);
+                },
+                (error) => {
+                    console.log(error);
                 });
-                setEnquiries(enqDocs);
-            });
         return () => unsub();
     }, [collection]);
     
@@ -42,14 +46,14 @@ export default function Enquiries() {
     let enqContent = enquiries.map(enquiry => {
         if(enquiry.isOpened) {
             return (
-                <Col span={12} key={enquiry.id}>
+                <Col key={enquiry.id} span={12} key={enquiry.id}>
                     <EachEnquiryCard enquiry={enquiry} />
                 </Col>
             );
         }
         else {
             return(
-                <Col span={12} key={enquiry.id}>
+                <Col key={enquiry.id} span={12} key={enquiry.id}>
                     <Badge.Ribbon color="#ff4d4f" placement="start" text="New" size="small">
                         <EachEnquiryCard enquiry={enquiry} markAsRead={markAsRead} />
                     </Badge.Ribbon>

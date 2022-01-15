@@ -1,20 +1,451 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/*
+ Theme Name:     Taraana Website
+ Theme URI:      NA
+ Description:    Taraana | Dance website
+ Author:         Raga, Shyam
+ Author URI:     NA
+ Template:       Taraana theme
+ Version:        1.0.0
+*/
 
-* {
-  margin: 0px;
-  padding: 0px;
+/*------------------------------------*\
+    Fonts
+\*------------------------------------*/
+
+@font-face {
+  font-family: Made-Dillan;
+  src: url(./public/assets/fonts/made_dillan/made_dillan.otf);
+}
+@font-face {
+  font-family: Merriweather;
+  src: url(./public/assets/fonts/Merriweather/Merriweather-Regular.ttf);
 }
 
-.site-logo {
-  min-height: 100vh;
-  background: radial-gradient(#521746, #36102E, #36102E);
+/*------------------------------------*\
+    MAIN
+\*------------------------------------*/
+:root {
+  --white: #ffffff;
+  --fillBg: #475025;
+  --boldText: #2c2c2c;
+  --boldHighlight: #88854f;
+  --paraText: #4c4c4c;
+  --buttonFill: #717857;
+  --headingHighlight: #a59f2f;
+  --formBorder: #e6e6e6;
+  --formText: #727272;
+  --seperator: #b7b7b7;
+  --strapLink: #ffc969;
+}
+html,
+body,
+.taraana-wrapper {
+  height: 100%;
+}
+body {
+  color: #000;
+  font-size: 18px;
+  line-height: 28px;
+  background-color: #f9f9f8 !important;
+}
+/*------components and theme defintions------*/
+p {
+  font: 18px/30px Merriweather;
+  color: var(--paraText);
+  margin-bottom: 28px !important;
+}
+h2,
+.t-h2 {
+  font: 36px/46px Made-Dillan;
+  margin-bottom: 48px;
+}
+h3,
+.t-h3 {
+  font: 28px/46px Made-Dillan;
+}
+h2,
+.t-h2,
+h3,
+.t-h3 {
+  color: var(--boldText);
+}
+.head-highlight {
+  color: var(--headingHighlight);
+}
+a.taraana-btn,
+button.form-submit {
+  background-color: var(--buttonFill);
+  padding: 17px 74px;
+  font: 20px/28px Made-Dillan;
+  color: var(--white);
+  border-radius: 5px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+a:hover {
+  text-decoration: none;
+}
+.taraana-wrapper section {
+  margin-bottom: 160px;
+}
+.sp-margin-left {
+  margin-left: -15%;
+}
+.sp-margin-right {
+  margin-right: -15%;
+}
+.leader-img {
+  width: 460px;
+}
+@media (max-width: 991px) {
+  p {
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 24px;
+  }
+  h2 {
+    font-size: 28px;
+    line-height: 38px;
+    margin-bottom: 32px;
+  }
+  h3 {
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: 8px;
+  }
+
+  .taraana-wrapper section {
+    margin-bottom: 72px;
+  }
+}
+@media (min-width: 1560px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1320px;
+  }
+}
+/*Header styles start here*/
+header {
+  background-color: #f9f9f8;
+}
+.contact-strap {
+  background-color: var(--fillBg);
+}
+.contact-strap .details span {
+  color: var(--white);
+  font: 14px/20px Merriweather;
+}
+.contact-strap .details a span {
+  color: var(--strapLink);
+  font: 10px/16px Merriweather;
+}
+.contact-strap .details img {
+  width: 20px;
+}
+header nav.fixed-top {
+  top: 36px;
+}
+.taraana-logo img {
+  width: 200px;
+}
+.taraana-navigation .list-group-item {
+  background-color: unset;
+  border: 0;
+  padding: 0.75rem 1rem;
+}
+.taraana-navigation .list-group-item a {
+  font: 18px/18px Made-Dillan;
+  color: var(--boldText);
+  display: block;
+}
+.taraana-navigation .list-group-item a:hover,
+.taraana-navigation .list-group-item a:active {
+  color: var(--boldHighlight);
+}
+li.activeNav a {
+  color: var(--boldHighlight) !important;
+}
+button.mobile-navigation {
+  border: 0;
+  border-top: 1px solid var(--seperator);
+  border-bottom: 1px solid var(--seperator);
+  background: none;
+  margin-left: -36px;
+  margin-right: -36px;
+  padding-left: 36px;
+  padding-right: 36px;
+  font: 16px/18px Made-Dillan;
+  color: var(--headingHighlight);
+}
+#taraanaMobileNav {
+  display: none;
+}
+@media (max-width: 767px) {
+  /*html,body, .taraana-wrapper{overflow-x: hidden;}*/
+  #taraanaMobileNav {
+    transition: transform 100ms ease-in-out;
+  }
+  .container {
+    padding: 0 36px 0 36px;
+  }
+  .taraana-navigation .list-group {
+    margin-left: -36px;
+    margin-right: -36px;
+    padding-left: 36px;
+    padding-right: 36px;
+    box-shadow: 0px 22px 30px #00000052;
+  }
+  .taraana-navigation .list-group-item {
+    padding: 0.75rem 0rem;
+  }
+  .taraana-navigation .list-group-item:last-child {
+    padding-bottom: 30px;
+  }
+  .taraana-navigation .list-group-item a {
+    font-size: 16px;
+  }
+  .mobile-nav-indicator {
+    font-size: 25px;
+    transition: transform 100ms ease-in-out;
+  }
+  .mobile-nav-indicator.expanded {
+    transform: rotate(45deg);
+  }
+}
+@media (max-width: 991px) {
+  .taraana-logo img {
+    width: 166px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .container {
+    max-width: unset;
+  }
+}
+/*Header styles end here*/
+main {
+  margin-top: 154px;
 }
 
-.construction-text {
-  margin: 20px 0px;
-  color: #fff;
-  font-size: 26px;
+/*section styles start here*/
+section .text-section,
+section .img-section {
+  width: 50%;
 }
+@media (max-width: 991px) {
+  section .text-section,
+  section .img-section {
+    width: 100%;
+  }
+  .sp-margin-left {
+    margin-left: unset;
+  }
+  .sp-margin-right {
+    margin-right: unset;
+  }
+}
+/*section styles end here*/
+
+/*taraana courses  styles start here*/
+.taraana-courses ul {
+  width: 75%;
+}
+.taraana-courses ul li {
+  margin-bottom: 80px;
+}
+.taraana-courses ul li .img-section {
+  width: 15%;
+}
+.taraana-courses ul li .desc-section {
+  width: 85%;
+}
+.taraana-courses ul li .img-section img {
+  width: 144px;
+}
+@media (max-width: 991px) {
+  .taraana-courses ul,
+  .taraana-courses ul li .img-section,
+  .taraana-courses ul li .desc-section {
+    width: unset;
+  }
+  .taraana-courses ul li .img-section img {
+    width: 20%;
+    margin-bottom: 4px;
+  }
+  .taraana-courses ul li {
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .taraana-courses ul li .img-section img {
+    width: 10%;
+  }
+}
+/*taraana courses  styles end here*/
+
+/*taraana purpose styles start here*/
+.taraana-purpose ul li {
+  font: 18px/28px Merriweather;
+  color: var(--paraText);
+  margin-bottom: 24px;
+}
+@media (max-width: 991px) {
+  .taraana-purpose ul li {
+    font: 16px/26px Merriweather;
+    margin-bottom: 20px;
+  }
+}
+/*taraana purpose styles end here*/
+
+/*taraana eligibility styles start here*/
+.taraana-eligibility p {
+  width: 75%;
+}
+@media (max-width: 991px) {
+  .taraana-eligibility p {
+    width: unset;
+  }
+}
+/*taraana eligibility styles start here*/
+
+.taraana-upcoming-event .circle-text {
+  border-radius: 100%;
+  background-color: var(--headingHighlight);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  font: 18px/18px Made-Dillan;
+}
+.event-bottom-border {
+  border-bottom: 1px solid var(--seperator);
+}
+
+.taraana-getin-touch .contact-input,
+.taraana-getin-touch .contact-textarea {
+  border: 1px solid var(--formBorder);
+  border-radius: 4px;
+  color: var(--formText);
+  font-size: 1rem;
+}
+.taraana-getin-touch .contact-textarea {
+  resize: none;
+  height: 110px;
+}
+.taraana-getin-touch .contact-input {
+  height: 52px;
+}
+.taraana-getin-touch .contact-detail img {
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+}
+.taraana-getin-touch .contact-detail p,
+.taraana-getin-touch .contact-detail p a {
+  font: 20px/32px Merriweather;
+  color: var(--formText);
+}
+.taraana-getin-touch .ant-form-item {
+  margin-bottom: 1rem;
+}
+@media (max-width: 991px) {
+  .taraana-getin-touch .contact-detail p,
+  .taraana-getin-touch .contact-detail p a {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .taraana-getin-touch .form-submit {
+    width: 100%;
+  }
+}
+
+.taraana-reach-us iframe {
+  height: 550px;
+}
+
+/*Gallery carousel styles start here*/
+.taraana-gallery .gallery-unit {
+  height: 364px;
+  background-color: #fff;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.taraana-gallery .gallery-unit img {
+  width: 100%;
+  height: 364px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.slick-prev.slick-arrow,
+.slick-next.slick-arrow {
+  background-image: url(./public/assets/icons/arrow-right.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transform: rotate(180deg);
+  width: 50px;
+  height: 50px;
+  left: -45px;
+}
+.slick-next.slick-arrow:before,
+.slick-prev.slick-arrow:before {
+  content: "";
+}
+.slick-next.slick-arrow {
+  transform: unset;
+  left: unset;
+  right: -45px;
+}
+.left-frame {
+  right: 80%;
+  bottom: -50%;
+  z-index: -1;
+  transform: rotate(180deg);
+}
+.right-frame {
+  left: 80%;
+  top: -50%;
+  z-index: -1;
+}
+@media (max-width: 991px) {
+  .slick-prev.slick-arrow,
+  .slick-next.slick-arrow {
+    width: 40px;
+    height: 40px;
+    right: 20%;
+    left: unset;
+    top: 105%;
+  }
+  .slick-next.slick-arrow {
+    right: -25px;
+    left: unset;
+    top: 105%;
+    right: 4%;
+  }
+  .left-frame {
+    left: -5%;
+    bottom: -15%;
+    z-index: -1;
+    transform: rotate(180deg);
+  }
+  .left-frame img,
+  .right-frame img {
+    width: 100%;
+  }
+  .right-frame {
+    right: -5%;
+    top: -15%;
+    z-index: -1;
+  }
+}
+/*Gallery carousel styles end here*/
 
 /* Admin console styles start */
 

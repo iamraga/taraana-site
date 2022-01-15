@@ -23,7 +23,7 @@ export default function EachEnquiryCard({ enquiry, markAsRead }) {
     }
 
     return (
-        <Card size="small" style={{margin: '10px', padding: '5px 0px'}}>
+        <Card key={enquiry.id} size="small" style={{margin: '10px', padding: '5px 0px'}}>
             <Row justify="center">
                 <Col span={14} offset={1}>
                     <Paragraph><Title level={4}>{enquiry.name}</Title></Paragraph>

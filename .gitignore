@@ -5,3 +5,4 @@ out
 firestore.indexes.json
 remoteconfig.template.json
 *.rules
+firebase-debug.log

@@ -20,7 +20,7 @@ export default function ViewEnquiry({ enquiry, markAsRead }) {
         }
     }
     const messageLines = enquiry.message.split("\n");
-    const messageContent = messageLines.map(line => (<><Text>{line}</Text><br /></>));
+    const messageContent = messageLines.map(line => (<div key={enquiry.id}><Text>{line}</Text><br /></div>));
 
     return (
         <div>
@@ -31,13 +31,14 @@ export default function ViewEnquiry({ enquiry, markAsRead }) {
                 <Paragraph style={{marginBottom: '25px'}}><Text strong={true} style={{fontSize: '20px'}}><UserOutlined style={{marginRight: '10px'}} />{enquiry.name}</Text></Paragraph>
                 <p><PhoneOutlined style={{marginRight: '10px'}} />{enquiry.number}</p>
                 <p><MailOutlined style={{marginRight: '10px'}} /><a href={`mailto:${enquiry.email}`}>{enquiry.email}</a></p>
-                <p><Row>
-                    <MessageOutlined style={{margin: '5px 10px 0px 0px'}} />
-                    <Col span={21}>
-                        {messageContent}
-                    </Col>
-                </Row>
-                </p>
+                <div style={{marginBottom: '1em'}}>
+                    <Row>
+                        <MessageOutlined style={{margin: '5px 10px 0px 0px'}} />
+                        <Col span={21}>
+                            {messageContent}
+                        </Col>
+                    </Row>
+                </div>
                 <p><ClockCircleOutlined  style={{marginRight: '10px'}} /><Moment format="D MMM YYYY">{enquiry?.createdAt?.seconds * 1000}</Moment></p>
             </Modal>
         </div>

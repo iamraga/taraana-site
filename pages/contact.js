@@ -11,7 +11,6 @@ export default function Contact() {
     const [form] = Form.useForm();
     const enquiriesCollection = projectFirestore.collection("enquiries");
     const validateMessages = {
-        required: 'Please enter your ${label}',
         types: {
             email: 'Kindly enter a valid email ID.',
         },
@@ -26,7 +25,7 @@ export default function Contact() {
         setNumber(e.target.value);
     }
 
-    const onFormSubmit = async (values) => {
+    const handleFormSubmit = async (values) => {
         const { name, number, email, message } = values;
         //New Enquiry
         const newEnquiry = {
@@ -60,39 +59,27 @@ export default function Contact() {
     
     return (
         <>
-            <Row justify="center">
-                <Col span={10}>
-                    <h2>Enquiry Form</h2>
-                </Col>
-                <Col span={16}>
-                    <Form
-                        form={form}
-                        labelCol={{ span: 6 }}
-                        wrapperCol={{ span: 16 }}
-                        layout="horizontal"
-                        onFinish={onFormSubmit}
-                        validateMessages={validateMessages}
-                    >
-                        <Form.Item name="name" label="Name" rules={[{ required: true }]}>
-                            <Input placeholder="Enter your name" />
-                        </Form.Item>
-                        <Form.Item name="number" label="Number" rules={[{ required: true }]}>
-                            <Input placeholder="Enter your contact number" value={number} onKeyPress={onNumberChange} onChange={(e) => setNumber(e.target.value)} />
-                        </Form.Item>
-                        <Form.Item name="email" label="Email" rules={[{ type:'email', required: true }]}>
-                            <Input placeholder="Enter your email ID" />
-                        </Form.Item>
-                        <Form.Item name="message" label="Message">
-                            <Input.TextArea placeholder="Enter your message" />
-                        </Form.Item>
-                        <Form.Item>
-                            <Button type="primary" htmlType="submit">
-                                Submit
-                            </Button>
-                        </Form.Item>
-                    </Form>
-                </Col>
-            </Row>
+        <Form
+            form={form}
+            onFinish={handleFormSubmit}
+            validateMessages={validateMessages}
+        >
+            <Form.Item name="name" rules={[{ required: true, message: 'Please enter your name!' }]}>
+                <Input className="form-control contact-input" aria-describedby="Name" placeholder="Name" />
+            </Form.Item>
+            <Form.Item name="number" rules={[{ required: true, message: 'Please enter your number!' }]}>
+                <Input className="contact-input" placeholder="Contact number" aria-describedby="phone number" value={number} onKeyPress={onNumberChange} onChange={(e) => setNumber(e.target.value)} />
+            </Form.Item>
+            <Form.Item name="email" rules={[{ type:'email', required: true, message: 'Please enter your email ID!' }]}>
+                <Input className="contact-input" aria-describedby="Email" placeholder="Email ID" />
+            </Form.Item>
+            <Form.Item name="message" className="mb-4">
+                <Input.TextArea className="contact-textarea" rows="3" placeholder="Message" />
+            </Form.Item>
+        </Form>
+        <button className="form-submit border-0 float-right mt-2" type="primary" onClick={() => form.submit()}>
+            Submit
+        </button>
         </>
     )
 }
