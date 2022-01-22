@@ -151,7 +151,7 @@ header nav.fixed-top {
   top: 36px;
 }
 .taraana-logo img {
-  width: 200px;
+  width: 260px;
 }
 .taraana-navigation .list-group-item {
   background-color: unset;
@@ -361,9 +361,16 @@ section .img-section {
   .taraana-getin-touch .contact-detail p a {
     font-size: 18px;
     line-height: 28px;
+    margin-bottom: 0px !important;
   }
   .taraana-getin-touch .form-submit {
     width: 100%;
+  }
+}
+@media (max-width: 411px) {
+  .taraana-getin-touch .contact-detail p,
+  .taraana-getin-touch .contact-detail p a {
+    font-size: 16px;
   }
 }
 
@@ -374,6 +381,7 @@ section .img-section {
 /*Gallery carousel styles start here*/
 .taraana-gallery .gallery-unit {
   height: 364px;
+  width: auto !important;
   background-color: #fff;
   margin-left: 15px;
   margin-right: 15px;
@@ -414,6 +422,21 @@ section .img-section {
   top: -50%;
   z-index: -1;
 }
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  background-image: url(./public/assets/icons/arrow-right.png) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% !important;
+}
+
+.slick-prev:hover,
+.slick-prev:focus {
+  transform: rotate(180deg);
+}
+
 @media (max-width: 991px) {
   .slick-prev.slick-arrow,
   .slick-next.slick-arrow {

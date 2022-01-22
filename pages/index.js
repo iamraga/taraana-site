@@ -311,28 +311,28 @@ export default function Index() {
                             <Contact />
                         </div>
                         <div class="col-12 col-lg-5 mb-5 mb-lg-0">
-                            <div class="contact-detail d-flex flex-column flex-md-row">
+                            <div class="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-3">
                                 <img src="./assets/icons/location.png" alt="location icon" class="img-fluid" />
                                 <p>Shenstone Park, No : 7,Harrington Road,
                                 <br/> Chetpet (Lady Andal Gate 4)
                                 <br/>Chennai - 600031
                                 </p>
                             </div>
-                            <div class="contact-detail d-flex flex-column flex-md-row">
+                            <div class="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-3">
                                 <img src="./assets/icons/call.png" alt="phone icon" class="img-fluid" />
                                 <p>Tel: <a href="tel:04443129199"> 044- 4312 9199</a>
                                 <br/>Mobile: <a href="tel:+91 95000 81900">+91 95000 81900</a>, <a href="tel:+91 7358438454">+91 7358438454</a>
                                 </p>
                             </div>
-                            <div class="contact-detail d-flex flex-column flex-md-row">
+                            <div class="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-3">
                                 <img src="./assets/icons/message.png" alt="mail icon" class="img-fluid" />
                                 <p><a href="mailto:contact@taraanaacademy.in">contact@taraanaacademy.in</a></p>
                             </div>
-                            <div class="contact-detail d-flex flex-column flex-md-row">
+                            <div class="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-3">
                                 <img src="./assets/icons/instagram.png" alt="instagram icon" class="img-fluid" />
                                 <p><a href="https://www.instagram.com/taraanaacademy_kathak/" target="_blank">@taraanaacademy_kathak</a></p>
                             </div>
-                            <div class="contact-detail d-flex flex-column flex-md-row">
+                            <div class="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-3">
                                 <img src="./assets/icons/facebook.png" alt="facebook icon" class="img-fluid" />
                                 <p class="mb-0"><a href="https://www.facebook.com/TaraanaAcademyOfKathak" target="_blank">@TaraanaAcademyOfKathak</a></p>
                             </div>
