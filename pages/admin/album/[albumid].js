@@ -6,9 +6,7 @@ import { getAllAlbumIds } from '../../../hooks/common';
 export default function AlbumView({ albumId }) {
 
     return (
-        <AdminLayout>
-            {(!albumId) ? (<div>Loading</div>): <SingleAlbumView albumId={albumId} />}
-        </AdminLayout>
+        <div>hi</div>
     )
 }
 

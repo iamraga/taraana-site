@@ -1,6 +1,10 @@
-import firebase from 'firebase/app';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from '@firebase/analytics';
+import { getFirestore, serverTimestamp, increment, connectFirestoreEmulator } from '@firebase/firestore';
+import { getStorage } from '@firebase/storage';
 import 'firebase/storage';
 import 'firebase/firestore';
+import { connectAuthEmulator, getAuth } from '@firebase/auth';
 
 var firebaseConfig = {
     apiKey: "AIzaSyCTHjYTf55FfcRjy80pzZBHYbs8dnTWbh0",
@@ -13,11 +17,12 @@ var firebaseConfig = {
 };
 
 // Initialize Firebase
-(!firebase.apps.length) ? firebase.initializeApp(firebaseConfig) : firebase.app();
+const firebaseApp = initializeApp(firebaseConfig);
 
-const projectStorage = firebase.storage();
-const projectFirestore = firebase.firestore();
-const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-const increment = firebase.firestore.FieldValue.increment;
+const firestore = getFirestore(firebaseApp);
+const storage = getStorage(firebaseApp);
+const auth = getAuth(firebaseApp);
+// connectFirestoreEmulator(firestore, "http://localhost:8080");
+// connectAuthEmulator(auth, "http://localhost:9099");
 
-export { projectFirestore, projectStorage, timestamp, increment };
+export { firebaseApp, firestore, storage, serverTimestamp, increment };

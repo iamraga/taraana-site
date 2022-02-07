@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Modal, Button, Input, message, Form, DatePicker } from 'antd';
 import moment from 'moment';
 import { FolderAddOutlined } from '@ant-design/icons';
-import { projectFirestore, timestamp } from '../../utils/firebase';
+import { firestore, serverTimestamp } from '../../utils/firebase';
+import { collection, updateDoc, addDoc } from 'firebase/firestore';
 
 export default function CreateAlbum({isEdit, album, setAlbum}) {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -10,7 +11,7 @@ export default function CreateAlbum({isEdit, album, setAlbum}) {
 
     const dateFormat = 'DD-MMM-YYYY';
     const [form] = Form.useForm();
-    const albumCollection = projectFirestore.collection("albums");
+    const albumCollection = collection(firestore, "albums");
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -32,14 +33,14 @@ export default function CreateAlbum({isEdit, album, setAlbum}) {
                 eventDate: eventDate.format('DD-MMM-YYYY'),
                 description,
                 imageCount: 0,
-                createdAt: timestamp()
+                createdAt: serverTimestamp()
             };
-            albumCollection.add(newAlbum);
+            addDoc(albumCollection, newAlbum);
             message.success(`${albumName} album created successfully`);
         }
         else {
             //Album update
-            const currentAlbumRef = projectFirestore.doc(`albums/${album.albumId}`)
+            const currentAlbumRef = doc(firestore, `albums/${album.albumId}`)
             let updatedData = {};
             if(albumName && albumName !== album.name) updatedData.name = albumName;
             if(eventDate && eventDate.format('DD-MMM-YYYY') !== album.eventDate) updatedData.eventDate = eventDate.format('DD-MMM-YYYY');
@@ -51,7 +52,7 @@ export default function CreateAlbum({isEdit, album, setAlbum}) {
                 form.resetFields();
                 return false;
             }
-            currentAlbumRef.update(updatedData);
+            updateDoc(currentAlbumRef, updatedData);
             message.success(`${albumName} album updated successfully`);
             setAlbum({...album, ...updatedData});
         }

@@ -56,7 +56,7 @@ p {
 }
 h2,
 .t-h2 {
-  font: 36px/46px Made-Dillan;
+  font: 33px/46px Made-Dillan;
   margin-bottom: 48px;
 }
 h3,
@@ -86,17 +86,26 @@ button.form-submit {
 a:hover {
   text-decoration: none;
 }
+.text-section a:hover {
+  color: var(--white);
+}
 .taraana-wrapper section {
-  margin-bottom: 160px;
+  padding: 80px 0px;
 }
 .sp-margin-left {
-  margin-left: -15%;
+  margin-left: -10%;
 }
 .sp-margin-right {
-  margin-right: -15%;
+  margin-right: -10%;
 }
 .leader-img {
-  width: 460px;
+  width: 400px;
+}
+.bg-fill-1 {
+  background-color: #f9f9f8;
+}
+.bg-fill-2 {
+  background-color: var(--white);
 }
 @media (max-width: 991px) {
   p {
@@ -356,6 +365,10 @@ section .img-section {
 .taraana-getin-touch .ant-form-item {
   margin-bottom: 1rem;
 }
+.taraana-getin-touch .ant-input {
+  font-size: 1rem;
+}
+
 @media (max-width: 991px) {
   .taraana-getin-touch .contact-detail p,
   .taraana-getin-touch .contact-detail p a {
@@ -381,10 +394,12 @@ section .img-section {
 /*Gallery carousel styles start here*/
 .taraana-gallery .gallery-unit {
   height: 364px;
-  width: auto !important;
   background-color: #fff;
   margin-left: 15px;
   margin-right: 15px;
+  /* To override slick inline css*/
+  width: auto !important;
+  display: flex !important;
 }
 .taraana-gallery .gallery-unit img {
   width: 100%;
@@ -481,7 +496,6 @@ section .img-section {
 }
 
 .admin-header {
-  font-family: "Poppins";
   font-size: 22px;
   text-align: center;
   color: #fff;
@@ -512,5 +526,45 @@ section .img-section {
 .enquiry-card-data {
   margin: 5px 0px;
 }
+
+/* Login Page */
+.login-cont {
+  height: 100vh;
+  background-color: #09f;
+}
+.login-inner-cont {
+  text-align: center;
+  padding: 20px 20px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0px 0px 15px -5px #000;
+}
+.login-title {
+  font-family: "Verdana", sans-serif;
+  margin: 10px 0px !important;
+}
+.form-cont {
+  margin: 0px 20px;
+  padding: 10px;
+}
+.login-input {
+  margin: 10px 0px;
+  min-height: 35px;
+  border-radius: 10px;
+  border-color: #09f;
+  width: 100%;
+  font-size: 18px;
+  padding: 10px 15px;
+}
+.login-submit {
+  margin: 15px 0px 5px 0px;
+  padding: 5px 15px;
+  width: 50%;
+  background-color: #09f;
+  border-radius: 10px;
+  height: 40px !important;
+  font-size: 16px !important;
+}
+/* Login page end */
 
 /* Admin console styles end */

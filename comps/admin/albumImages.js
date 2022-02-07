@@ -2,12 +2,13 @@ import React from 'react';
 import { Image, Row, Col, Button, Modal } from 'antd';
 import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import useFirestore from '../../hooks/useFirestore';
-import { projectStorage, projectFirestore, increment } from '../../utils/firebase';
+import { storage, firestore, increment } from '../../utils/firebase';
 
 const { confirm } = Modal;
 
 export default function AlbumImages({ albumId }) {
     const images = useFirestore(`albums/${albumId}/images`).docs;
+    console.log(images);
 
     if(images.length === 0) return (<div>No images found in this album</div>);
 
@@ -18,8 +19,8 @@ export default function AlbumImages({ albumId }) {
             onOk() {
                 //Delete image
                 const storageRef = projectStorage.ref();
-                const imageDocRef = projectFirestore.doc(`albums/${albumId}/images/${image.id}`);
-                const albumDocRef = projectFirestore.doc(`albums/${albumId}`);
+                const imageDocRef = firestore.doc(`albums/${albumId}/images/${image.id}`);
+                const albumDocRef = firestore.doc(`albums/${albumId}`);
                 var storageFileRef = storageRef.child(`images/${image.imageNameinStorage}`);
 
                 storageFileRef.delete().then(() => {

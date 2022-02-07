@@ -3,42 +3,40 @@ import { Row, Col, Typography, Button, Card, Badge } from 'antd';
 import EachEnquiryCard from '../../comps/admin/eachEnquiryCard';
 import Link from 'next/link';
 import AdminLayout from '../../layouts/adminLayout';
-import { projectFirestore } from '../../utils/firebase';
+import { firestore } from '../../utils/firebase';
+import { onSnapshot, collection, query, orderBy, doc } from 'firebase/firestore';
 
 const { Title } = Typography;
 
 export default function Enquiries() {
     const [enquiries, setEnquiries] = useState(null);
-    const collection = "enquiries";
+    const collectionName = "enquiries";
     
     useEffect(() => {
-        const unsub = projectFirestore.collection(`enquiries`)
-            .orderBy('createdAt', 'desc')
-            .onSnapshot(
-                (snap) => {
-                    let enqDocs = [];
-                    snap.forEach((doc) => {
-                        enqDocs.push({...doc.data(), id: doc.id});
-                    });
-                    setEnquiries(enqDocs);
-                },
-                (error) => {
-                    console.log(error);
-                });
+        const enquiriesRef = collection(firestore, `enquiries`);
+        const unsub = onSnapshot(query(enquiriesRef, orderBy('createdAt', 'desc')), (snap) => {
+            let enqDocs = [];
+            snap.forEach((doc) => {
+                enqDocs.push({...doc.data(), id: doc.id});
+            });
+            setEnquiries(enqDocs);
+        }, (error) => {
+            console.log(error);
+        });
         return () => unsub();
-    }, [collection]);
+    }, [collectionName]);
     
     if(!enquiries) return (<AdminLayout><div>Loading...</div></AdminLayout>)
 
     const markAllRead = (newEnquiries) => {
         newEnquiries.forEach(enq => {
-            const docRef = projectFirestore.doc(`enquiries/${enq.id}`);
+            const docRef = doc(`enquiries/${enq.id}`);
             docRef.update({isOpened: true});
         });
     }
 
     const markAsRead = (enquiryId) => {
-        const enqRef = projectFirestore.doc(`enquiries/${enquiryId}`);
+        const enqRef = doc(`enquiries/${enquiryId}`);
         enqRef.update({isOpened: true});
     }
 

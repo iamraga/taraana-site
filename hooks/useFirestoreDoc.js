@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { projectFirestore } from '../utils/firebase';
+import { firestore } from '../utils/firebase';
 
 const useFirestoreDoc = (documentPath) => {
     const [doc, setDoc] = useState({});
 
     useEffect(async () => {
-        const docRef = projectFirestore.doc(documentPath);
+        const docRef = firestore.doc(documentPath);
         const docObserver = docRef.onSnapshot(snap => {
             if(snap.exists) {
                 setDoc(snap.data());

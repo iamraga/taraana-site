@@ -1,19 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Layout, Menu } from 'antd';
 import { UserOutlined, CloudUploadOutlined, EyeOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { firebaseApp } from '../utils/firebase';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const { Header, Sider, Content } = Layout;
 
 export default function AdminLayout({ children }) {
 
+    const router = useRouter();
     let [collapsed, setCollapsed] = useState(false);
     let [selectedKey, setSelectedKey] = useState('1');
-    const router = useRouter();
+    
+    useEffect(function() {
+        try {
+            const auth = getAuth(firebaseApp);
+            onAuthStateChanged(auth, (user) => {
+                if(!user) {
+                    router.push('/admin/login');
+                }
+            });
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }, [])
+    
     let currentPath = router.pathname.split('/')[2];
     const tabsMeta = {
-        "gallery": '1',
+        "albums": '1',
         "profile": '2',
         "enquiries": '3',
         "events": '4'

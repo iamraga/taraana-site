@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Row, Col, Typography, Divider, Button, Modal } from 'antd';
 import { DeleteOutlined, LeftOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { projectFirestore, projectStorage } from '../../utils/firebase';
+import { firestore, storage } from '../../utils/firebase';
 import UploadForm from './uploadForm';
 import AlbumImages from './albumImages'
 import Link from 'next/link';
 import CreateAlbum from './createAlbum';
 import { deleteDoc } from '../../hooks/common';
 import useFirestore from '../../hooks/useFirestore';
+import { collection, doc, onSnapshot } from 'firebase/firestore';
 
 const { Title } = Typography;
 const { confirm } = Modal;
@@ -18,8 +19,8 @@ export default function SingleAlbumView({ albumId }) {
     const router = useRouter();
     
     useEffect(() => {
-        const docRef = projectFirestore.doc(`albums/${albumId}`);
-        const docObserver = docRef.onSnapshot(snap => {
+        const docRef = doc(firestore, `albums/${albumId}`);
+        const docObserver = onSnapshot(docRef, snap => {
             if(snap.exists) {
                 setAlbum({...snap.data(), albumId});
             }
@@ -30,13 +31,12 @@ export default function SingleAlbumView({ albumId }) {
     }, [albumId]);
 
     async function deleteAllImageDocs(albumId) {
-        const albumImagesRef = projectFirestore.collection(`albums/${albumId}/images`);
-        const snapshot = await albumImagesRef.get();
+        const albumImagesRef = collection(firestore, `albums/${albumId}/images`);
+        const snapshot = await getDocs(albumImagesRef);
         snapshot.forEach(image => {
             console.log("inside");
             deleteDoc(`albums/${albumId}/images/${image.id}`);
         });
-        console.log("delete");
         deleteDoc(`albums/${album.albumId}`);
     }
 
@@ -49,7 +49,7 @@ export default function SingleAlbumView({ albumId }) {
             onOk() {
                 //Deleting all images in the album
                 let imageNames = [];
-                const imagesRef = projectFirestore.collection(`albums/${album.albumId}/images`);
+                const imagesRef = collection(firestore, `albums/${album.albumId}/images`);
                 imagesRef.get().then(snap => {
                     snap.docs.map(doc => {
                         let data = doc.data();
@@ -57,7 +57,7 @@ export default function SingleAlbumView({ albumId }) {
                     });
     
                     imageNames.map(imageName => {
-                        const storageRef = projectStorage.ref();
+                        const storageRef = storage.ref();
                         var storageFileRef = storageRef.child(`images/${imageName}`);
     
                         storageFileRef.delete().then().catch((error) => {

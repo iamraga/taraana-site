@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Typography, Divider } from 'antd';
 import AdminLayout from '../../layouts/adminLayout';
-import CreateEvent from '../../comps/admin/CreateEvent';
+import CreateEvent from '../../comps/admin/createEvent';
 import useFirestore from '../../hooks/useFirestore';
 import EachEvent from '../../comps/admin/eachEvent';
 

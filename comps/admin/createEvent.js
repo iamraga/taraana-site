@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Modal, Button, Input, message, Form, DatePicker, Radio, Typography } from 'antd';
 import moment from 'moment';
 import { FolderAddOutlined, EditOutlined } from '@ant-design/icons';
-import { projectFirestore, timestamp } from '../../utils/firebase';
+import { firestore, serverTimestamp } from '../../utils/firebase';
+import { collection } from 'firebase/firestore';
 
 const { RangePicker } = DatePicker;
 const { Paragraph } = Typography;
@@ -14,7 +15,7 @@ export default function CreateEvent({isEdit, event}) {
 
     const dateFormat = 'DD-MMM-YYYY';
     const [form] = Form.useForm();
-    const eventsCollection = projectFirestore.collection("events");
+    const eventsCollection = collection(firestore, "events");
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -36,7 +37,7 @@ export default function CreateEvent({isEdit, event}) {
                 isRange,
                 venue,
                 venueUrl,
-                createdAt: timestamp()
+                createdAt: serverTimestamp()
             };
             if(!isRange) {
                 newEvent.eventDate = new Date(eventDate.format('DD-MMM-YYYY'));
@@ -52,7 +53,7 @@ export default function CreateEvent({isEdit, event}) {
         }
         else {
             //Event update
-            const currentEventRef = projectFirestore.doc(`events/${event.id}`)
+            const currentEventRef = firestore.doc(`events/${event.id}`)
             let updatedData = {};
             if(eventName && eventName !== event.name) updatedData.name = eventName;
             if(eventDate && eventDate.format('DD-MMM-YYYY') !== event.eventDate) updatedData.eventDate = eventDate.format('DD-MMM-YYYY');

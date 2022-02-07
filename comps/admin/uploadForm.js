@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Upload, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import useFirestore from '../../hooks/useFirestore';
-import { projectStorage, projectFirestore, timestamp, increment } from '../../utils/firebase';
+import { collection } from 'firebase/firestore';
+import { storage, firestore, serverTimestamp, increment } from '../../utils/firebase';
 import useStorage from '../../hooks/useStorage';
 
 function getBase64(file) {
@@ -36,9 +37,9 @@ export default function UploadForm({ albumId }) {
 
     function uploadImages({ file: uploadedFile, onSuccess, onProgress, onError }) {
         const imageNameTimestamp = Date.now();
-        const storageRef = projectStorage.ref('images/' + (uploadedFile.name + "##" + imageNameTimestamp)); //Adding timestamp to prevent duplicates
-        const imagesCollRef = projectFirestore.collection(`albums/${albumId}/images`);
-        const albumDocRef = projectFirestore.doc(`albums/${albumId}`);
+        const storageRef = storage.ref('images/' + (uploadedFile.name + "##" + imageNameTimestamp)); //Adding timestamp to prevent duplicates
+        const imagesCollRef = collection(firestore, `albums/${albumId}/images`);
+        const albumDocRef = firestore.doc(`albums/${albumId}`);
         
         storageRef
             .put(uploadedFile)
@@ -52,7 +53,7 @@ export default function UploadForm({ albumId }) {
                 
                 //Entry in Firestore in current Album
                 imagesCollRef
-                    .add({ name: uploadedFile.name, imageNameinStorage: (uploadedFile.name + "##" + imageNameTimestamp), url, createdAt: timestamp() })
+                    .add({ name: uploadedFile.name, imageNameinStorage: (uploadedFile.name + "##" + imageNameTimestamp), url, createdAt: serverTimestamp() })
                     .then((docRef) => {
                         onSuccess({documentId: docRef.id, storageName: (uploadedFile.name + "##" + imageNameTimestamp), url, status: "ok"});
                     })
@@ -64,9 +65,9 @@ export default function UploadForm({ albumId }) {
 
     function handleRemove(file) {
         console.log(file);
-        const storageRef = projectStorage.ref();
-        const imageDocRef = projectFirestore.doc(`albums/${albumId}/images/${file.response.documentId}`);
-        const albumDocRef = projectFirestore.doc(`albums/${albumId}`);
+        const storageRef = storage.ref();
+        const imageDocRef = firestore.doc(`albums/${albumId}/images/${file.response.documentId}`);
+        const albumDocRef = firestore.doc(`albums/${albumId}`);
         var storageFileRef = storageRef.child(`images/${file.response.storageName}`);
 
         storageFileRef.delete().then(() => {
