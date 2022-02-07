@@ -9,6 +9,7 @@ import EnquiryForm from '../comps/enquiryForm';
 import ContactInfo from '../comps/contactInfo';
 import Courses from '../comps/courses';
 import Events from '../comps/events';
+import Purpose from '../comps/purpose';
 
 var settings = {
     infinite: true,
@@ -53,7 +54,7 @@ export default function Index() {
                 $(this).addClass('activeNav');
                 $(this).siblings().removeClass('activeNav');
             })
-            $("#taraanaMobileNav ul li").click(function() {
+            $("#taraanaMobileNav ul li, .taraana").click(function() {
                 $("#taraanaMobileNav").slideToggle(200);
                 $(".mobile-nav-indicator").toggleClass("expanded")
                 var mobileNavOption = $(this).find('a').text();
@@ -62,12 +63,12 @@ export default function Index() {
             $(window).resize(function() {
                 $("#taraanaMobileNav").hide();
             })
-            var $item = $('#taraanaDesktopNav ul li');
+            var $item = $('#taraanaDesktopNav ul li, .taraana-home-cta');
             $item.on('click', 'a', function(event) {
-            var $section = $($(this).attr('href'));
-            var sectionTop = $section.offset().top;   
-            $('html, body').stop().animate({scrollTop: sectionTop}, 1500);
-               event.preventDefault();
+                var $section = $($(this).attr('href'));
+                var sectionTop = $section.offset().top;   
+                $('html, body').stop().animate({scrollTop: sectionTop}, 1000);
+                event.preventDefault();
             });
             $(window).scroll(function() {
                 var $item = $('.taraana-navigation ul li');
@@ -158,7 +159,7 @@ export default function Index() {
                             <p>
                                 Taraana Academy Of Kathak is a Chennai based institute that provides training in Kathak. Built on an aim to promote ‘Shudh’(pure) Kathak in a social and educational context, Taraana Academy strives to develop a systematic dance training programme.
                             </p>
-                            <div class="d-flex flex-column flex-md-row pt-2"> <a href="" class="taraana-btn mr-md-4 mb-3 mb-md-0">Courses</a> <a href="" class="taraana-btn">Contact</a> </div>
+                            <div class="taraana-home-cta d-flex flex-column flex-md-row pt-2"> <a href="#courses" class="taraana-btn mr-md-4 mb-3 mb-md-0">Courses</a> <a href="#contact" class="taraana-btn">Contact</a> </div>
                         </div>
                         <div class="img-section text-center"><img style={{maxWidth: '93%'}} src="./assets/images/hero1.png" alt="girl dancing image" class="img-fluid" /></div>
                     </div>
@@ -198,26 +199,13 @@ export default function Index() {
                     <section class="taraana-purpose bg-fill-1">
                         <div className="container">
                             <h2 class="t-h2 text-lg-center"><span class="head-highlight">Dance, Music and Yoga</span> can be used to:</h2>
-                            <div class="row flex-column-reverse flex-lg-row">
-                                <div class="col-12 col-lg-6  text-center"><img src="./assets/images/hero4.png" alt="tabla image" class="img-fluid leader-img" /></div>
-                                <div class="col-12 col-lg-6">
-                                    <ul class="pl-0">
-                                        <li>Improve body language</li>
-                                        <li>Destress</li>
-                                        <li>Develop flexibility</li>
-                                        <li>Improve posture and alignment of body.</li>
-                                        <li>Understand the proper execution of Laya and Taal.</li>
-                                        <li>Perform on stage in front of audiences; building confidence and self expression.</li>
-                                        <li>Details on any of these classes can be attained upon a visit to the studio, via email or phone.</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <Purpose />
                         </div>
                     </section>
                     <section class="taraana-eligibility text-lg-center bg-fill-2">
                         <div className="container">
                             <h2 className="t-h2">Eligibility:</h2>
-                            <p class="mx-auto mb-0">There is no restriction on maximum age. People of 5 years and more can join these programmes. Similarly, we don’t put conditions like prior knowledge of dance. Beginners as well as those with some experience in Kathak can join these programmes.</p>
+                            <p class="mx-auto mb-0">There is no restriction on maximum age. People of <span className="head-highlight"><b>5 years and more</b></span> can join these programmes. Beginners as well as those with some experience in Kathak can join these programmes.</p>
                             <div id="gallery" class="nav-scroller"></div>
                         </div>
                     </section>
@@ -240,7 +228,7 @@ export default function Index() {
                     </section>
                     <section class="taraana-upcoming-event bg-fill-2">
                         <div className="container">
-                            <h2 class="t-h2 head-highlight text-lg-center">Upcoming Event</h2>
+                            <h2 class="t-h2 head-highlight text-lg-center">Upcoming Events</h2>
                             <Events />
                             <div class="nav-scroller" id="contact"></div>
                         </div>

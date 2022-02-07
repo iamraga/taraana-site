@@ -63,6 +63,10 @@ h3,
 .t-h3 {
   font: 28px/46px Made-Dillan;
 }
+h4,
+.t-h4 {
+  font: 24px/40px Made-Dillan;
+}
 h2,
 .t-h2,
 h3,
@@ -261,53 +265,64 @@ section .img-section {
 /*section styles end here*/
 
 /*taraana courses  styles start here*/
-.taraana-courses ul {
+.taraana-courses-ul {
   width: 75%;
 }
-.taraana-courses ul li {
-  margin-bottom: 80px;
+.taraana-courses-ul-item {
+  margin-bottom: 60px;
 }
-.taraana-courses ul li .img-section {
+.course-points-list li::marker {
+  font-size: 2rem;
+  color: #da9f46;
+}
+.taraana-courses-ul-item .img-section {
   width: 15%;
 }
-.taraana-courses ul li .desc-section {
+.taraana-courses-ul-item .desc-section {
   width: 85%;
 }
-.taraana-courses ul li .img-section img {
+.taraana-courses-ul-item .img-section img {
   width: 144px;
 }
 @media (max-width: 991px) {
-  .taraana-courses ul,
-  .taraana-courses ul li .img-section,
-  .taraana-courses ul li .desc-section {
+  .taraana-courses-ul-item,
+  .taraana-courses-ul-item .img-section,
+  .taraana-courses-ul-item .desc-section {
     width: unset;
   }
-  .taraana-courses ul li .img-section img {
+  .taraana-courses-ul-item .img-section img {
     width: 20%;
     margin-bottom: 4px;
   }
-  .taraana-courses ul li {
+  .taraana-courses-ul-item {
     margin-bottom: 16px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .taraana-courses ul li .img-section img {
+  .taraana-courses-ul-item .img-section img {
     width: 10%;
   }
 }
 /*taraana courses  styles end here*/
 
 /*taraana purpose styles start here*/
-.taraana-purpose ul li {
+.taraana-purpose ul li,
+.course-points-list li {
   font: 18px/28px Merriweather;
   color: var(--paraText);
   margin-bottom: 24px;
 }
 @media (max-width: 991px) {
-  .taraana-purpose ul li {
+  .taraana-purpose ul li,
+  .course-points-list li {
     font: 16px/26px Merriweather;
     margin-bottom: 20px;
   }
+}
+
+/* Overriding margin for list item inside course */
+.course-points-list li {
+  margin-bottom: 18px;
 }
 /*taraana purpose styles end here*/
 
@@ -359,7 +374,7 @@ section .img-section {
 }
 .taraana-getin-touch .contact-detail p,
 .taraana-getin-touch .contact-detail p a {
-  font: 20px/32px Merriweather;
+  font: 18px/32px Merriweather;
   color: var(--formText);
 }
 .taraana-getin-touch .ant-form-item {
