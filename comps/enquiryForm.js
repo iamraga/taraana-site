@@ -80,7 +80,7 @@ export default function EnquiryForm() {
                 <Input 
                     className="contact-input" 
                     placeholder="Contact number" 
-                    prefix={<PhoneOutlined style={{marginRight: '5px', fontSize: '18px'}} />} 
+                    prefix={<PhoneOutlined rotate={90} style={{marginRight: '5px', fontSize: '18px'}} />} 
                     aria-describedby="phone number" 
                     value={number} 
                     style={{fontSize: '1rem'}}

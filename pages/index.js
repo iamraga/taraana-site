@@ -73,29 +73,29 @@ export default function Index() {
             $(window).scroll(function() {
                 var $item = $('.taraana-navigation ul li');
                 var scrollTop = $(this).scrollTop();
-                 $item.each(function() {
-                        var $section = $($(this).find('a').attr('href'));
-             var sectionTop = $section.offset().top - 60;
-             var sectionHeight = $section.parent().height();
-              if (sectionTop <= scrollTop && (sectionTop + sectionHeight) > scrollTop) {
-               $(this).addClass('activeNav');
-               $(this).siblings().removeClass('activeNav');
-               var mobileScrollNavActive = $(this).find('a').text();
-             }
-                   });
+                $item.each(function() {
+                    var $section = $($(this).find('a').attr('href'));
+                    var sectionTop = $section.offset().top - 60;
+                    var sectionHeight = $section.parent().height();
+                    if (sectionTop <= scrollTop && (sectionTop + sectionHeight) > scrollTop) {
+                        $(this).addClass('activeNav');
+                        $(this).siblings().removeClass('activeNav');
+                        var mobileScrollNavActive = $(this).find('a').text();
+                    }
+                });
             });
             $(window).scroll(function() {
                 var $item = $('#taraanaMobileNav ul li');
                 var scrollTop = $(this).scrollTop();
-                 $item.each(function() {
-                        var $section = $($(this).find('a').attr('href'));
-             var sectionTop = $section.offset().top - 60;
-             var sectionHeight = $section.parent().height();
-              if (sectionTop <= scrollTop && (sectionTop + sectionHeight) > scrollTop) {
-               var mobileScrollNavActive = $(this).find('a').text();
-               $(".mobile-navigation span:first-child").text(mobileScrollNavActive);
-             }
-                   });
+                $item.each(function() {
+                    var $section = $($(this).find('a').attr('href'));                    
+                    var sectionTop = $section.offset().top - 60;
+                    var sectionHeight = $section.parent().height();
+                    if (sectionTop <= scrollTop && (sectionTop + sectionHeight) > scrollTop) {
+                        var mobileScrollNavActive = $(this).find('a').text();
+                        $(".mobile-navigation span:first-child").text(mobileScrollNavActive);
+                    }
+                });
             });
         });
     }, []);
@@ -117,7 +117,7 @@ export default function Index() {
                 <header class="fixed-top">
                     <div class="contact-strap py-2 d-none d-md-block">
                     <div class="container d-flex justify-content-end">
-                        <div class="details d-flex align-items-center"><span class="mr-4">Call : +91 95000 81900,+91 7358438454</span>
+                        <div class="details d-flex align-items-center"><span class="mr-4">Call : +91 95000 81900, +91 7358438454</span>
                             <a href="https://www.instagram.com/taraanaacademy_kathak/" target="_blank" class="d-flex align-items-center"><img src="./assets/icons/instagram.png" class="mr-1" alt="instagram icon" /><span>@taraanaacademy_kathak</span></a>
                         </div>
                     </div>
@@ -129,8 +129,9 @@ export default function Index() {
                         <div class="taraana-navigation  d-none d-md-block" id="taraanaDesktopNav">
                             <ul class="list-group list-group-horizontal-md">
                                 <li class="list-group-item"> <a href="#about">About</a> </li>
-                                <li class="list-group-item"> <a href="#bio">Bio</a> </li>
+                                {/* <li class="list-group-item"> <a href="#bio">Bio</a> </li> */}
                                 <li class="list-group-item"> <a href="#courses">Courses</a> </li>
+                                <li class="list-group-item"> <a href="#faculty">Faculty</a> </li>
                                 <li class="list-group-item"> <a href="#gallery">Gallery</a> </li>
                                 <li class="list-group-item"> <a href="#events">Events</a> </li>
                                 <li class="list-group-item pr-0"> <a href="#contact">Contact</a> </li>
@@ -139,8 +140,9 @@ export default function Index() {
                         <div class="taraana-navigation" id="taraanaMobileNav">
                             <ul class="list-group list-group-horizontal-md">
                                 <li class="list-group-item"> <a href="#about">About</a> </li>
-                                <li class="list-group-item"> <a href="#bio">Bio</a> </li>
+                                {/* <li class="list-group-item"> <a href="#bio">Bio</a> </li> */}
                                 <li class="list-group-item"> <a href="#courses">Courses</a> </li>
+                                <li class="list-group-item"> <a href="#faculty">Faculty</a> </li>
                                 <li class="list-group-item"> <a href="#gallery">Gallery</a> </li>
                                 <li class="list-group-item"> <a href="#events">Events</a> </li>
                                 <li class="list-group-item pr-0"> <a href="#contact">Contact</a> </li>
@@ -161,7 +163,7 @@ export default function Index() {
                             </p>
                             <div class="taraana-home-cta d-flex flex-column flex-md-row pt-2"> <a href="#courses" class="taraana-btn mr-md-4 mb-3 mb-md-0">Courses</a> <a href="#contact" class="taraana-btn">Contact</a> </div>
                         </div>
-                        <div class="img-section text-center"><img style={{maxWidth: '93%'}} src="./assets/images/hero1.png" alt="girl dancing image" class="img-fluid" /></div>
+                        <div class="img-section text-center mt-lg-4"><img style={{maxWidth: '93%'}} src="./assets/images/hero1.png" alt="girl dancing image" class="img-fluid" /></div>
                     </div>
                     <div id="about" class="nav-scroller"></div>
                     </section>
@@ -175,7 +177,7 @@ export default function Index() {
                             <p>A Kathak academy in Chennai that focuses on classical dance as a form of therapy; Taraana also facilitates Yoga for Dance and Hindustani Music sessions. Through regular classes, workshops, and events we make training in Kathak available to all keen learners in the city.</p>
                         </div>
                     </div>
-                    <div id="bio" class="nav-scroller"></div>
+                    {/* <div id="bio" class="nav-scroller"></div> */}
                     </section>
                     <section class="taraana-shritha-bio bg-fill-1">
                     <div class="d-flex flex-column flex-lg-row container">
@@ -195,21 +197,22 @@ export default function Index() {
                             <h2 class="t-h2 text-lg-center">Courses at Taraana</h2>
                             <Courses />
                         </div>
+                        <div id="faculty" class="nav-scroller"></div>
                     </section>
                     <section class="taraana-purpose bg-fill-1">
                         <div className="container">
                             <h2 class="t-h2 text-lg-center"><span class="head-highlight">Dance, Music and Yoga</span> can be used to:</h2>
                             <Purpose />
+                            <div className="eligibility-cont text-center mt-5">
+                                <h2 className="t-h2">Eligibility:</h2>
+                                <p class="mx-auto mb-0">There is no restriction on maximum age. People of <span className="head-highlight"><b>5 years and more</b></span> can join these programmes. Beginners as well as those with some experience in Kathak can join these programmes.</p>
+                                <div id="gallery" class="nav-scroller"></div>
+                            </div>
                         </div>
                     </section>
-                    <section class="taraana-eligibility text-lg-center bg-fill-2">
-                        <div className="container">
-                            <h2 className="t-h2">Eligibility:</h2>
-                            <p class="mx-auto mb-0">There is no restriction on maximum age. People of <span className="head-highlight"><b>5 years and more</b></span> can join these programmes. Beginners as well as those with some experience in Kathak can join these programmes.</p>
-                            <div id="gallery" class="nav-scroller"></div>
-                        </div>
-                    </section>
-                    <section class="taraana-gallery bg-fill-1">
+                    {/* <section class="taraana-eligibility text-lg-center bg-fill-1">
+                    </section> */}
+                    <section class="taraana-gallery bg-fill-2">
                         <div className="container">
                             <h2 class="t-h2 text-left text-lg-center">Gallery</h2>
                             <div class="carousel-block position-relative">
@@ -226,27 +229,27 @@ export default function Index() {
                             <div id="events" class="nav-scroller"></div>
                         </div>
                     </section>
-                    <section class="taraana-upcoming-event bg-fill-2">
+                    <section class="taraana-upcoming-event bg-fill-1">
                         <div className="container">
                             <h2 class="t-h2 head-highlight text-lg-center">Upcoming Events</h2>
                             <Events />
                             <div class="nav-scroller" id="contact"></div>
                         </div>
                     </section>
-                    <section class="taraana-getin-touch bg-fill-1">
+                    <section class="taraana-getin-touch bg-fill-2">
                         <div className="container">
                             <h2 class="t-h2 text-lg-center">Get in touch</h2>
                             <div class="row justify-content-between flex-column-reverse flex-lg-row">
                                 <div class="col-12 col-lg-6">
-                                    <EnquiryForm />
-                                </div>
-                                <div class="col-12 col-lg-5 mb-5 mb-lg-0">
                                     <ContactInfo />
+                                </div>
+                                <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+                                    <EnquiryForm />
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <section class="taraana-reach-us bg-fill-2">
+                    <section class="taraana-reach-us bg-fill-1">
                         <div className="container">
                             <h2 class="t-h2 text-lg-center">Reach us</h2>
                             <iframe class="mb-5" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15545.922811956934!2d80.2382525!3d13.0686925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6e6199dfa1945be!2sTaraana%20Academy%20Of%20Kathak!5e0!3m2!1sen!2sin!4v1635701629405!5m2!1sen!2sin" width="100%" style={{border:0}} allowfullscreen="" loading="lazy"></iframe>

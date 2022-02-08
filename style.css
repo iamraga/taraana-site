@@ -57,7 +57,7 @@ p {
 h2,
 .t-h2 {
   font: 33px/46px Made-Dillan;
-  margin-bottom: 48px;
+  margin-bottom: 30px;
 }
 h3,
 .t-h3 {
@@ -106,10 +106,10 @@ a:hover {
   width: 400px;
 }
 .bg-fill-1 {
-  background-color: #f9f9f8;
+  background-color: var(--white);
 }
 .bg-fill-2 {
-  background-color: var(--white);
+  background-color: #fbf0d3;
 }
 @media (max-width: 991px) {
   p {
@@ -127,10 +127,6 @@ a:hover {
     line-height: 36px;
     margin-bottom: 8px;
   }
-
-  .taraana-wrapper section {
-    margin-bottom: 72px;
-  }
 }
 @media (min-width: 1560px) {
   .container,
@@ -145,13 +141,15 @@ a:hover {
 /*Header styles start here*/
 header {
   background-color: #f9f9f8;
+  box-shadow: 0px -4px 8px 3px #c3c3c3;
 }
 .contact-strap {
   background-color: var(--fillBg);
 }
 .contact-strap .details span {
   color: var(--white);
-  font: 14px/20px Merriweather;
+  font: 14px/20px Roboto;
+  font-weight: 500;
 }
 .contact-strap .details a span {
   color: var(--strapLink);
@@ -242,7 +240,7 @@ button.mobile-navigation {
 }
 /*Header styles end here*/
 main {
-  margin-top: 154px;
+  margin-top: 135px;
 }
 
 /*section styles start here*/
@@ -271,6 +269,9 @@ section .img-section {
 .taraana-courses-ul-item {
   margin-bottom: 60px;
 }
+.course-points-list {
+  padding-left: 0px;
+}
 .course-points-list li::marker {
   font-size: 2rem;
   color: #da9f46;
@@ -285,7 +286,7 @@ section .img-section {
   width: 144px;
 }
 @media (max-width: 991px) {
-  .taraana-courses-ul-item,
+  .taraana-courses-ul,
   .taraana-courses-ul-item .img-section,
   .taraana-courses-ul-item .desc-section {
     width: unset;
@@ -296,6 +297,9 @@ section .img-section {
   }
   .taraana-courses-ul-item {
     margin-bottom: 16px;
+  }
+  .course-points-list {
+    padding-left: revert;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {

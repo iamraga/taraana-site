@@ -5,7 +5,7 @@ export default function Purpose() {
     <div class="row flex-column-reverse flex-lg-row">
         <div class="col-12 col-lg-6  text-center"><img src="./assets/images/hero4.png" alt="tabla image" class="img-fluid leader-img" /></div>
         <div class="col-12 col-lg-6">
-            <ul class="pl-0 course-points-list" style={{listStyle: 'circle'}}>
+            <ul class="course-points-list" style={{listStyle: 'circle'}}>
                 <li>Improve body language</li>
                 <li>Destress</li>
                 <li>Develop flexibility</li>
