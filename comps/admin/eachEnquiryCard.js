@@ -3,7 +3,7 @@ import { Row, Col, Card, Typography, Button, Modal } from 'antd';
 import { MailOutlined, ClockCircleOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import Moment from 'react-moment';
 import ViewEnquiry from '../../comps/admin/viewEnquiry';
-import { deleteDoc } from '../../hooks/common';
+import { deleteSingleDoc } from '../../hooks/common';
 
 const { Title, Paragraph, Text } = Typography;
 const { confirm } = Modal;
@@ -16,7 +16,7 @@ export default function EachEnquiryCard({ enquiry, markAsRead }) {
             icon: <ExclamationCircleOutlined />,
             content: enquiry.name,
             onOk() {
-                deleteDoc(`enquiries/${enquiry.id}`);
+                deleteSingleDoc(`enquiries/${enquiry.id}`);
             },
             onCancel() {}
         });

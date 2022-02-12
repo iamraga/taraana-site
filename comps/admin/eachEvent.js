@@ -4,7 +4,7 @@ import { Card, Typography, Button, Modal } from 'antd';
 import Moment from 'react-moment';
 import CreateEvent from './createEvent';
 import Link from 'next/link';
-import { deleteDoc } from '../../hooks/common';
+import { deleteSingleDoc } from '../../hooks/common';
 
 const { Text, Paragraph } = Typography;
 const { confirm } = Modal;
@@ -17,7 +17,7 @@ export default function EachEvent({ event }) {
             icon: <ExclamationCircleOutlined />,
             content: event.name,
             onOk() {
-                deleteDoc(`events/${event.id}`);
+                deleteSingleDoc(`events/${event.id}`);
             },
             onCancel() {}
         });
@@ -40,7 +40,7 @@ export default function EachEvent({ event }) {
                 {event.venueUrl ? (<Paragraph><EnvironmentOutlined style={{marginRight: '10px', fontSize: '16px'}} /><Text>{event.venue}  (<Link href={event.venueUrl}><a>View on Google maps</a></Link>)</Text></Paragraph>)
                     : (<Paragraph><EnvironmentOutlined style={{marginRight: '10px', fontSize: '16px'}} /><Text>{event.venue}</Text></Paragraph>)}
                 <Text strong={true}>Created Date : </Text><Text><Moment format="DD MMM YYYY hh:mm:ss">{event?.createdAt?.seconds * 1000}</Moment></Text>
-                <div style={{display: 'inline', float: 'right', marginRight: '40px'}}><CreateEvent isEdit={true} event={event} /><Button danger icon={<DeleteOutlined />} onClick={deleteConfirm} style={{margin: '0px 10px', height: 'inherit'}} /></div>
+                <div style={{display: 'inline', float: 'right', marginRight: '40px'}}><CreateEvent isEdit={true} event={event} /><Button danger icon={<DeleteOutlined />} onClick={deleteConfirm} style={{margin: '0px 10px'}} /></div>
             </div>
         </Card>
 

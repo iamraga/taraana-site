@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Upload, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import useFirestore from '../../hooks/useFirestore';
-import { collection } from 'firebase/firestore';
+import { collection, doc, addDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { storage, firestore, serverTimestamp, increment } from '../../utils/firebase';
-import useStorage from '../../hooks/useStorage';
+import { ref, uploadBytesResumable, deleteObject, getDownloadURL } from 'firebase/storage';
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -37,44 +36,42 @@ export default function UploadForm({ albumId }) {
 
     function uploadImages({ file: uploadedFile, onSuccess, onProgress, onError }) {
         const imageNameTimestamp = Date.now();
-        const storageRef = storage.ref('images/' + (uploadedFile.name + "##" + imageNameTimestamp)); //Adding timestamp to prevent duplicates
+        const storageRef = ref(storage, 'images/' + (uploadedFile.name + "##" + imageNameTimestamp)); //Adding timestamp to prevent duplicates
         const imagesCollRef = collection(firestore, `albums/${albumId}/images`);
-        const albumDocRef = firestore.doc(`albums/${albumId}`);
+        const albumDocRef = doc(firestore, `albums/${albumId}`);
         
-        storageRef
-            .put(uploadedFile)
-            .on('state_changed', (snap) => {
+        const uploadTask = uploadBytesResumable(storageRef, uploadedFile); 
+        uploadTask.on('state_changed', (snap) => {
                 let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
                 onProgress({progress: percentage});
             }, (err) => {
                 onError(err);
             }, async () => { //Fired after complete upload
-                const url = await storageRef.getDownloadURL();
+                const url = await getDownloadURL(storageRef);
                 
                 //Entry in Firestore in current Album
-                imagesCollRef
-                    .add({ name: uploadedFile.name, imageNameinStorage: (uploadedFile.name + "##" + imageNameTimestamp), url, createdAt: serverTimestamp() })
-                    .then((docRef) => {
-                        onSuccess({documentId: docRef.id, storageName: (uploadedFile.name + "##" + imageNameTimestamp), url, status: "ok"});
+                addDoc(imagesCollRef, { name: uploadedFile.name, imageNameinStorage: (uploadedFile.name + "##" + imageNameTimestamp), url, createdAt: serverTimestamp() })
+                    .then(function(newDocRef){
+                        onSuccess({documentId: newDocRef.id, storageName: (uploadedFile.name + "##" + imageNameTimestamp), url, status: "ok"});
                     })
                     .catch(err => onError(err));
                 //Increment collection count value
-                albumDocRef.update({ imageCount : increment(1)});
+                updateDoc(albumDocRef, { imageCount : increment(1)});
             });
     }
 
     function handleRemove(file) {
         console.log(file);
-        const storageRef = storage.ref();
-        const imageDocRef = firestore.doc(`albums/${albumId}/images/${file.response.documentId}`);
-        const albumDocRef = firestore.doc(`albums/${albumId}`);
-        var storageFileRef = storageRef.child(`images/${file.response.storageName}`);
+        const storageRef = ref(storage);
+        const imageDocRef = doc(firestore, `albums/${albumId}/images/${file.response.documentId}`);
+        const albumDocRef = doc(firestore, `albums/${albumId}`);
+        var storageFileRef = ref(storageRef, `images/${file.response.storageName}`);
 
-        storageFileRef.delete().then(() => {
+        deleteObject(storageFileRef).then(() => {
             //Delete image from collection
-            imageDocRef.delete();
+            deleteDoc(imageDocRef);
             //Decrement imagecount
-            albumDocRef.update({imageCount: increment(-1)});
+            updateDoc(albumDocRef, {imageCount: increment(-1)});
             return true;
         }).catch((error) => {
             alert("Error while deleting file : " + error);

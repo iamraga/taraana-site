@@ -35,7 +35,7 @@ export default function AdminLayout({ children }) {
         "enquiries": '3',
         "events": '4'
     }
-    currentPath = (!currentPath || currentPath == "" || currentPath === "album") ? "gallery" : currentPath;
+    currentPath = (!currentPath || currentPath == "" || currentPath === "album") ? "albums" : currentPath;
     
     return (
         <Layout>
@@ -46,7 +46,7 @@ export default function AdminLayout({ children }) {
             </Layout>
             <Layout style={{height: "100%", minHeight: '100vh'}}>
                 <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)}>
-                    <Menu theme="dark" defaultSelectedKeys={tabsMeta[currentPath]} mode="inline" style={{paddingTop: '80px', fontFamily: 'Poppins', fontSize: '14px'}}>
+                    <Menu theme="dark" defaultSelectedKeys={tabsMeta[currentPath]} mode="inline" style={{paddingTop: '80px', fontSize: '14px'}}>
                         <Menu.Item key="1" icon={<CloudUploadOutlined />} onClick={() => setSelectedKey('1')}>
                             <Link href="/admin/">
                                 <a>Gallery</a>
@@ -70,7 +70,7 @@ export default function AdminLayout({ children }) {
                     </Menu>
                 </Sider>
                 <Layout>
-                    <Content style={{ marginTop: '84px', fontFamily: 'Poppins' }}>
+                    <Content style={{ marginTop: '84px' }}>
                         <div className="site-layout-background" style={{ padding: '24px 56px', minHeight: 360 }}>
                             {children}
                         </div>

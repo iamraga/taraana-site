@@ -2,7 +2,9 @@ import React from 'react';
 import { Image, Row, Col, Button, Modal } from 'antd';
 import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import useFirestore from '../../hooks/useFirestore';
+import { doc, updateDoc, deleteDoc } from '@firebase/firestore';
 import { storage, firestore, increment } from '../../utils/firebase';
+import { ref, deleteObject } from '@firebase/storage';
 
 const { confirm } = Modal;
 
@@ -18,16 +20,16 @@ export default function AlbumImages({ albumId }) {
             icon: <ExclamationCircleOutlined />,
             onOk() {
                 //Delete image
-                const storageRef = projectStorage.ref();
-                const imageDocRef = firestore.doc(`albums/${albumId}/images/${image.id}`);
-                const albumDocRef = firestore.doc(`albums/${albumId}`);
-                var storageFileRef = storageRef.child(`images/${image.imageNameinStorage}`);
+                const storageRef = ref(storage);
+                const imageDocRef = doc(firestore, `albums/${albumId}/images/${image.id}`);
+                const albumDocRef = doc(firestore, `albums/${albumId}`);
+                var storageFileRef = ref(storageRef, `images/${image.imageNameinStorage}`);
 
-                storageFileRef.delete().then(() => {
+                deleteObject(storageFileRef).then(() => {
                     //Delete image from collection
-                    imageDocRef.delete();
+                    deleteDoc(imageDocRef);
                     //Decrement imagecount
-                    albumDocRef.update({imageCount: increment(-1)});
+                    updateDoc(albumDocRef, {imageCount: increment(-1)});
                     return true;
                 }).catch((error) => {
                     alert("Error while deleting file : " + error);

@@ -3,7 +3,7 @@ import { Modal, Button, Input, message, Form, DatePicker, Radio, Typography } fr
 import moment from 'moment';
 import { FolderAddOutlined, EditOutlined } from '@ant-design/icons';
 import { firestore, serverTimestamp } from '../../utils/firebase';
-import { collection } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 
 const { RangePicker } = DatePicker;
 const { Paragraph } = Typography;
@@ -15,7 +15,7 @@ export default function CreateEvent({isEdit, event}) {
 
     const dateFormat = 'DD-MMM-YYYY';
     const [form] = Form.useForm();
-    const eventsCollection = collection(firestore, "events");
+    const eventsCollectionRef = collection(firestore, "events");
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -48,12 +48,12 @@ export default function CreateEvent({isEdit, event}) {
                 newEvent.toDate = new Date(eventDateRange[1].format('DD-MMM-YYYY'));
             }
             console.log(newEvent);
-            eventsCollection.add(newEvent);
+            addDoc(eventsCollectionRef, newEvent);
             message.success(`${eventName} event created successfully`);
         }
         else {
             //Event update
-            const currentEventRef = firestore.doc(`events/${event.id}`)
+            const currentEventRef = doc(firestore, `events/${event.id}`)
             let updatedData = {};
             if(eventName && eventName !== event.name) updatedData.name = eventName;
             if(eventDate && eventDate.format('DD-MMM-YYYY') !== event.eventDate) updatedData.eventDate = eventDate.format('DD-MMM-YYYY');
@@ -72,7 +72,7 @@ export default function CreateEvent({isEdit, event}) {
             
             console.log(updatedData);
 
-            currentEventRef.update(updatedData);
+            updateDoc(currentEventRef, updatedData);
             message.success(`${eventName} event updated successfully`);
         }
         
@@ -92,11 +92,11 @@ export default function CreateEvent({isEdit, event}) {
     }
     getDateFromSeconds(event?.eventDate.seconds * 1000);
     let dateSelectComp = (isRange) ? (
-        <Form.Item name="eventDateRange" initialValue={[moment(getDateFromSeconds(event?.fromDate.seconds * 1000), dateFormat), moment(getDateFromSeconds(event?.toDate.seconds * 1000), dateFormat)]} label="Event Dates" rules={[{ required: true }]}>
+        <Form.Item name="eventDateRange" initialValues={[moment(getDateFromSeconds(event?.fromDate.seconds * 1000), dateFormat), moment(getDateFromSeconds(event?.toDate.seconds * 1000), dateFormat)]} label="Event Dates" rules={[{ required: true }]}>
             <RangePicker style={{width: '100%'}} format={"YYYY/MM/DD"} />
         </Form.Item>
     ) : (
-        <Form.Item name="eventDate" label="Event Date" initialValue={isEdit ? moment(getDateFromSeconds(event?.eventDate.seconds * 1000), dateFormat) : ""} rules={[{ required: true }]}>
+        <Form.Item name="eventDate" label="Event Date" initialValues={isEdit ? moment(getDateFromSeconds(event?.eventDate.seconds * 1000), dateFormat) : ""} rules={[{ required: true }]}>
             <DatePicker placeholder="Select event date" style={{width: '100%'}} />
         </Form.Item>
     );

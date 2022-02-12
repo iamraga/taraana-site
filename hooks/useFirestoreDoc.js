@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { firestore } from '../utils/firebase';
+import { doc, onSnapshot } from "@firebase/firestore";
 
 const useFirestoreDoc = (documentPath) => {
-    const [doc, setDoc] = useState({});
+    const [document, setDocument] = useState({});
 
     useEffect(async () => {
-        const docRef = firestore.doc(documentPath);
-        const docObserver = docRef.onSnapshot(snap => {
+        const docRef = doc(firestore, documentPath);
+        const docObserver = onSnapshot(docRef, snap => {
             if(snap.exists) {
-                setDoc(snap.data());
+                setDocument(snap.data());
             }
             else {
                 console.log("Error while fetching data");
@@ -16,7 +17,7 @@ const useFirestoreDoc = (documentPath) => {
         });
     }, [])
     
-    return { doc };
+    return { document };
 }
 
 export default useFirestoreDoc;

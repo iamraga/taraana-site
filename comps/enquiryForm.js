@@ -39,7 +39,7 @@ export default function EnquiryForm() {
             isEmailSent: false,
             createdAt: serverTimestamp()
         };
-        const addedEnquiry = await enquiriesCollection.add(newEnquiry);
+        const addedEnquiry = await addDoc(enquiriesCollection, newEnquiry);
         antMessage.success(`Enquiry submitted successfully.`);
 
         //Send email using EmailJS
@@ -51,8 +51,8 @@ export default function EnquiryForm() {
         }
         emailjs.send(emailConfig.serviceName, emailConfig.templateId, emailParams)
             .then(function(response) {
-                const enquiryDocRef = firestore.doc(`enquiries/${addedEnquiry.id}`);
-                enquiryDocRef.update({isEmailSent: true});
+                const enquiryDocRef = doc(firestore, `enquiries/${addedEnquiry.id}`);
+                updateDoc(enquiryDocRef, {isEmailSent: true});
             }, function(error) {
                 console.log('Error while sending email', error);
             });

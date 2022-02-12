@@ -1,9 +1,9 @@
 import { firestore } from "../utils/firebase";
-import { collection, getDocs, query, doc } from 'firebase/firestore';
+import { collection, getDocs, query, doc, deleteDoc } from 'firebase/firestore';
 
-export function deleteDoc(docPath) {
+export function deleteSingleDoc(docPath) {
     const docRef = doc(firestore, docPath);
-    docRef.delete();
+    deleteDoc(docRef);
 }
 
 export async function getAllAlbumIds() {

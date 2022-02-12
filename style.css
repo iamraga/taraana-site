@@ -54,6 +54,11 @@ p {
   color: var(--paraText);
   margin-bottom: 28px !important;
 }
+h1,
+.t-h1 {
+  font: 38px/46px Made-Dillan;
+  margin-bottom: 30px;
+}
 h2,
 .t-h2 {
   font: 33px/46px Made-Dillan;
@@ -248,6 +253,18 @@ section .text-section,
 section .img-section {
   width: 50%;
 }
+.about-badge-cont {
+  margin-bottom: 35px;
+}
+.about-badge {
+  padding: 15px 20px;
+  background-color: #6d5778;
+  color: var(--white);
+  border-radius: 25px;
+  font-family: "Merriweather";
+  font-weight: 600;
+  font-size: 16px;
+}
 @media (max-width: 991px) {
   section .text-section,
   section .img-section {
@@ -268,9 +285,6 @@ section .img-section {
 }
 .taraana-courses-ul-item {
   margin-bottom: 60px;
-}
-.course-points-list {
-  padding-left: 0px;
 }
 .course-points-list li::marker {
   font-size: 2rem;
@@ -386,6 +400,24 @@ section .img-section {
 }
 .taraana-getin-touch .ant-input {
   font-size: 1rem;
+  font-family: Merriweather;
+}
+.taraana-getin-touch .ant-input-affix-wrapper,
+.taraana-getin-touch .ant-input {
+  border: 1px solid #caa35a;
+}
+/* Override ant style for hover */
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: #caa35a !important;
+}
+.ant-input-affix-wrapper:focus,
+.taraana-getin-touch .ant-input:focus {
+  border-color: #caa25a;
+  box-shadow: 0px 0px 9px -4px rgb(202 162 90);
+  outline: 0;
+}
+.taraana-getin-touch .ant-input:hover {
+  border-color: #caa35a !important;
 }
 
 @media (max-width: 991px) {
@@ -544,6 +576,10 @@ section .img-section {
 
 .enquiry-card-data {
   margin: 5px 0px;
+}
+
+.ant-image-preview-mask {
+  background-color: rgba(0, 0, 0, 0.75) !important;
 }
 
 /* Login Page */

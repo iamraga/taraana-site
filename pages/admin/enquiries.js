@@ -31,35 +31,40 @@ export default function Enquiries() {
     const markAllRead = (newEnquiries) => {
         newEnquiries.forEach(enq => {
             const docRef = doc(`enquiries/${enq.id}`);
-            docRef.update({isOpened: true});
+            updateDoc(docRef, {isOpened: true});
         });
     }
 
     const markAsRead = (enquiryId) => {
         const enqRef = doc(`enquiries/${enquiryId}`);
-        enqRef.update({isOpened: true});
+        updateDoc(enqRef, {isOpened: true});
     }
 
     let newEnquiries = enquiries.filter(enquiry => (enquiry.isOpened === false));
-    let enqContent = enquiries.map(enquiry => {
-        if(enquiry.isOpened) {
-            return (
-                <Col key={enquiry.id} span={12} key={enquiry.id}>
-                    <EachEnquiryCard enquiry={enquiry} />
-                </Col>
-            );
-        }
-        else {
-            return(
-                <Col key={enquiry.id} span={12} key={enquiry.id}>
-                    <Badge.Ribbon color="#ff4d4f" placement="start" text="New" size="small">
-                        <EachEnquiryCard enquiry={enquiry} markAsRead={markAsRead} />
-                    </Badge.Ribbon>
-                </Col>
-            )
-        }
-    });
-
+    let enqContent;
+    if(enquiries.length === 0) {
+        enqContent = (<div>No Enquiries found</div>);
+    }
+    else {
+        enqContent = enquiries.map(enquiry => {
+                if(enquiry.isOpened) {
+                    return (
+                        <Col key={enquiry.id} span={12} key={enquiry.id}>
+                            <EachEnquiryCard enquiry={enquiry} />
+                        </Col>
+                    );
+                }
+                else {
+                    return(
+                        <Col key={enquiry.id} span={12} key={enquiry.id}>
+                            <Badge.Ribbon color="#ff4d4f" placement="start" text="New" size="small">
+                                <EachEnquiryCard enquiry={enquiry} markAsRead={markAsRead} />
+                            </Badge.Ribbon>
+                        </Col>
+                    )
+                }
+            });
+    }
     return (
         <AdminLayout>
             <Row>

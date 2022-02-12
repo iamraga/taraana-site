@@ -10,6 +10,7 @@ import ContactInfo from '../comps/contactInfo';
 import Courses from '../comps/courses';
 import Events from '../comps/events';
 import Purpose from '../comps/purpose';
+import Faculty from '../comps/faculty';
 
 var settings = {
     infinite: true,
@@ -171,7 +172,8 @@ export default function Index() {
                     <div class=" d-flex flex-column-reverse flex-lg-row container">
                         <div class="img-section text-center"><img src="./assets/images/hero2.png" alt="girl dancing image" class="img-fluid leader-img" /></div>
                         <div class="text-section">
-                            <h2 className="t-h2 sp-margin-left">At Taraana, we strongly believe, that a strong dancer is created in the <span class="head-highlight">studio</span> and star performer is born <span class="head-highlight">onstage</span>.</h2>
+                            <div className="about-badge-cont sp-margin-left"><span className="about-badge">About Taraana Academy</span></div>
+                            <h2 className="t-h2 sp-margin-left">At Taraana, we strongly believe that a strong dancer is created in the <span class="head-highlight">studio</span>  and a star performer is born <span class="head-highlight">onstage</span>.</h2>
                             <p>Taraana was founded in 2015 by Kathak danseuse – Shritha Baskar , along with her mother– Vasantha Baskar. A joint vision – Taraana Academy – was born out of a Skype conversation with the rest of the family.</p>
                             <p>Taraana has evolved into a premier Kathak Academy catering to over students of differing backgrounds ages ranging from 6 to 60.</p>
                             <p>A Kathak academy in Chennai that focuses on classical dance as a form of therapy; Taraana also facilitates Yoga for Dance and Hindustani Music sessions. Through regular classes, workshops, and events we make training in Kathak available to all keen learners in the city.</p>
@@ -182,6 +184,7 @@ export default function Index() {
                     <section class="taraana-shritha-bio bg-fill-1">
                     <div class="d-flex flex-column flex-lg-row container">
                         <div class="text-section">
+                            <div className="about-badge-cont"><span className="about-badge">About the Founder</span></div>
                             <h2 class="t-h2 sp-margin-right">Shritha currently trains under the guidance of <span class="head-highlight">Guru Smt. Nayantara Parpia</span> (disciple of Smt. Yogini Gandhi and Pt. Birju Maharaj).</h2>
                             <p>Shritha Baskar is a Kathak danseuse born and brought up in Dubai. She began training at the age of five under Guru Smt. Ketaki Hazra, a disciple of Smt. Bela Arnab. Being trained in the Jaipur and Lucknow Gharana of Kathak, Shritha earned herself a Senior Diploma in Kathak Dance from the Surabharati Sangeet Parishad, Kolkata, at the age of seventeen.</p>
                             <p>She has several performances to her credit, including regular recitals for the Diplomatic Corps, the Indian Embassy of various countries and the Festival of India around regions of the Arabian Gulf.</p>
@@ -194,12 +197,19 @@ export default function Index() {
                     </section>
                     <section class="taraana-courses bg-fill-2">
                         <div className="container">
-                            <h2 class="t-h2 text-lg-center">Courses at Taraana</h2>
+                            <h2 class="t-h1 text-lg-center">Courses</h2>
                             <Courses />
                         </div>
                         <div id="faculty" class="nav-scroller"></div>
                     </section>
-                    <section class="taraana-purpose bg-fill-1">
+                    <section class="taraana-faculty bg-fill-1">
+                        <div className="container">
+                            <h2 class="t-h1 text-lg-center">Faculty</h2>
+                            <Faculty />
+                        </div>
+                        <div id="faculty" class="nav-scroller"></div>
+                    </section>
+                    <section class="taraana-purpose bg-fill-2">
                         <div className="container">
                             <h2 class="t-h2 text-lg-center"><span class="head-highlight">Dance, Music and Yoga</span> can be used to:</h2>
                             <Purpose />
@@ -212,9 +222,9 @@ export default function Index() {
                     </section>
                     {/* <section class="taraana-eligibility text-lg-center bg-fill-1">
                     </section> */}
-                    <section class="taraana-gallery bg-fill-2">
+                    <section class="taraana-gallery bg-fill-1">
                         <div className="container">
-                            <h2 class="t-h2 text-left text-lg-center">Gallery</h2>
+                            <h2 class="t-h1 text-left text-lg-center">Gallery</h2>
                             <div class="carousel-block position-relative">
                                 <Slider className="gallery-slider" {...settings}>
                                     <div class="gallery-unit"> <img src="./assets/images/car-img1.jpg" /> </div>
@@ -229,16 +239,16 @@ export default function Index() {
                             <div id="events" class="nav-scroller"></div>
                         </div>
                     </section>
-                    <section class="taraana-upcoming-event bg-fill-1">
+                    <section class="taraana-upcoming-event bg-fill-2">
                         <div className="container">
-                            <h2 class="t-h2 head-highlight text-lg-center">Upcoming Events</h2>
+                            <h2 class="t-h1 head-highlight text-lg-center">Upcoming Events</h2>
                             <Events />
                             <div class="nav-scroller" id="contact"></div>
                         </div>
                     </section>
-                    <section class="taraana-getin-touch bg-fill-2">
+                    <section class="taraana-getin-touch bg-fill-1">
                         <div className="container">
-                            <h2 class="t-h2 text-lg-center">Get in touch</h2>
+                            <h2 class="t-h1 text-lg-center">Get in touch</h2>
                             <div class="row justify-content-between flex-column-reverse flex-lg-row">
                                 <div class="col-12 col-lg-6">
                                     <ContactInfo />
@@ -249,7 +259,7 @@ export default function Index() {
                             </div>
                         </div>
                     </section>
-                    <section class="taraana-reach-us bg-fill-1">
+                    <section class="taraana-reach-us bg-fill-2">
                         <div className="container">
                             <h2 class="t-h2 text-lg-center">Reach us</h2>
                             <iframe class="mb-5" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15545.922811956934!2d80.2382525!3d13.0686925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6e6199dfa1945be!2sTaraana%20Academy%20Of%20Kathak!5e0!3m2!1sen!2sin!4v1635701629405!5m2!1sen!2sin" width="100%" style={{border:0}} allowfullscreen="" loading="lazy"></iframe>

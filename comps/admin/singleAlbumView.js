@@ -7,9 +7,10 @@ import UploadForm from './uploadForm';
 import AlbumImages from './albumImages'
 import Link from 'next/link';
 import CreateAlbum from './createAlbum';
-import { deleteDoc } from '../../hooks/common';
+import { deleteSingleDoc } from '../../hooks/common';
 import useFirestore from '../../hooks/useFirestore';
 import { collection, doc, onSnapshot } from 'firebase/firestore';
+import { ref, deleteObject } from 'firebase/storage';
 
 const { Title } = Typography;
 const { confirm } = Modal;
@@ -35,9 +36,9 @@ export default function SingleAlbumView({ albumId }) {
         const snapshot = await getDocs(albumImagesRef);
         snapshot.forEach(image => {
             console.log("inside");
-            deleteDoc(`albums/${albumId}/images/${image.id}`);
+            deleteSingleDoc(`albums/${albumId}/images/${image.id}`);
         });
-        deleteDoc(`albums/${album.albumId}`);
+        deleteSingleDoc(`albums/${album.albumId}`);
     }
 
     function deleteConfirm() {
@@ -50,17 +51,17 @@ export default function SingleAlbumView({ albumId }) {
                 //Deleting all images in the album
                 let imageNames = [];
                 const imagesRef = collection(firestore, `albums/${album.albumId}/images`);
-                imagesRef.get().then(snap => {
+                getDocs(imagesRef).then(snap => {
                     snap.docs.map(doc => {
                         let data = doc.data();
                         imageNames.push(data.imageNameinStorage);
                     });
     
                     imageNames.map(imageName => {
-                        const storageRef = storage.ref();
-                        var storageFileRef = storageRef.child(`images/${imageName}`);
+                        const storageRef = ref(storage);
+                        var storageFileRef = ref(storageRef, `images/${imageName}`);
     
-                        storageFileRef.delete().then().catch((error) => {
+                        deleteObject(storageFileRef).then().catch((error) => {
                             console.log("Error while deleting image : " + error);
                             return false;
                         });
