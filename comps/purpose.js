@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function Purpose() {
   return (
-    <div class="row flex-column-reverse flex-lg-row">
-        <div class="col-12 col-lg-6  text-center"><img src="./assets/images/hero4.png" alt="tabla image" class="img-fluid leader-img" /></div>
-        <div class="col-12 col-lg-6">
-            <ul class="course-points-list" style={{listStyle: 'circle'}}>
+    <div className="row flex-column-reverse flex-lg-row">
+        <div className="col-12 col-lg-6  text-center"><img src="./assets/images/hero4.png" alt="tabla image" className="img-fluid leader-img" /></div>
+        <div className="col-12 col-lg-6">
+            <ul className="course-points-list" style={{listStyle: 'circle'}}>
                 <li>Improve body language</li>
                 <li>Destress</li>
                 <li>Develop flexibility</li>

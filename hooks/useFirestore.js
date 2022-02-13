@@ -7,14 +7,14 @@ const useFirestore = (collectionName, orderByParam) => {
 
     useEffect(() => {
         let unsub;
-        let albumsRef;
+        let collectionRef;
         if(orderByParam) {
-            albumsRef = query(collection(firestore, collectionName), orderBy(orderByParam));
+            collectionRef = query(collection(firestore, collectionName), orderBy(orderByParam));
         }
         else {
-            albumsRef = query(collection(firestore, collectionName));
+            collectionRef = query(collection(firestore, collectionName));
         }
-        unsub = onSnapshot(albumsRef, (snap) => {
+        unsub = onSnapshot(collectionRef, (snap) => {
             let documents = [];
             snap.forEach((doc) => {
                 documents.push({...doc.data(), id: doc.id});

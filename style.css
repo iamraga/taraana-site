@@ -116,6 +116,15 @@ a:hover {
 .bg-fill-2 {
   background-color: #fff6df;
 }
+.event-bg-fill-1 {
+  background-color: #a59f2f;
+}
+.event-bg-fill-2 {
+  background-color: #caa35e;
+}
+.event-bg-fill-3 {
+  background-color: #7fa39c;
+}
 @media (max-width: 991px) {
   p {
     font-size: 16px;
@@ -353,11 +362,10 @@ section .img-section {
     width: unset;
   }
 }
-/*taraana eligibility styles start here*/
+/*taraana eligibility styles end here*/
 
 .taraana-upcoming-event .circle-text {
   border-radius: 100%;
-  background-color: var(--headingHighlight);
   width: 80px;
   height: 80px;
   display: flex;
@@ -394,6 +402,9 @@ section .img-section {
 .taraana-getin-touch .contact-detail p a {
   font: 18px/32px Merriweather;
   color: var(--formText);
+}
+.taraana-getin-touch .contact-detail p a:hover {
+  color: #caa45b;
 }
 .taraana-getin-touch .ant-form-item {
   margin-bottom: 1rem;
