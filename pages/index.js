@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import EnquiryForm from '../comps/enquiryForm';
 import ContactInfo from '../comps/contactInfo';
 import Courses from '../comps/courses';
-import Events from '../comps/events/allEvents';
+import Events from '../comps/events/upcomingEvents';
 import Purpose from '../comps/purpose';
 import Faculty from '../comps/faculty';
 

@@ -4,10 +4,28 @@ import Moment from 'react-moment';
 
 export default function Events() {
 
-    let events = useFirestore('events').docs;
-    console.log(events);
+    let events = useFirestore('events', 'eventDate').docs;
+    
+    let upcomingEvents = events.filter(event => event.eventDate.seconds * 1000 >= new Date().getTime())
+                            .sort((a,b) => a.eventDate - b.eventDate );
     let bgColor = 0;
-    const eventsElement = events.map(event => {
+    let eventsToDisplay = [];
+    let eventsElement;
+    if(upcomingEvents && upcomingEvents.length > 0) {
+        upcomingEvents.splice(3); //Getting only 3 upcoming events
+        console.log(upcomingEvents);
+        eventsToDisplay.push(...upcomingEvents);
+        console.log('events', eventsToDisplay);
+    }
+    if(eventsToDisplay.length < 3) {
+        let pastEvents = events.filter(event => event.eventDate.seconds * 1000 < new Date().getTime())
+        .sort((a,b) => b.eventDate - a.eventDate);
+
+        pastEvents.splice(3 - eventsToDisplay.length); //Adding only remaining events from past
+        eventsToDisplay.push(...pastEvents);
+    }
+    console.log(eventsToDisplay);
+    eventsElement = eventsToDisplay.map(event => {
         bgColor++;
         let eventContainerCss = `circle-text mx-lg-auto event-bg-fill-${bgColor}`;
         return (
