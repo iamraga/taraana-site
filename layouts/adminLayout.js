@@ -5,7 +5,7 @@ import { Layout, Menu } from 'antd';
 import { UserOutlined, CloudUploadOutlined, EyeOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { firebaseApp } from '../utils/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
+React.useLayoutEffect = React.useEffect;
 const { Header, Sider, Content } = Layout;
 
 export default function AdminLayout({ children }) {

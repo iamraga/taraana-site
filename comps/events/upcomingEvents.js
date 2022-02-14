@@ -13,27 +13,36 @@ export default function Events() {
     let eventsElement;
     if(upcomingEvents && upcomingEvents.length > 0) {
         upcomingEvents.splice(3); //Getting only 3 upcoming events
-        console.log(upcomingEvents);
         eventsToDisplay.push(...upcomingEvents);
-        console.log('events', eventsToDisplay);
     }
     if(eventsToDisplay.length < 3) {
         let pastEvents = events.filter(event => event.eventDate.seconds * 1000 < new Date().getTime())
         .sort((a,b) => b.eventDate - a.eventDate);
 
         pastEvents.splice(3 - eventsToDisplay.length); //Adding only remaining events from past
+        pastEvents = pastEvents.map(eachEvent => {
+            return {...eachEvent, isPast: true};
+        });
         eventsToDisplay.push(...pastEvents);
     }
-    console.log(eventsToDisplay);
     eventsElement = eventsToDisplay.map(event => {
         bgColor++;
         let eventContainerCss = `circle-text mx-lg-auto event-bg-fill-${bgColor}`;
+        let date = new Date(event.eventDate ? event.eventDate.seconds * 1000 : event.fromDate.seconds * 1000);
+        let eventYear = date.getFullYear();
+        let currentYear= new Date().getFullYear(); 
+        let isDisplayYear = currentYear > eventYear;
+        let dateClassNames = isDisplayYear ? "w-50 event-date-year" : "w-50";
         return (
             <div className="row align-items-center mb-3">
                 <div className="col-12 col-md-2">
                 <p className={eventContainerCss}>
-                    <span className="w-50">
-                        <Moment date={event.eventDate ? event.eventDate.seconds * 1000 : event.fromDate.seconds * 1000} format={'DD MMM'} />
+                    <span className={dateClassNames}>
+                        {(isDisplayYear) ? (
+                            <Moment date={event.eventDate ? event.eventDate.seconds * 1000 : event.fromDate.seconds * 1000} format={"DD MMM 'YY"} />
+                        ) : (
+                            <Moment date={event.eventDate ? event.eventDate.seconds * 1000 : event.fromDate.seconds * 1000} format={'DD MMM'} />
+                        )}
                     </span>
                 </p>
                 </div>
@@ -43,6 +52,7 @@ export default function Events() {
                         <span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Venue: </span>
                         <span style={{fontFamily: 'Merriweather', fontSize: '18px'}}>{event.venue}</span></div>
                     <p>{event.description}</p>
+                    <p>{event.isPast}</p>
                 </div>
             </div>
         );

@@ -131,12 +131,20 @@ a:hover {
     line-height: 26px;
     margin-bottom: 24px;
   }
-  h2 {
+  h1,
+  .t-h1 {
+    font-size: 30px;
+    line-height: 38px;
+    margin-bottom: 32px;
+  }
+  h2,
+  .t-h2 {
     font-size: 28px;
     line-height: 38px;
     margin-bottom: 32px;
   }
-  h3 {
+  h3,
+  .t-h3 {
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 8px;
@@ -194,6 +202,17 @@ header nav.fixed-top {
 }
 li.activeNav a {
   color: var(--boldHighlight) !important;
+}
+.taraana-navigation .list-group-item a:hover::before,
+.taraana-navigation .list-group-item a:active::before,
+li.activeNav:before {
+  content: "";
+  position: absolute;
+  left: 12.5%;
+  bottom: 0;
+  height: 1px;
+  width: 75%; /* or 100px */
+  border-bottom: 2px solid var(--boldHighlight);
 }
 button.mobile-navigation {
   border: 0;
@@ -332,6 +351,57 @@ section .img-section {
 }
 /*taraana courses  styles end here*/
 
+/* Faculty css start here */
+.faculty-dp {
+  display: inline-block;
+  width: 13.5vw;
+  height: 12vw;
+  background-position: 50% 50%;
+  background-size: cover !important;
+  border-radius: 50%;
+}
+.faculty-kriteka {
+  background: url("./public/assets/images/Kriteka-dp.jpg");
+}
+.faculty-asmi {
+  background: url("./public/assets/images/asmi-dp.jpg");
+}
+.taraana-faculty-ul {
+  width: 75%;
+}
+.taraana-faculty-ul-item {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+.taraana-faculty-ul li:not(:last-child) {
+  border-bottom: 1px solid var(--seperator);
+}
+.taraana-faculty-ul-item .desc-section {
+  width: 85%;
+}
+.taraana-faculty-ul-item .img-section img {
+  width: 144px;
+}
+@media (max-width: 991px) {
+  .taraana-faculty-ul,
+  .taraana-faculty-ul-item .desc-section {
+    width: unset;
+  }
+  .taraana-faculty-ul-item .faculty-dp {
+    width: 30vw;
+    height: 30vw;
+    margin-bottom: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .taraana-faculty-ul-item .faculty-dp {
+    width: 40vw;
+    height: 40vw;
+  }
+}
+
+/* Faculty css start here */
+
 /*taraana purpose styles start here*/
 .taraana-purpose ul li,
 .course-points-list li {
@@ -377,6 +447,9 @@ section .img-section {
 }
 .event-bottom-border {
   border-bottom: 1px solid var(--seperator);
+}
+.event-date-year {
+  line-height: 23px;
 }
 
 .taraana-getin-touch .contact-input,
