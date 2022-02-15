@@ -50,7 +50,7 @@ export default function AlbumImages({ albumId }) {
                             src={image.url}
                             alt={image.name}
                         />
-                        <Button danger icon={<DeleteOutlined />} onClick={() => deleteConfirm(image)} style={{margin: '0px 10px', height: 'inherit'}} />
+                        <Button danger icon={<DeleteOutlined />} onClick={() => deleteConfirm(image)} style={{margin: '0px 10px'}} />
                     </Col>
                 ))}
             </Row>

@@ -666,6 +666,20 @@ section .img-section {
   background-color: rgba(0, 0, 0, 0.75) !important;
 }
 
+.ant-image {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(54, 54, 54);
+}
+
+.ant-image-img {
+  max-height: 300px !important;
+  max-width: 300px !important;
+  width: auto !important;
+  height: auto !important;
+}
+
 /* Login Page */
 .login-cont {
   height: 100vh;

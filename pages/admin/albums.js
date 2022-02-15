@@ -10,6 +10,7 @@ import { firebaseApp, firestore } from '../../utils/firebase';
 import { collection, doc, onSnapshot } from 'firebase/firestore';
 import SingleAlbumView from '../../comps/admin/singleAlbumView';
 
+React.useLayoutEffect = React.useEffect;
 const { Title, Text, Paragraph } = Typography;
 
 export default function Albums() {
@@ -35,12 +36,9 @@ export default function Albums() {
     let albums = useFirestore('albums').docs;
     albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
 
-    //Shallow routing
     function setAlbumIdToRoute(id) {
         setAlbumId(id);
-        // Router.push(`/admin/album/?id=${id}`, undefined, { shallow: true });
     }
-
 
     let albumsComp;
     if(albumId === '') { //List all albums
