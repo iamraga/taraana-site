@@ -13,7 +13,6 @@ export default function Login() {
     let [password, setPassword] = useState("");
 
     async function handleLogin() {
-        console.log(email, password);
         const userWithCredentials = await signInWithEmailAndPassword(auth, email, password);
         if(userWithCredentials.user) {
             router.push("/admin/albums");

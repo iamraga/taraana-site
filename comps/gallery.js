@@ -37,7 +37,6 @@ export default function Gallery() {
 
     let albums = useFirestore('albums').docs;
     albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
-    console.log(albums);
 
     return (
         <div className="carousel-block position-relative">

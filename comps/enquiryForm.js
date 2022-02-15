@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Row, Col, Input, Button, message as antMessage} from 'antd';
 import { firestore, serverTimestamp } from '../utils/firebase';
-import { collection } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import emailjs, { init } from 'emailjs-com';
 import emailConfig from '../utils/email-config';
 import { PhoneOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';

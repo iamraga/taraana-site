@@ -10,7 +10,6 @@ const { confirm } = Modal;
 
 export default function AlbumImages({ albumId }) {
     const images = useFirestore(`albums/${albumId}/images`).docs;
-    console.log(images);
 
     if(images.length === 0) return (<div>No images found in this album</div>);
 

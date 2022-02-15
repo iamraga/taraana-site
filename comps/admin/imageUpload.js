@@ -4,7 +4,6 @@ import { UploadOutlined } from "@ant-design/icons";
 export default function ImageUpload() {
 
     const handleImages = (e) => {
-        console.log("changed" + e);
     }
 
     return (

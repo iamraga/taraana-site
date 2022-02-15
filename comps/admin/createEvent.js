@@ -47,7 +47,6 @@ export default function CreateEvent({isEdit, event}) {
                 newEvent.eventDate = new Date(eventDateRange[0].format('DD-MMM-YYYY'));
                 newEvent.toDate = new Date(eventDateRange[1].format('DD-MMM-YYYY'));
             }
-            console.log(newEvent);
             addDoc(eventsCollectionRef, newEvent);
             message.success(`${eventName} event created successfully`);
         }
@@ -70,8 +69,6 @@ export default function CreateEvent({isEdit, event}) {
                 updatedData.toDate = new Date(eventDateRange[1].format('DD-MMM-YYYY'));
             }
             
-            console.log(updatedData);
-
             updateDoc(currentEventRef, updatedData);
             message.success(`${eventName} event updated successfully`);
         }

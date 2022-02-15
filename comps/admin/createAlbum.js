@@ -3,7 +3,7 @@ import { Modal, Button, Input, message, Form, DatePicker } from 'antd';
 import moment from 'moment';
 import { FolderAddOutlined } from '@ant-design/icons';
 import { firestore, serverTimestamp } from '../../utils/firebase';
-import { collection, updateDoc, addDoc } from 'firebase/firestore';
+import { collection, doc, updateDoc, addDoc } from 'firebase/firestore';
 
 export default function CreateAlbum({isEdit, album, setAlbum}) {
     const [isModalVisible, setIsModalVisible] = useState(false);

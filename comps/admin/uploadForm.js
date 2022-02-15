@@ -61,7 +61,6 @@ export default function UploadForm({ albumId }) {
     }
 
     function handleRemove(file) {
-        console.log(file);
         const storageRef = ref(storage);
         const imageDocRef = doc(firestore, `albums/${albumId}/images/${file.response.documentId}`);
         const albumDocRef = doc(firestore, `albums/${albumId}`);
