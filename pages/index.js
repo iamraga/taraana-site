@@ -2,43 +2,13 @@ import React, {useEffect} from 'react';
 import { Row, Col, Button } from 'antd';
 import Link from 'next/link';
 import Head from 'next/head';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import EnquiryForm from '../comps/enquiryForm';
 import ContactInfo from '../comps/contactInfo';
 import Courses from '../comps/courses';
 import Events from '../comps/events/upcomingEvents';
 import Purpose from '../comps/purpose';
 import Faculty from '../comps/faculty';
-
-var settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [{
-        breakpoint: 1024,
-        settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true
-        }
-    }, {
-        breakpoint: 800,
-        settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-        }
-    }, {
-        breakpoint: 480,
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-        }
-    }]
-};
+import Gallery from '../comps/gallery';
 
 export default function Index() {
 
@@ -225,23 +195,13 @@ export default function Index() {
                     <section className="taraana-gallery bg-fill-1">
                         <div className="container">
                             <h2 className="t-h1 text-left text-lg-center">Gallery</h2>
-                            <div className="carousel-block position-relative">
-                                <Slider className="gallery-slider" {...settings}>
-                                    <div className="gallery-unit"> <img src="./assets/images/car-img1.jpg" /> </div>
-                                    <div className="gallery-unit"> <img src="./assets/images/car-img2.jpg" /> </div>
-                                    <div className="gallery-unit"> <img src="./assets/images/car-img3.jpg" /> </div>
-                                    <div className="gallery-unit"> <img src="./assets/images/car-img4.jpg" /> </div>
-                                    <div className="gallery-unit"> <img src="./assets/images/car-img5.jpg" /> </div>
-                                </Slider>
-                                <div className="position-absolute left-frame"><img src="./assets/icons/spotlogo/5.png" /></div>
-                                <div className="position-absolute right-frame"><img src="./assets/icons/spotlogo/5.png" /></div>
-                            </div>
+                            <Gallery />
                             <div id="events" className="nav-scroller"></div>
                         </div>
                     </section>
                     <section className="taraana-upcoming-event bg-fill-2">
                         <div className="container">
-                            <h2 className="t-h1 head-highlight text-lg-center">Upcoming Events</h2>
+                            <h2 className="t-h1 text-lg-center">Upcoming Events</h2>
                             <Events />
                             <div className="nav-scroller" id="contact"></div>
                         </div>

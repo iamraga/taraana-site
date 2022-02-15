@@ -14,10 +14,9 @@ export default function AlbumView({ albumId }) {
 
 export async function getStaticPaths() {
     const paths = await getAllAlbumIds();
-    console.log(paths);
     return {
         paths,
-        fallback: false
+        fallback: 'blocking'
     }
 }
 
@@ -25,6 +24,7 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             albumId: params.albumid
-        }
+        },
+        revalidate: 10
     }
 }
