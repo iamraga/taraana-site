@@ -1,5 +1,6 @@
 import React from 'react';
 import useFirestore from '../../hooks/useFirestore';
+import Link from 'next/link';
 import Moment from 'react-moment';
 
 export default function Events() {
@@ -62,6 +63,9 @@ export default function Events() {
             <div className="row align-items-center">
                 <div className="col-12 col-lg-7 d-flex flex-column">
                     {eventsElement}
+                    <div className="view-all-events-cont">
+                        <Link href="/events"><a className="taraana-btn">View all events</a></Link>
+                    </div>
                 </div>
                 <div className="col-12 col-lg-5"><img src="./assets/images/hero5.png" alt="dancing girl image" className="img-fluid leader-img" /></div>
             </div>

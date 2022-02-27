@@ -95,7 +95,8 @@ button.form-submit {
 a:hover {
   text-decoration: none;
 }
-.text-section a:hover {
+.text-section a:hover,
+.view-all-events-cont a:hover {
   color: var(--white);
 }
 .taraana-wrapper section {
@@ -366,6 +367,9 @@ section .img-section {
 .faculty-asmi {
   background: url("./public/assets/images/asmi-dp.jpg");
 }
+.faculty-shritha {
+  background: url("./public/assets/images/shritha-dp.jpg");
+}
 .taraana-faculty-ul {
   width: 75%;
 }
@@ -434,7 +438,8 @@ section .img-section {
 }
 /*taraana eligibility styles end here*/
 
-.taraana-upcoming-event .circle-text {
+.taraana-upcoming-event .circle-text,
+.taraana-all-events .circle-text {
   border-radius: 100%;
   width: 80px;
   height: 80px;
@@ -445,11 +450,20 @@ section .img-section {
   color: var(--white);
   font: 18px/18px Made-Dillan;
 }
+.taraana-all-events .circle-text {
+  width: 90px;
+  height: 90px;
+}
 .event-bottom-border {
   border-bottom: 1px solid var(--seperator);
 }
 .event-date-year {
   line-height: 23px;
+}
+.view-all-events-cont {
+  display: flex;
+  justify-content: right;
+  margin: 0 -15px 0 0;
 }
 
 .taraana-getin-touch .contact-input,
@@ -515,6 +529,12 @@ section .img-section {
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+  .view-all-events-cont {
+    justify-content: center;
+    margin: 0 0 20px 0;
+  }
+}
 @media (max-width: 411px) {
   .taraana-getin-touch .contact-detail p,
   .taraana-getin-touch .contact-detail p a {
@@ -560,6 +580,10 @@ section .img-section {
   transform: unset;
   left: unset;
   right: -45px;
+}
+.slick-next,
+.slick-prev {
+  top: 44% !important;
 }
 .left-frame {
   right: 80%;

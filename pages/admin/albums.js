@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Router from 'next/router';
 import Moment from 'react-moment';
 import { Row, Col, Typography, Card } from 'antd';
 import useFirestore from '../../hooks/useFirestore';
 import AdminLayout from '../../layouts/adminLayout';
 import CreateAlbum from '../../comps/admin/createAlbum';
 import ReorderAlbum from '../../comps/admin/reorderAlbum';
-import { firebaseApp, firestore } from '../../utils/firebase';
-import { collection, doc, onSnapshot } from 'firebase/firestore';
+import { firestore } from '../../utils/firebase';
+import { doc, onSnapshot } from 'firebase/firestore';
 import SingleAlbumView from '../../comps/admin/singleAlbumView';
 
 React.useLayoutEffect = React.useEffect;
@@ -36,10 +35,6 @@ export default function Albums() {
     let albums = useFirestore('albums').docs;
     albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
 
-    function setAlbumIdToRoute(id) {
-        setAlbumId(id);
-    }
-
     let albumsComp;
     if(albumId === '') { //List all albums
         albumsComp = (!albums || albums.length === 0) ? (
@@ -59,7 +54,7 @@ export default function Albums() {
                             <Row gutter={16}>
                                 { albums.map((album) => (
                                     <Col span={8} key={album.id} style={{padding: '8px'}}>
-                                        <div onClick={() => {setAlbumIdToRoute(album.id);}}>
+                                        <div onClick={() => {setAlbumId(album.id)}}>
                                             <a>
                                                 <Card 
                                                     size="small" 
