@@ -267,9 +267,12 @@ button.mobile-navigation {
     transform: rotate(45deg);
   }
 }
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .taraana-logo img {
     width: 166px;
+  }
+  .taraana-logo {
+    text-align: center;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
