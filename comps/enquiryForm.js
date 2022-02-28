@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Row, Col, Input, Button, message as antMessage} from 'antd';
+import { Form, Input, notification} from 'antd';
 import { firestore, serverTimestamp } from '../utils/firebase';
 import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import emailjs, { init } from 'emailjs-com';
@@ -39,8 +39,14 @@ export default function EnquiryForm() {
             isEmailSent: false,
             createdAt: serverTimestamp()
         };
-        const addedEnquiry = await addDoc(enquiriesCollection, newEnquiry);
-        antMessage.success(`Enquiry submitted successfully.`);
+        // const addedEnquiry = await addDoc(enquiriesCollection, newEnquiry);
+        const args = {
+            message: 'Query submitted',
+            description:
+              'Thank you for reaching out to Taraana Academy. Our admin will get back to you within 24 hours.',
+            duration: 4,
+        };
+        notification.success(args);
 
         //Send email using EmailJS
         const emailParams = {

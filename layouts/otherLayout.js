@@ -9,7 +9,6 @@ export default function OtherLayout({ children }) {
 
         $(document).ready(function() {
             $(".mobile-navigation").click(function() {
-                console.log("one")
                 $("#taraanaMobileNav").slideToggle(200);
                 $(".mobile-nav-indicator").toggleClass("expanded");
             });

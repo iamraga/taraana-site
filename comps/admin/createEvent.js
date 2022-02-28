@@ -14,6 +14,7 @@ export default function CreateEvent({isEdit, event}) {
     const [isRange, setIsRange] = useState(isEdit ? event.isRange : false);
 
     const dateFormat = 'DD-MMM-YYYY';
+    let initialFormValues;
     const [form] = Form.useForm();
     const eventsCollectionRef = collection(firestore, "events");
     const showModal = () => {
@@ -88,12 +89,33 @@ export default function CreateEvent({isEdit, event}) {
         return formattedDate;
     }
     getDateFromSeconds(event?.eventDate.seconds * 1000);
+    
+    if(isEdit) {
+        if(isRange) {
+            initialFormValues = {
+                eventDateRange: [
+                    moment(getDateFromSeconds(event?.fromDate.seconds * 1000), dateFormat), 
+                    moment(getDateFromSeconds(event?.toDate.seconds * 1000), dateFormat)
+                ]
+            }
+        }
+        else {
+            initialFormValues = {
+                eventDate: moment(getDateFromSeconds(event?.eventDate.seconds * 1000), dateFormat)
+            }
+        }
+        initialFormValues.eventName = event?.name;
+        initialFormValues.isRange = event?.isRange ? "multiple": "single";
+        initialFormValues.venue = event?.venue;
+        initialFormValues.description = event?.description;
+        initialFormValues.venueUrl = event?.venueUrl;
+    }
     let dateSelectComp = (isRange) ? (
-        <Form.Item name="eventDateRange" initialValues={[moment(getDateFromSeconds(event?.fromDate.seconds * 1000), dateFormat), moment(getDateFromSeconds(event?.toDate.seconds * 1000), dateFormat)]} label="Event Dates" rules={[{ required: true }]}>
+        <Form.Item name="eventDateRange" initialvalues={[moment(getDateFromSeconds(event?.fromDate.seconds * 1000), dateFormat), moment(getDateFromSeconds(event?.toDate.seconds * 1000), dateFormat)]} label="Event Dates" rules={[{ required: true }]}>
             <RangePicker style={{width: '100%'}} format={"YYYY/MM/DD"} />
         </Form.Item>
     ) : (
-        <Form.Item name="eventDate" label="Event Date" initialValues={isEdit ? moment(getDateFromSeconds(event?.eventDate.seconds * 1000), dateFormat) : ""} rules={[{ required: true }]}>
+        <Form.Item name="eventDate" label="Event Date" initialvalues={isEdit ? moment(getDateFromSeconds(event?.eventDate.seconds * 1000), dateFormat) : ""} rules={[{ required: true }]}>
             <DatePicker placeholder="Select event date" style={{width: '100%'}} />
         </Form.Item>
     );
@@ -123,24 +145,25 @@ export default function CreateEvent({isEdit, event}) {
                     layout="horizontal"
                     onFinish={onFormSubmit}
                     validateMessages={validateMessages}
+                    initialValues={initialFormValues}
                 >
-                    <Form.Item name="eventName" label="Event Name" initialValue={isEdit ? event.name : ""} rules={[{ required: true }]}>
+                    <Form.Item name="eventName" label="Event Name" rules={[{ required: true }]}>
                         <Input placeholder="Enter event name" value={eventName} onChange={(e) => setEventName(e.target.value)} />
                     </Form.Item>
-                    <Form.Item name="isRange" label="Event Duration" initialValue={(event?.isRange? "multiple": "single")}>
+                    <Form.Item name="isRange" label="Event Duration">
                         <Radio.Group onChange={onChange} defaultValue="single">
                             <Radio.Button value="single">One day</Radio.Button>
                             <Radio.Button value="multiple">Multiple days</Radio.Button>
                         </Radio.Group>
                     </Form.Item>
                     {dateSelectComp}
-                    <Form.Item name="venue" label="Venue Name" initialValue={isEdit ? event.venue : ""} rules={[{ required: true }]}>
+                    <Form.Item name="venue" label="Venue Name" rules={[{ required: true }]}>
                         <Input placeholder="Enter venue name" onChange={(e) => setEventName(e.target.value)} />
                     </Form.Item>
-                    <Form.Item name="venueUrl" label="Venue GMaps URL" initialValue={isEdit ? event.venueUrl : ""} rules={[{ required: true }]}>
+                    <Form.Item name="venueUrl" label="Venue GMaps URL" rules={[{ required: true }]}>
                         <Input placeholder="Enter venue URL" onChange={(e) => setEventName(e.target.value)} />
                     </Form.Item>
-                    <Form.Item name="description" initialValue={isEdit ? event.description : ""} label="Description">
+                    <Form.Item name="description" label="Description">
                         <Input.TextArea placeholder="Enter a description" />
                     </Form.Item>
                 </Form>
