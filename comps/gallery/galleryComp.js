@@ -1,6 +1,7 @@
 import Slider from "@ant-design/react-slick";
 import React from "react";
-import useFirestore from "../hooks/useFirestore";
+import EachAlbum from "./eachAlbum";
+import useFirestore from "../../hooks/useFirestore";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -38,14 +39,16 @@ export default function Gallery() {
     let albums = useFirestore('albums').docs;
     albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
 
+    const albumsComp = albums.map(album => {
+        return (
+            <EachAlbum album={album} />
+        )
+    });
+
     return (
         <div className="carousel-block position-relative">
             <Slider className="gallery-slider" {...settings}>
-                <div className="gallery-unit"> <img src="./assets/images/car-img1.jpg" /> </div>
-                <div className="gallery-unit"> <img src="./assets/images/car-img2.jpg" /> </div>
-                <div className="gallery-unit"> <img src="./assets/images/car-img3.jpg" /> </div>
-                <div className="gallery-unit"> <img src="./assets/images/car-img4.jpg" /> </div>
-                <div className="gallery-unit"> <img src="./assets/images/car-img5.jpg" /> </div>
+                {albumsComp}
             </Slider>
             <div className="position-absolute left-frame"><img src="./assets/icons/spotlogo/5.png" /></div>
             <div className="position-absolute right-frame"><img src="./assets/icons/spotlogo/5.png" /></div>

@@ -1,0 +1,27 @@
+import React from 'react';
+import Link from 'next/link';
+import { PictureOutlined } from '@ant-design/icons';
+
+export default function EachAlbum({ album }) {
+    console.log(album);
+    return (
+        <div class="gallery-unit col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto ">
+            <Link href="/gallery">
+                <a>
+                    <div class="ver_mas text-center flex">
+                        <button>View Album</button>
+                    </div>
+                    <article className="d-flex align-items-center">
+                        <div className="col-9">
+                            <h2>{album.name}</h2>
+                        </div>
+                        <div className="col-3">
+                            <div className="gallery-unit-count d-flex align-items-center justify-content-center"><PictureOutlined style={{marginRight: '0.5em'}} />{album.imageCount}</div>
+                        </div>
+                    </article>
+                    <img src="https://img-aws.ehowcdn.com/400x400/ds-img.studiod.com/Half_Dome_from_Glacier_Point0_1.jpg" alt="" />
+                </a>
+            </Link>
+        </div>
+    )
+}

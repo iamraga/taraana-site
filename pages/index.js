@@ -6,7 +6,7 @@ import Courses from '../comps/courses';
 import Events from '../comps/events/upcomingEvents';
 import Purpose from '../comps/purpose';
 import Faculty from '../comps/faculty';
-import Gallery from '../comps/galleryComp';
+import Gallery from '../comps/gallery/galleryComp';
 import HomeLayout from '../layouts/homeLayout';
 
 export default function Index() {

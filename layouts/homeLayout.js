@@ -6,7 +6,6 @@ import Link from 'next/link';
 export default function HomeLayout({ children }) {
 
     const router = useRouter();
-    console.log(router.route);
 
     useEffect(function() {
         window.$ = window.jQuery = require('jquery');
@@ -42,7 +41,6 @@ export default function HomeLayout({ children }) {
                 var scrollTop = $(this).scrollTop();
                 $item.each(function() {
                     var hrefVal = $(this).find('a').attr('href');
-                    console.log(hrefVal);
                     if(hrefVal.startsWith('#')) {
                         var $section = $($(this).find('a').attr('href'));
                         var sectionTop = $section.offset().top - 60;
