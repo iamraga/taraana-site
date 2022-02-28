@@ -3,12 +3,14 @@ import Link from 'next/link';
 import { PictureOutlined } from '@ant-design/icons';
 
 export default function EachAlbum({ album }) {
-    console.log(album);
     return (
-        <div class="gallery-unit col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto ">
-            <Link href="/gallery">
+        <div className="gallery-unit col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto">
+            <Link href={{
+                pathname: "/gallery",
+                query: {id: album.id}
+            }}>
                 <a>
-                    <div class="ver_mas text-center flex">
+                    <div className="ver_mas text-center flex">
                         <button>View Album</button>
                     </div>
                     <article className="d-flex align-items-center">

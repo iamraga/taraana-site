@@ -1,23 +1,18 @@
 import { useState, useEffect } from "react";
 import { firestore } from '../utils/firebase';
-import { doc, onSnapshot } from "@firebase/firestore";
+import { doc, getDoc, onSnapshot } from "@firebase/firestore";
 
-const useFirestoreDoc = (documentPath) => {
-    const [document, setDocument] = useState({});
+const useFirestoreDoc = async (documentPath) => {
 
-    useEffect(async () => {
-        const docRef = doc(firestore, documentPath);
-        const docObserver = onSnapshot(docRef, snap => {
-            if(snap.exists) {
-                setDocument(snap.data());
-            }
-            else {
-                console.log("Error while fetching data");
-            }
-        });
-    }, [])
-    
-    return { document };
+    const docRef = doc(firestore, documentPath);
+    const docSnap = await getDoc(docRef);
+    if(docSnap.exists) {
+        return docSnap.data();
+    }
+    else {
+        console.log("Error while fetching data");
+    }
+    return null;
 }
 
 export default useFirestoreDoc;

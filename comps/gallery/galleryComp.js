@@ -1,6 +1,7 @@
 import Slider from "@ant-design/react-slick";
 import React from "react";
 import EachAlbum from "./eachAlbum";
+import Link from 'next/link';
 import useFirestore from "../../hooks/useFirestore";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,11 +42,12 @@ export default function Gallery() {
 
     const albumsComp = albums.map(album => {
         return (
-            <EachAlbum album={album} />
+            <EachAlbum key={album.id} album={album} />
         )
     });
 
     return (
+        <>
         <div className="carousel-block position-relative">
             <Slider className="gallery-slider" {...settings}>
                 {albumsComp}
@@ -53,5 +55,9 @@ export default function Gallery() {
             <div className="position-absolute left-frame"><img src="./assets/icons/spotlogo/5.png" /></div>
             <div className="position-absolute right-frame"><img src="./assets/icons/spotlogo/5.png" /></div>
         </div>
+        <div className="view-albums-cont">
+            <Link href="/gallery"><a className="taraana-btn">View all albums</a></Link>
+        </div>
+        </>
     );
 }

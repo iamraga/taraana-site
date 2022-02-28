@@ -96,7 +96,8 @@ a:hover {
   text-decoration: none;
 }
 .text-section a:hover,
-.view-all-events-cont a:hover {
+.view-all-events-cont a:hover,
+.view-albums-cont a:hover {
   color: var(--white);
 }
 .taraana-wrapper section {
@@ -204,9 +205,9 @@ header nav.fixed-top {
 li.activeNav a {
   color: var(--boldHighlight) !important;
 }
-.taraana-navigation .list-group-item a:hover::before,
-.taraana-navigation .list-group-item a:active::before,
-li.activeNav:before {
+#taraanaDesktopNav .list-group-item a:hover::before,
+#taraanaDesktopNav .list-group-item a:active::before,
+#taraanaDesktopNav li.activeNav:before {
   content: "";
   position: absolute;
   left: 12.5%;
@@ -214,6 +215,11 @@ li.activeNav:before {
   height: 1px;
   width: 75%; /* or 100px */
   border-bottom: 2px solid var(--boldHighlight);
+}
+#taraanaDesktopNav li:last-child.activeNav:before,
+#taraanaDesktopNav .list-group-item:last-child a:hover::before {
+  left: 19.5%;
+  width: 80%;
 }
 button.mobile-navigation {
   border: 0;
@@ -295,6 +301,9 @@ section .img-section {
   font-size: 16px;
 }
 @media (max-width: 991px) {
+  main {
+    margin-top: 120px;
+  }
   section .text-section,
   section .img-section {
     width: 100%;
@@ -553,7 +562,8 @@ section .img-section {
 }
 
 /*Gallery carousel styles start here*/
-.taraana-gallery .gallery-unit {
+.taraana-gallery .gallery-unit,
+.taraana-gallery-page .gallery-unit {
   height: 364px;
   margin: 0 auto;
   /* To override slick inline css*/
@@ -561,11 +571,19 @@ section .img-section {
   display: flex !important;
   justify-content: center;
 }
+.taraana-gallery-page .gallery-unit {
+  margin: 1rem 0px;
+}
 .taraana-gallery .gallery-unit img {
   width: 100%;
   height: 364px;
   object-fit: cover;
   border-radius: 4px;
+}
+.view-albums-cont {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 .carousel-block {
   z-index: 1;
@@ -762,8 +780,66 @@ section .img-section {
     top: -15%;
     z-index: -1;
   }
+  .view-albums-cont {
+    margin-top: 5rem;
+  }
 }
 /*Gallery carousel styles end here*/
+
+/* Single Album page css starts */
+
+.image-list-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.album-image-cont {
+  width: 330px;
+  height: 330px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(54, 54, 54);
+  margin: 1rem 1rem;
+  cursor: pointer;
+}
+.album-image {
+  max-height: 330px !important;
+  max-width: 330px !important;
+  width: auto !important;
+  height: auto !important;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .image-list-cont {
+    justify-content: space-between;
+  }
+  .album-image-cont {
+    width: 300px;
+    height: 300px;
+    margin: 0.5rem 0;
+  }
+  .album-image {
+    max-height: 300px !important;
+    max-width: 300px !important;
+  }
+}
+@media (max-width: 768px) {
+  .image-list-cont {
+    justify-content: space-between;
+  }
+  .album-image-cont {
+    width: 160px;
+    height: 160px;
+    margin: 0.5rem 0;
+  }
+  .album-image {
+    max-height: 160px !important;
+    max-width: 160px !important;
+  }
+}
+
+/* Single Album page css ends */
 
 /* Admin console styles start */
 
