@@ -4,7 +4,7 @@ import EachEnquiryCard from '../../comps/admin/eachEnquiryCard';
 import Link from 'next/link';
 import AdminLayout from '../../layouts/adminLayout';
 import { firestore } from '../../utils/firebase';
-import { onSnapshot, collection, query, orderBy, doc } from 'firebase/firestore';
+import { onSnapshot, collection, query, orderBy, doc, updateDoc } from 'firebase/firestore';
 
 const { Title } = Typography;
 
@@ -30,13 +30,13 @@ export default function Enquiries() {
 
     const markAllRead = (newEnquiries) => {
         newEnquiries.forEach(enq => {
-            const docRef = doc(`enquiries/${enq.id}`);
+            const docRef = doc(firestore, `enquiries/${enq.id}`);
             updateDoc(docRef, {isOpened: true});
         });
     }
 
     const markAsRead = (enquiryId) => {
-        const enqRef = doc(`enquiries/${enquiryId}`);
+        const enqRef = doc(firestore, `enquiries/${enquiryId}`);
         updateDoc(enqRef, {isOpened: true});
     }
 

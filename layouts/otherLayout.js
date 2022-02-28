@@ -8,13 +8,19 @@ export default function OtherLayout({ children }) {
         window.$ = window.jQuery = require('jquery');
 
         $(document).ready(function() {
-            $('.animate-slide').addClass('animate-slided');
             $(".mobile-navigation").click(function() {
+                console.log("one")
                 $("#taraanaMobileNav").slideToggle(200);
                 $(".mobile-nav-indicator").toggleClass("expanded");
             });
+            $("#taraanaMobileNav ul li, .taraana").click(function() {
+                $("#taraanaMobileNav").slideToggle(200);
+                $(".mobile-nav-indicator").toggleClass("expanded")
+                var mobileNavOption = $(this).find('a').text();
+                $(".mobile-navigation span:first-child").text(mobileNavOption);
+            });
         });
-    });
+    }, []);
 
     return (
         <div>
@@ -45,7 +51,6 @@ export default function OtherLayout({ children }) {
                             <ul className="list-group list-group-horizontal-md">
                                 <li className="list-group-item"> <Link href="/"><a>Home</a></Link></li>
                                 <li className="list-group-item"> <Link href="/#about"><a>About</a></Link></li>
-                                {/* <li className="list-group-item"> <a href="#bio">Bio</a> </li> */}
                                 <li className="list-group-item"> <Link href="/#courses"><a>Courses</a></Link> </li>
                                 <li className="list-group-item"> <Link href="/#faculty"><a>Faculty</a></Link> </li>
                                 <li className="list-group-item"> <Link href="/#gallery"><a>Gallery</a></Link> </li>
@@ -57,7 +62,6 @@ export default function OtherLayout({ children }) {
                             <ul className="list-group list-group-horizontal-md">
                                 <li className="list-group-item"> <Link href="/"><a>Home</a></Link></li>
                                 <li className="list-group-item"> <Link href="/#about"><a>About</a></Link> </li>
-                                {/* <li className="list-group-item"> <a href="#bio">Bio</a> </li> */}
                                 <li className="list-group-item"> <Link href="/#courses"><a>Courses</a></Link> </li>
                                 <li className="list-group-item"> <Link href="/#faculty"><a>Faculty</a></Link> </li>
                                 <li className="list-group-item"> <Link href="/#gallery"><a>Gallery</a></Link> </li>

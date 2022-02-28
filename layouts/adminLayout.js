@@ -52,21 +52,21 @@ export default function AdminLayout({ children }) {
                                 <a>Gallery</a>
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<UserOutlined />} onClick={() => setSelectedKey('2')}>
+                        {/* <Menu.Item key="2" icon={<UserOutlined />} onClick={() => setSelectedKey('2')}>
                             <Link href="/admin/profile">
                                 <a>Profile</a>
                             </Link>
-                        </Menu.Item>
-                        <Menu.Item key="3" icon={<QuestionCircleOutlined />} onClick={() => setSelectedKey('3')}>
-                            <Link href="/admin/enquiries">
-                                <a>Enquiries</a>
-                            </Link>
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item key="4" icon={<EyeOutlined />} onClick={() => setSelectedKey('4')}>
                             <Link href="/admin/events">
                                 <a>Events</a>
                             </Link>
                         </Menu.Item> 
+                        <Menu.Item key="3" icon={<QuestionCircleOutlined />} onClick={() => setSelectedKey('3')}>
+                            <Link href="/admin/enquiries">
+                                <a>Enquiries</a>
+                            </Link>
+                        </Menu.Item>
                     </Menu>
                 </Sider>
                 <Layout>

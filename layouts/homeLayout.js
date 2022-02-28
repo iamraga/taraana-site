@@ -97,7 +97,7 @@ export default function HomeLayout({ children }) {
                     <nav className="d-flex justify-content-between mt-3 my-md-3 align-items-md-center flex-column flex-md-row">
                         <Link href="/"><a className="taraana-logo"><img src="../assets/images/taraana-logo.png" alt="Taraana logo" /></a></Link>
                         <button type="button" aria-expanded="false" aria-label="Toggle navigation" className="d-flex d-md-none mobile-navigation justify-content-between align-items-center mt-2 my-md-2 py-3"><span>About</span><span className="mobile-nav-indicator">+</span></button>
-                        <div className="taraana-navigation  d-none d-md-block" id="taraanaDesktopNav">
+                        <div className="taraana-navigation d-none d-md-block" id="taraanaDesktopNav">
                             <ul className="list-group list-group-horizontal-md">
                                 <li className="list-group-item"> <a href="#about">About</a> </li>
                                 {/* <li className="list-group-item"> <a href="#bio">Bio</a> </li> */}

@@ -29,17 +29,17 @@ export default function ViewEnquiry({ enquiry, markAsRead }) {
             </Button>
             <Modal visible={isModalVisible} closable={true} footer={null} onCancel={handleCancel}>
                 <Paragraph style={{marginBottom: '25px'}}><Text strong={true} style={{fontSize: '20px'}}><UserOutlined style={{marginRight: '10px'}} />{enquiry.name}</Text></Paragraph>
-                <p><PhoneOutlined style={{marginRight: '10px'}} />{enquiry.number}</p>
-                <p><MailOutlined style={{marginRight: '10px'}} /><a href={`mailto:${enquiry.email}`}>{enquiry.email}</a></p>
+                <Paragraph style={{marginBottom: '10px'}}><PhoneOutlined style={{marginRight: '10px'}} />{enquiry.number}</Paragraph>
+                <Paragraph style={{marginBottom: '10px'}}><MailOutlined style={{marginRight: '10px'}} /><a href={`mailto:${enquiry.email}`}>{enquiry.email}</a></Paragraph>
                 <div style={{marginBottom: '1em'}}>
                     <Row>
-                        <MessageOutlined style={{margin: '5px 10px 0px 0px'}} />
+                        <MessageOutlined style={{fontSize: '18px', margin: '5px 10px 0px 0px'}} />
                         <Col span={21}>
                             {messageContent}
                         </Col>
                     </Row>
                 </div>
-                <p><ClockCircleOutlined  style={{marginRight: '10px'}} /><Moment format="D MMM YYYY">{enquiry?.createdAt?.seconds * 1000}</Moment></p>
+                <Paragraph style={{marginBottom: '10px'}}><ClockCircleOutlined  style={{marginRight: '10px'}} /><Moment format="D MMM YYYY">{enquiry?.createdAt?.seconds * 1000}</Moment></Paragraph>
             </Modal>
         </div>
     )

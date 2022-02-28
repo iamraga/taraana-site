@@ -32,7 +32,7 @@ export default function EachEnquiryCard({ enquiry, markAsRead }) {
                 </Col>
                 <Col span={8} style={{display: 'flex', alignItems: 'center'}}>
                     <ViewEnquiry enquiry={enquiry} markAsRead={markAsRead} />
-                    <Button danger icon={<DeleteOutlined />} onClick={deleteConfirm} style={{margin: '0px 10px', height: 'inherit'}} />
+                    <Button danger icon={<DeleteOutlined />} onClick={deleteConfirm} style={{margin: '0px 10px'}} />
                 </Col>
             </Row>
         </Card>

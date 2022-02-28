@@ -17,7 +17,7 @@ export default function AllEvents({ events }) {
         let isDisplayYear = currentYear > eventYear;
         let dateClassNames = isDisplayYear ? "w-50 event-date-year" : "w-50";
         return (
-            <div className="row align-items-center mb-3">
+            <div key={event.id} className="row align-items-center mb-3">
                 <div className="col-12 col-md-2">
                 <p className={eventContainerCss}>
                     <span className={dateClassNames}>
@@ -52,7 +52,7 @@ export default function AllEvents({ events }) {
             let isDisplayYear = currentYear > eventYear;
             let dateClassNames = isDisplayYear ? "w-50 event-date-year" : "w-50";
             return (
-                <div className="row align-items-center mb-3">
+                <div key={event.id} className="row align-items-center mb-3">
                     <div className="col-12 col-md-2">
                     <p className={eventContainerCss}>
                         <span className={dateClassNames}>
