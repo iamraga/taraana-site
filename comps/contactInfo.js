@@ -35,6 +35,12 @@ export default function ContactInfo() {
                 </a>
                 <p className="mb-0"><a href="https://www.facebook.com/TaraanaAcademyOfKathak" target="_blank">@TaraanaAcademyOfKathak</a></p>
             </div>
+            <div className="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-4">
+                <a href="https://www.youtube.com/channel/UCsvugBIsm1DEr0j8ouTBR9g" target="_blank">
+                    <img src="./assets/icons/youtube.png" alt="youtube icon" className="img-fluid" />
+                </a>
+                <p className="mb-0"><a href="https://www.youtube.com/channel/UCsvugBIsm1DEr0j8ouTBR9g" target="_blank">Taraana Academy of Kathak</a></p>
+            </div>
         </>
     )
 }
