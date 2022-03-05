@@ -82,21 +82,7 @@ export default function HomeLayout({ children }) {
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossOrigin="anonymous"></script>
-                <script src="dist/polyfill.js" />
-                <script type="test/javascript">
-                    perfMetrics.onFirstInputDelay(function(delay, evt) {
-                    ga('send', 'event', {
-                        eventCategory: 'Perf Metrics',
-                        eventAction: 'first-input-delay',
-                        eventLabel: evt.type,
-                        // Event values must be an integer.
-                        eventValue: Math.round(delay),
-                        // Exclude this event from bounce rate calculations.
-                        nonInteraction: true,
-                    })
-                    });
-                    </script>
-                <title>Taraana Landing Page</title>
+                <title>Taraana Academy of Kathak</title>
             </Head>
             <div className="taraana-wrapper">
                 <header className="fixed-top">

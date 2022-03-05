@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from '@firebase/analytics';
+import { getAnalytics, logEvent } from '@firebase/analytics';
 import { getFirestore, serverTimestamp, increment, connectFirestoreEmulator } from '@firebase/firestore';
 import { getStorage } from '@firebase/storage';
 import { getPerformance } from '@firebase/performance';
@@ -23,10 +23,13 @@ const firebaseApp = initializeApp(firebaseConfig);
 const firestore = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 const auth = getAuth(firebaseApp);
-const perfromance = getPerformance(firebaseApp);
-const analytics = getAnalytics(firebaseApp);
+let analytics;
+if (firebaseApp.name && typeof window !== 'undefined') {
+    // performance = getPerformance(firebaseApp);
+    analytics = getAnalytics(firebaseApp);
+}
 // connectFirestoreEmulator(firestore, "http://localhost:8080");
 // connectAuthEmulator(auth, "http://localhost:9099");
 
-logEvent(analytics, "firebase_init");
+// logEvent(analytics, "firebase_init");
 export { firebaseApp, firestore, storage, serverTimestamp, increment };
