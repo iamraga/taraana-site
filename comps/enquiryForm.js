@@ -39,7 +39,7 @@ export default function EnquiryForm() {
             isEmailSent: false,
             createdAt: serverTimestamp()
         };
-        // const addedEnquiry = await addDoc(enquiriesCollection, newEnquiry);
+        const addedEnquiry = await addDoc(enquiriesCollection, newEnquiry);
         const args = {
             message: 'Query submitted',
             description:
