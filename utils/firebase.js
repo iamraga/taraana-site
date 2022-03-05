@@ -24,7 +24,9 @@ const firestore = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 const auth = getAuth(firebaseApp);
 const perfromance = getPerformance(firebaseApp);
+const analytics = getAnalytics(firebaseApp);
 // connectFirestoreEmulator(firestore, "http://localhost:8080");
 // connectAuthEmulator(auth, "http://localhost:9099");
 
+logEvent(analytics, "firebase_init");
 export { firebaseApp, firestore, storage, serverTimestamp, increment };
