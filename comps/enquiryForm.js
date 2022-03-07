@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Input, notification} from 'antd';
-import { firestore, serverTimestamp } from '../utils/firebase';
+import { analytics, firestore, serverTimestamp } from '../utils/firebase';
 import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
+import { logEvent } from '@firebase/analytics';
 import emailjs, { init } from 'emailjs-com';
 import emailConfig from '../utils/email-config';
 import { PhoneOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
@@ -40,6 +41,9 @@ export default function EnquiryForm() {
             createdAt: serverTimestamp()
         };
         const addedEnquiry = await addDoc(enquiriesCollection, newEnquiry);
+
+        //Analytics push
+        logEvent(analytics, 'enquiry_submitted');
         const args = {
             message: 'Query submitted',
             description:

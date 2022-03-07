@@ -32,4 +32,4 @@ if (firebaseApp.name && typeof window !== 'undefined') {
 // connectAuthEmulator(auth, "http://localhost:9099");
 
 // logEvent(analytics, "firebase_init");
-export { firebaseApp, firestore, storage, serverTimestamp, increment };
+export { firebaseApp, firestore, storage, analytics, serverTimestamp, increment };
