@@ -5,6 +5,7 @@ import { Layout, Menu } from 'antd';
 import { UserOutlined, CloudUploadOutlined, EyeOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { firebaseApp } from '../utils/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Head from 'next/head';
 React.useLayoutEffect = React.useEffect;
 const { Header, Sider, Content } = Layout;
 
@@ -39,6 +40,10 @@ export default function AdminLayout({ children }) {
     
     return (
         <Layout>
+            <Head>
+                <title>Taraana Admin console</title>
+                <meta name="robots" content="none" />
+            </Head>
             <Layout>
                 <Header id="admin-header-cont">
                     <div className="admin-header">Taraana Admin console</div>

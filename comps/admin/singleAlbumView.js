@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Row, Col, Typography, Divider, Button, Modal } from 'antd';
+import { Row, Col, Typography, Divider, Button, Modal, Image } from 'antd';
 import { DeleteOutlined, LeftOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { firestore, storage } from '../../utils/firebase';
 import UploadForm from './uploadForm';
@@ -9,16 +9,30 @@ import Link from 'next/link';
 import CreateAlbum from './createAlbum';
 import { deleteSingleDoc } from '../../hooks/common';
 import useFirestore from '../../hooks/useFirestore';
-import { collection, doc, onSnapshot, getDocs } from 'firebase/firestore';
+import { collection, getDocs, getDoc } from 'firebase/firestore';
 import { ref, deleteObject } from 'firebase/storage';
 
 const { Title } = Typography;
 const { confirm } = Modal;
 
 export default function SingleAlbumView({ album, setAlbum, setAlbumId }) {
+    const [coverImageUrl, setCoverImageUrl] = useState("");
+
+    useEffect(function() {
+        if(album.cover) {
+        getDoc(album.cover)
+            .then(function(image) {
+                setCoverImageUrl(image.data().url);
+            });
+        }
+        else {
+            setCoverImageUrl("/assets/images/taraana-logo-gold.png");
+        }
+    }, [album]);
+    
     const router = useRouter();
     let albumId = album.albumId;
-    
+
     async function deleteAllImageDocs(albumId) {
         const albumImagesRef = collection(firestore, `albums/${albumId}/images`);
         const snapshot = await getDocs(albumImagesRef);
@@ -62,6 +76,7 @@ export default function SingleAlbumView({ album, setAlbum, setAlbumId }) {
     }
 
     if(!album) return (<div>Loading...</div>)
+    
     return (
         <div>
             <Row>
@@ -75,6 +90,17 @@ export default function SingleAlbumView({ album, setAlbum, setAlbumId }) {
                     <p style={{margin: '10px 0px'}}>{album.description}</p>
                 </Col>
             </Row>
+            <Divider style={{fontSize: '14px', color:'#555', borderTopColor: '#bbb'}} orientation="left">Cover Photo</Divider>
+            <Row>
+            <Col span={8} style={{display: 'flex', alignItems: 'flex-start', padding: '8px'}}>
+                <Image
+                    width={300}
+                    height={300}
+                    src={coverImageUrl}
+                    alt={album.name}
+                />
+            </Col>
+            </Row>
             <Divider style={{fontSize: '14px', color:'#555', borderTopColor: '#bbb'}} orientation="left">Upload</Divider>
             <Row>
                 <Col span={20} style={{margin: '10px 0px'}}>
@@ -84,7 +110,7 @@ export default function SingleAlbumView({ album, setAlbum, setAlbumId }) {
             <Divider style={{fontSize: '14px', color:'#555', borderTopColor: '#bbb'}} orientation="left">Images ({album.imageCount})</Divider>
             <Row>
                 <Col span={24} style={{margin: '10px 0px'}}>
-                    <AlbumImages albumId={albumId} />
+                    <AlbumImages albumId={albumId} coverUrl={coverImageUrl} />
                 </Col>
             </Row>
         </div>

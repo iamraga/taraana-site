@@ -6,7 +6,6 @@ import { analytics } from '../../utils/firebase';
 export default function AlbumsList({ albums }) {
 
     useEffect(function() {
-        console.log("event");
         logEvent(analytics, 'visited_gallery');
     }, []);
 

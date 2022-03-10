@@ -1,14 +1,14 @@
 import React from 'react';
 import { Image, Row, Col, Button, Modal } from 'antd';
-import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { DeleteOutlined, ExclamationCircleOutlined, PictureOutlined } from '@ant-design/icons';
 import useFirestore from '../../hooks/useFirestore';
-import { doc, updateDoc, deleteDoc } from '@firebase/firestore';
+import { doc, updateDoc, deleteDoc, getDoc, deleteField } from '@firebase/firestore';
 import { storage, firestore, increment } from '../../utils/firebase';
 import { ref, deleteObject } from '@firebase/storage';
 
 const { confirm } = Modal;
 
-export default function AlbumImages({ albumId }) {
+export default function AlbumImages({ albumId, coverUrl }) {
     const images = useFirestore(`albums/${albumId}/images`).docs;
 
     if(images.length === 0) return (<div>No images found in this album</div>);
@@ -27,8 +27,16 @@ export default function AlbumImages({ albumId }) {
                 deleteObject(storageFileRef).then(() => {
                     //Delete image from collection
                     deleteDoc(imageDocRef);
+
+                    let updateAlbumObj = {
+                        imageCount: increment(-1)
+                    };
+                    //Delete cover attribute if cover photo is deleted
+                    if(image.url === coverUrl) {
+                        updateAlbumObj.cover = deleteField()
+                    }
                     //Decrement imagecount
-                    updateDoc(albumDocRef, {imageCount: increment(-1)});
+                    updateDoc(albumDocRef, updateAlbumObj);
                     return true;
                 }).catch((error) => {
                     alert("Error while deleting file : " + error);
@@ -38,7 +46,13 @@ export default function AlbumImages({ albumId }) {
             onCancel() {}
         });
     }
-    
+
+    function setAsCover(image) {
+        const albumDocRef = doc(firestore, `albums/${albumId}`);
+        const imageDocRef = doc(firestore, `albums/${albumId}/images/${image.id}`);
+        updateDoc(albumDocRef, {cover: imageDocRef});
+    }
+
     return (
         <Image.PreviewGroup>
             <Row gutter={16}>
@@ -51,8 +65,8 @@ export default function AlbumImages({ albumId }) {
                             alt={image.name}
                         />
                         <div>
-                        <Button danger icon={<DeleteOutlined />} onClick={() => deleteConfirm(image)} style={{margin: '0px 10px'}} />
-                        <Button danger icon={<DeleteOutlined />} onClick={() => deleteConfirm(image)} style={{margin: '0px 10px'}} />
+                        <Button title="Delete Image" danger icon={<DeleteOutlined />} onClick={() => deleteConfirm(image)} style={{margin: '0px 10px'}} />
+                        <Button title="Set as album cover" type={coverUrl === image.url ? "primary": "default"} icon={<PictureOutlined />} onClick={() => setAsCover(image)} style={{margin: '10px 10px'}} />
                         </div>
                     </Col>
                 ))}

@@ -7,7 +7,7 @@ export default function Events() {
     let events = useFirestore('events').docs;
 
     return (
-        <OtherLayout>
+        <OtherLayout title="Events - Taraana Academy of Kathak">
             <main>
                 <section className="taraana-all-events bg-fill-1" style={{paddingTop: '40px'}}>
                     <div className="container">

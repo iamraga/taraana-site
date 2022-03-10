@@ -35,7 +35,7 @@ export default function GalleryPage() {
     }
 
     return (
-        <OtherLayout>
+        <OtherLayout title="Gallery - Taraana Academy of Kathak">
             <main style={{marginTop: '120px'}}>
                 <section className="taraana-gallery-page bg-fill-1" style={{paddingTop: '40px'}}>
                     <div className="container">
