@@ -16,15 +16,15 @@ export default function Index() {
                 <section className="taraana-intro animate-slide bg-fill-1" style={{paddingTop: '40px'}}>
                 <div className="d-flex flex-column-reverse flex-lg-row container">
                     <div className="text-section mt-lg-5">
-                        <h2 className="t-h2 sp-margin-right">
+                        <h2 className="animation-heading t-h2 sp-margin-right">
                             The only studio dedicated solely for the practice of Kathak, Hindustani Vocals, and Yoga in the heart of Chennai city.
                         </h2>
-                        <p>
+                        <p className="animation-para">
                             Taraana Academy Of Kathak is a Chennai based institute that provides training in Kathak. Built on an aim to promote ‘Shudh’(pure) Kathak in a social and educational context, Taraana Academy strives to develop a systematic dance training programme.
                         </p>
-                        <div className="taraana-home-cta d-flex flex-column flex-md-row pt-2"> <a href="#courses" className="taraana-btn mr-md-4 mb-3 mb-md-0">Courses</a> <a href="#contact" className="taraana-btn">Contact</a> </div>
+                        <div className="animation-para taraana-home-cta d-flex flex-column flex-md-row pt-2"> <a href="#courses" className="taraana-btn mr-md-4 mb-3 mb-md-0">Courses</a> <a href="#contact" className="taraana-btn">Contact</a> </div>
                     </div>
-                    <div className="img-section text-center mt-lg-4"><img style={{maxWidth: '93%'}} src="./assets/images/hero1.png" alt="girl dancing image" className="img-fluid" /></div>
+                    <div className="animation-image img-section text-center mt-lg-4"><img style={{maxWidth: '93%'}} src="./assets/images/hero1.png" alt="girl dancing image" className="img-fluid" /></div>
                 </div>
                 <div id="about" className="nav-scroller"></div>
                 </section>

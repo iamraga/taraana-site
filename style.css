@@ -319,6 +319,37 @@ section .img-section {
 }
 /*section styles end here*/
 
+/* Section animation starts */
+@media (min-width: 991px) {
+  .animation-image {
+    animation: fadeIn ease-out 0.5s;
+    animation-fill-mode: forwards;
+  }
+  .animation-heading {
+    opacity: 0;
+    animation: fadeIn ease-out 0.5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+  }
+  .animation-para {
+    opacity: 0;
+    animation: fadeIn ease-out 0.5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes fadeIn {
+    0% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+}
+/* Section animation ends */
+
 /*taraana courses  styles start here*/
 .taraana-courses-ul {
   width: 75%;
