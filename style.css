@@ -576,12 +576,6 @@ section .img-section {
 .taraana-gallery-page .gallery-unit {
   margin: 1rem 0px;
 }
-.taraana-gallery .gallery-unit img {
-  width: 100%;
-  height: 364px;
-  object-fit: cover;
-  border-radius: 4px;
-}
 .view-albums-cont {
   display: flex;
   justify-content: center;
