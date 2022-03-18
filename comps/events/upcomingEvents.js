@@ -67,7 +67,7 @@ export default function Events() {
                         <Link href="/events"><a className="taraana-btn">View all events</a></Link>
                     </div>
                 </div>
-                <div className="col-12 col-lg-5"><img src="./assets/images/hero5.png" alt="dancing girl image" className="img-fluid leader-img" /></div>
+                <div className="col-12 col-lg-5"><img src="./assets/images/hero5.png" alt="Events - Taraana Academy of Kathak" className="img-fluid leader-img" /></div>
             </div>
         </>
     )

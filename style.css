@@ -291,16 +291,11 @@ section .img-section {
   width: 50%;
 }
 .about-badge-cont {
-  margin-bottom: 35px;
-}
-.about-badge {
-  padding: 15px 20px;
-  background-color: #6d5778;
-  color: var(--white);
-  border-radius: 25px;
-  font-family: "Merriweather";
-  font-weight: 600;
-  font-size: 16px;
+  margin-bottom: 25px;
+  font-family: "Made-Dillan";
+  font-size: 24px;
+  color: #6d5778;
+  border-bottom: 1px solid;
 }
 @media (max-width: 991px) {
   main {
@@ -315,6 +310,9 @@ section .img-section {
   }
   .sp-margin-right {
     margin-right: unset;
+  }
+  .animation-image {
+    margin-bottom: 2rem;
   }
 }
 /*section styles end here*/
@@ -499,8 +497,9 @@ section .img-section {
   font: 18px/18px Made-Dillan;
 }
 .taraana-all-events .circle-text {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
+  font: 20px/22px Made-Dillan;
 }
 .event-bottom-border {
   border-bottom: 1px solid var(--seperator);
@@ -512,6 +511,16 @@ section .img-section {
   display: flex;
   justify-content: right;
   margin: 0 -15px 0 0;
+}
+.allEvents-section-header {
+  font-size: 16px !important;
+  color: rgb(109 87 120) !important;
+  border-top-color: rgb(109 87 120) !important;
+  font-family: "Merriweather";
+  font-weight: 600 !important;
+}
+.ant-divider-horizontal.ant-divider-with-text {
+  margin: 28px 0 !important;
 }
 
 .taraana-getin-touch .contact-input,
@@ -773,6 +782,15 @@ section .img-section {
   -moz-transform: translate(0px, 0px);
   -o-transform: translate(0px, 0px);
   -ms-transform: translate(0px, 0px);
+}
+
+@media (max-width: 991px) {
+  .ver_mas {
+    display: none;
+  }
+  .container_foto:hover article {
+    transform: none;
+  }
 }
 
 /* Card album with cover css ends */

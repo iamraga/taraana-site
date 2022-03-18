@@ -24,7 +24,7 @@ export default function Faculty() {
                 <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
                     <div className="faculty-dp faculty-kriteka mr-lg-5"></div>
                     <div className="desc-section">
-                        <h3>Kriteka</h3>
+                        <h3>Kriteka M. Iyer</h3>
                         <p className="mb-0">A disciple of Shri Waseem Ahmed Khan and Padmavibhushan Vidushi Dr Girija Devi ji, Kriteka Iyer has been learning since the age of 6. A Senior research scholar at ITC Sangeet Research Academy for 7 years, Kriteka is now a regular performer and a teacher of Hindustani Vocals.</p>
                     </div>
                 </li>

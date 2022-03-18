@@ -24,15 +24,15 @@ export default function Index() {
                         </p>
                         <div className="animation-para taraana-home-cta d-flex flex-column flex-md-row pt-2"> <a href="#courses" className="taraana-btn mr-md-4 mb-3 mb-md-0">Courses</a> <a href="#contact" className="taraana-btn">Contact</a> </div>
                     </div>
-                    <div className="animation-image img-section text-center mt-lg-4"><img style={{maxWidth: '93%'}} src="./assets/images/hero1.png" alt="girl dancing image" className="img-fluid" /></div>
+                    <div className="animation-image img-section text-center mt-lg-4"><img style={{maxWidth: '85%'}} src="./assets/images/hero1.png" alt="Kathak classes in chennai" className="img-fluid" /></div>
                 </div>
                 <div id="about" className="nav-scroller"></div>
                 </section>
                 <section className="taraana-history animate-slide bg-fill-2">
                 <div className=" d-flex flex-column-reverse flex-lg-row container">
-                    <div className="img-section text-center"><img src="./assets/images/hero3.png" alt="girl dancing image" className="img-fluid leader-img" /></div>
+                    <div className="img-section text-center"><img src="./assets/images/hero2.png" alt="Taraana Academy of Kathak" className="img-fluid leader-img" /></div>
                     <div className="text-section">
-                        <div className="about-badge-cont sp-margin-left"><span className="about-badge">About Taraana Academy</span></div>
+                        <div className="about-badge-cont sp-margin-left">About Taraana Academy</div>
                         <h2 className="t-h2 sp-margin-left">At Taraana, we strongly believe that a strong dancer is created in the <span className="head-highlight">studio</span>  and a star performer is born <span className="head-highlight">onstage</span>.</h2>
                         <p>Taraana was founded in 2015 by Kathak danseuse – Shritha Baskar , along with her mother– Vasantha Baskar. A joint vision – Taraana Academy – was born out of a Skype conversation with the rest of the family.</p>
                         <p>Taraana has evolved into a premier Kathak Academy catering to over students of differing backgrounds ages ranging from 6 to 60.</p>
@@ -44,14 +44,14 @@ export default function Index() {
                 <section className="taraana-shritha-bio bg-fill-1">
                 <div className="d-flex flex-column flex-lg-row container">
                     <div className="text-section">
-                        <div className="about-badge-cont"><span className="about-badge">About the Founder</span></div>
+                        <div className="about-badge-cont">About the Founder</div>
                         <h2 className="t-h2 sp-margin-right">Shritha currently trains under the guidance of <span className="head-highlight">Guru Smt. Nayantara Parpia</span> (disciple of Smt. Yogini Gandhi and Pt. Birju Maharaj).</h2>
                         <p>Shritha Baskar is a Kathak danseuse born and brought up in Dubai. She began training at the age of five under Guru Smt. Ketaki Hazra, a disciple of Smt. Bela Arnab. Being trained in the Jaipur and Lucknow Gharana of Kathak, Shritha earned herself a Senior Diploma in Kathak Dance from the Surabharati Sangeet Parishad, Kolkata, at the age of seventeen.</p>
                         <p>She has several performances to her credit, including regular recitals for the Diplomatic Corps, the Indian Embassy of various countries and the Festival of India around regions of the Arabian Gulf.</p>
                         <p>Shritha simultaneously took pleasure in teaching Kathak and semi classical dance to the students of the ‘Dubai Centre for Special Needs’ and ‘Special Needs Families’. Her work with the differently-abled has gained her many more accolades in the United Arab Emirates.</p>
                         <p>Moving to Chennai in 2011 only made it more opportune for Shritha to regularly attend workshops conducted by Pandit Birju Maharaj and Vidushi Saswati Sen and many other senior dancers. Adept in both Nrtta and Abhinaya, Shritha’s performances have been well lauded.</p>
                     </div>
-                    <div className="img-section text-center"><img src="./assets/images/hero2.png" alt="expressive girl image" className="img-fluid leader-img" /></div>
+                    <div className="img-section text-center"><img src="./assets/images/hero3.png" alt="Founder - Taraana Academy" className="img-fluid leader-img" /></div>
                 </div>
                 <div id="courses" className="nav-scroller"></div>
                 </section>
