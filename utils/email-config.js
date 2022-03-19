@@ -1,11 +1,15 @@
 const templates = {
-    enquiry: "enquiry-template"
+    enquiry: "enquiry-template",
+    enquiryNoVisit: "enquiry-template-nodate"
 }
 
-const emailConfig = {
+export const emailConfig = {
     serviceName: "gmail",
     templateId: templates.enquiry,
     userId: "user_D1lc1Q5hcX1IyXwHvizAm"
 }
-
-export default emailConfig;
+export const emailConfigNoDate = {
+    serviceName: "gmail",
+    templateId: templates.enquiryNoVisit,
+    userId: "user_D1lc1Q5hcX1IyXwHvizAm"
+}

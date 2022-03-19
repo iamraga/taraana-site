@@ -40,6 +40,9 @@ export default function ViewEnquiry({ enquiry, markAsRead }) {
                     </Row>
                 </div>
                 <Paragraph style={{marginBottom: '10px'}}><ClockCircleOutlined  style={{marginRight: '10px'}} /><Moment format="D MMM YYYY">{enquiry?.createdAt?.seconds * 1000}</Moment></Paragraph>
+                {enquiry.visitTime &&  (
+                    <Paragraph style={{marginBottom: '10px'}}><b>Scheduled Visit time: </b><Moment format="D MMM YYYY h:mm A">{enquiry?.visitTime?.seconds * 1000}</Moment></Paragraph>
+                )}
             </Modal>
         </div>
     )

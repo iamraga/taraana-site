@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button, Input, message, Form, DatePicker, Radio, Typography } from 'antd';
+import { Modal, Button, Input, message, Form, DatePicker, Radio, Typography, TimePicker } from 'antd';
 import moment from 'moment';
 import { FolderAddOutlined, EditOutlined } from '@ant-design/icons';
 import { firestore, serverTimestamp } from '../../utils/firebase';
@@ -124,6 +124,10 @@ export default function CreateEvent({isEdit, event}) {
         setIsRange((e.target.value === "single") ? false: true);
     }
 
+    function onEventTimeChange(value) {
+        console.log(moment(value).format('h:mm A'))
+    }
+
     const buttonComp = (isEdit) ? (
         <Button icon={<EditOutlined />} onClick={showModal}>
                 Edit
@@ -157,6 +161,9 @@ export default function CreateEvent({isEdit, event}) {
                         </Radio.Group>
                     </Form.Item>
                     {dateSelectComp}
+                    <Form.Item name="time" label="Event Time" rules={[{ required: true }]}>
+                        <TimePicker placeholder="Select Time" format='h:mm A' minuteStep={10} onChange={onEventTimeChange} />
+                    </Form.Item>
                     <Form.Item name="venue" label="Venue Name" rules={[{ required: true }]}>
                         <Input placeholder="Enter venue name" onChange={(e) => setEventName(e.target.value)} />
                     </Form.Item>

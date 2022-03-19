@@ -574,6 +574,35 @@ section .img-section {
 .taraana-getin-touch .ant-input:hover {
   border-color: #caa35a !important;
 }
+.contact-visit-checkbox {
+  font: 1rem/22px Merriweather !important;
+}
+.contact-visit-checkbox .ant-checkbox-checked .ant-checkbox-inner,
+.contact-visit-checkbox .ant-checkbox-inner {
+  border: 1px solid var(--buttonFill) !important;
+}
+.contact-visit-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--buttonFill);
+}
+.contact-visit-checkbox .ant-checkbox-checked:hover .ant-checkbox-inner {
+  border: 1px solid var(--buttonFill) !important;
+}
+.contact-visit-datepicker {
+  border: 1px solid #caa35a !important;
+  font: 1rem/22px Roboto !important;
+}
+.contact-visit-datepicker .ant-picker-input > input {
+  font-size: 1rem;
+}
+.contact-visit-datepicker .ant-picker-input > input:placeholder-shown {
+  font-size: 18px;
+  color: #000;
+}
+.contact-visit-datepicker .ant-picker-suffix svg path,
+.contact-visit-datepicker .ant-picker-clear svg path {
+  stroke: var(--buttonFill);
+  fill: var(--buttonFill);
+}
 
 @media (max-width: 991px) {
   .taraana-getin-touch .contact-detail p,

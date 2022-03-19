@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { Form, Input, notification} from 'antd';
+import { Checkbox, DatePicker, Form, Input, notification} from 'antd';
 import { analytics, firestore, serverTimestamp } from '../utils/firebase';
 import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import { logEvent } from '@firebase/analytics';
 import emailjs, { init } from 'emailjs-com';
-import emailConfig from '../utils/email-config';
+import { emailConfig, emailConfigNoDate } from '../utils/email-config';
 import { PhoneOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
+import moment from 'moment';
 
 init(emailConfig.userId);
 
 export default function EnquiryForm() {
     const [number, setNumber] = useState("");
+    const [showDatePicker, setShowDatePicker] = useState(false);
+    const [visitTime, setVisitTime] = useState(new Date());
     const [form] = Form.useForm();
     const enquiriesCollection = collection(firestore, "enquiries");
     const validateMessages = {
@@ -40,6 +43,9 @@ export default function EnquiryForm() {
             isEmailSent: false,
             createdAt: serverTimestamp()
         };
+        if(showDatePicker) {
+            newEnquiry.visitTime = visitTime;
+        }
         const addedEnquiry = await addDoc(enquiriesCollection, newEnquiry);
 
         //Analytics push
@@ -59,7 +65,13 @@ export default function EnquiryForm() {
             phone: newEnquiry.number,
             message: newEnquiry.message
         }
-        emailjs.send(emailConfig.serviceName, emailConfig.templateId, emailParams)
+        let emailTemplateId = emailConfigNoDate.templateId;
+        if(newEnquiry.visitTime) {
+            emailParams.visitTime = moment(newEnquiry.visitTime).format('DD-MMM-YYYY h:mm A');
+            emailTemplateId = emailConfig.templateId;
+        }
+
+        emailjs.send(emailConfig.serviceName, emailTemplateId, emailParams)
             .then(function(response) {
                 const enquiryDocRef = doc(firestore, `enquiries/${addedEnquiry.id}`);
                 updateDoc(enquiryDocRef, {isEmailSent: true});
@@ -67,6 +79,23 @@ export default function EnquiryForm() {
                 console.log('Error while sending email', error);
             });
         form.resetFields();
+    }
+
+    function onVisitChange(event) {
+        setShowDatePicker(event.target.checked);
+    }
+
+    function onDateChange(value) {
+        setVisitTime(moment(value).toDate());
+    }
+
+    function onDateConfirm(value) {
+        setVisitTime(moment(value).toDate());
+    }
+
+    function disabledDate(current) {
+        // Can not select days before today and today
+        return current && current < moment().endOf('day');
     }
     
     return (
@@ -114,6 +143,29 @@ export default function EnquiryForm() {
                     placeholder="Message" 
                 />
             </Form.Item>
+            <div style={{margin: '10px 0 15px'}}>
+                <Checkbox className='contact-visit-checkbox' onChange={onVisitChange}>Schedule a visit to the studio</Checkbox>
+            </div>
+            {showDatePicker && (
+                <Form.Item name="visitTime" className="mb-4">
+                    <DatePicker 
+                        className='contact-visit-datepicker'
+                        showTime={{ 
+                            format: 'HH:mm',
+                            minuteStep: 10,
+                            disabledHours: () => [1,2,3,4,5,6,7,8,9,19,20,21,22,23,24,0],
+                            defaultValue: moment('10:00', 'HH:mm A'),
+                            hideDisabledOptions: true
+                        }} 
+                        use12Hours
+                        defaultValue={moment().add(1,'days')}
+                        disabledDate={disabledDate}
+                        onChange={onDateChange}
+                        onOk={onDateConfirm} 
+                        format="DD-MMM-YYYY HH:mm A" 
+                    />
+                </Form.Item>
+            )}
         </Form>
         <button className="form-submit border-0 float-right mt-2" type="primary" onClick={() => form.submit()}>
             Submit
