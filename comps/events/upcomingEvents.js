@@ -51,7 +51,12 @@ export default function Events() {
                     <h3>{event.name}</h3>
                     <div style={{marginBottom: '0.5rem'}}>
                         <span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Venue: </span>
-                        <span style={{fontFamily: 'Merriweather', fontSize: '18px'}}>{event.venue}</span></div>
+                        <span style={{fontFamily: 'Merriweather', fontSize: '18px'}}>{event.venue}</span>
+                    </div>
+                    <div style={{marginBottom: '0.5rem'}}>
+                        <span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Time: </span>
+                        <span style={{fontFamily: 'Merriweather', fontSize: '18px'}}>{event.time}</span>
+                    </div>
                     <p>{event.description}</p>
                     <p>{event.isPast}</p>
                 </div>

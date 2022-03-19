@@ -77,12 +77,20 @@ export default function HomeLayout({ children }) {
             <Head>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <meta name="title" content="Taraana Academy Of Kathak - Chennai" />
+                <meta name="description" content="An academy that provides pure Kathak and Hindustani Music classes, all under one roof, in the heart of Chennai city."/>
+                <meta property="og:site_name" content="Taraana Academy of Kathak" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://taraanaacademy.in" />
+                <meta property="og:title" content="Taraana Academy of Kathak - Chennai" />
+                <meta property="og:description" content="An academy that provides pure Kathak and Hindustani Music classes, all under one roof, in the heart of Chennai city." />
+                <meta property="og:image" content="https://taraanaacademy.in/logo-gold.png" />
                 {/*<!-- Bootstrap CSS -->*/}
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossOrigin="anonymous" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossOrigin="anonymous"></script>
-                <title>Taraana Academy of Kathak</title>
+                <title>Taraana Academy of Kathak - Chennai</title>
             </Head>
             <div className="taraana-wrapper">
                 <header className="fixed-top">

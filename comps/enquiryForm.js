@@ -79,6 +79,7 @@ export default function EnquiryForm() {
                 console.log('Error while sending email', error);
             });
         form.resetFields();
+        setShowDatePicker(false);
     }
 
     function onVisitChange(event) {
@@ -144,7 +145,7 @@ export default function EnquiryForm() {
                 />
             </Form.Item>
             <div style={{margin: '10px 0 15px'}}>
-                <Checkbox className='contact-visit-checkbox' onChange={onVisitChange}>Schedule a visit to the studio</Checkbox>
+                <Checkbox className='contact-visit-checkbox' checked={showDatePicker} onChange={onVisitChange}>Schedule a visit to the studio</Checkbox>
             </div>
             {showDatePicker && (
                 <Form.Item name="visitTime" className="mb-4">
@@ -158,6 +159,7 @@ export default function EnquiryForm() {
                             hideDisabledOptions: true
                         }} 
                         use12Hours
+                        showNow={false}
                         defaultValue={moment().add(1,'days')}
                         disabledDate={disabledDate}
                         onChange={onDateChange}

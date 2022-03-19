@@ -29,7 +29,7 @@ export default function CreateEvent({isEdit, event}) {
     }
 
     const onFormSubmit = (values) => {
-        const { eventName, eventDate, description, eventDateRange, venue, venueUrl } = values;
+        const { eventName, eventDate, description, eventDateRange, time, venue, venueUrl } = values;
         if(!isEdit) {
             //New Event
             const newEvent = {
@@ -37,6 +37,7 @@ export default function CreateEvent({isEdit, event}) {
                 description,
                 isRange,
                 venue,
+                time : (moment(time).format('h:mm A')),
                 venueUrl,
                 createdAt: serverTimestamp()
             };
@@ -109,6 +110,7 @@ export default function CreateEvent({isEdit, event}) {
         initialFormValues.venue = event?.venue;
         initialFormValues.description = event?.description;
         initialFormValues.venueUrl = event?.venueUrl;
+        initialFormValues.time = moment(event?.time, 'h:mm A');
     }
     let dateSelectComp = (isRange) ? (
         <Form.Item name="eventDateRange" initialvalues={[moment(getDateFromSeconds(event?.fromDate.seconds * 1000), dateFormat), moment(getDateFromSeconds(event?.toDate.seconds * 1000), dateFormat)]} label="Event Dates" rules={[{ required: true }]}>
@@ -170,7 +172,7 @@ export default function CreateEvent({isEdit, event}) {
                     <Form.Item name="venueUrl" label="Venue GMaps URL" rules={[{ required: true }]}>
                         <Input placeholder="Enter venue URL" onChange={(e) => setEventName(e.target.value)} />
                     </Form.Item>
-                    <Form.Item name="description" label="Description">
+                    <Form.Item name="description" label="Description" rules={[{ required: true }]}>
                         <Input.TextArea placeholder="Enter a description" />
                     </Form.Item>
                 </Form>
