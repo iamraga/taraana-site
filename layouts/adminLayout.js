@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Layout, Menu } from 'antd';
-import { UserOutlined, CloudUploadOutlined, EyeOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { Layout, Menu, Button } from 'antd';
+import { PoweroffOutlined, CloudUploadOutlined, EyeOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { firebaseApp } from '../utils/firebase';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Head from 'next/head';
 React.useLayoutEffect = React.useEffect;
 const { Header, Sider, Content } = Layout;
@@ -15,9 +15,9 @@ export default function AdminLayout({ children }) {
     let [collapsed, setCollapsed] = useState(false);
     let [selectedKey, setSelectedKey] = useState('1');
     
+    const auth = getAuth(firebaseApp);
     useEffect(function() {
         try {
-            const auth = getAuth(firebaseApp);
             onAuthStateChanged(auth, (user) => {
                 if(!user) {
                     router.push('/admin/login');
@@ -28,6 +28,14 @@ export default function AdminLayout({ children }) {
             console.log(err);
         }
     }, [])
+
+    function handleLogout() {
+        signOut(auth).then(function() {
+            router.push('/admin/login');
+        }).catch(function(err) {
+            console.log(error);
+        });
+    }
     
     let currentPath = router.pathname.split('/')[2];
     const tabsMeta = {
@@ -46,7 +54,12 @@ export default function AdminLayout({ children }) {
             </Head>
             <Layout>
                 <Header id="admin-header-cont">
-                    <div className="admin-header">Taraana Admin console</div>
+                    <div className="admin-header">
+                        Taraana Admin console
+                        <Button className='admin-logout' type="primary" onClick={handleLogout} shape="round" icon={<PoweroffOutlined />} size='large'>
+                            Logout
+                        </Button>
+                    </div>
                 </Header>
             </Layout>
             <Layout style={{height: "100%", minHeight: '100vh'}}>
