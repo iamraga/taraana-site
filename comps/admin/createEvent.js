@@ -61,6 +61,7 @@ export default function CreateEvent({isEdit, event}) {
             if(description && description !== event.description) updatedData.description = description;
             if(venue && venue !== event.venue) updatedData.venue = venue;
             if(venueUrl && venueUrl !== event.venueUrl) updatedData.venueUrl = venueUrl;
+            if(time && (moment(time).format('h:mm A')) !== event.time) updatedData.time = (moment(time).format('h:mm A'));
             updatedData.isRange = isRange;
             if(!isRange) {
                 updatedData.eventDate = new Date(eventDate.format('DD-MMM-YYYY'));

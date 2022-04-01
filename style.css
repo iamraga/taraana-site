@@ -503,7 +503,7 @@ section .img-section {
   font: 20px/22px Made-Dillan;
 }
 .event-bottom-border {
-  border-bottom: 1px solid var(--seperator);
+  border-bottom: 1.5px solid var(--seperator);
 }
 .event-date-year {
   line-height: 23px;
