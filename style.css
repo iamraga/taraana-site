@@ -96,9 +96,14 @@ button.form-submit {
 a:hover {
   text-decoration: none;
 }
+a.taraana-back-btn {
+  padding: 8px 25px;
+  font: 18px/28px Made-Dillan;
+}
 .text-section a:hover,
 .view-all-events-cont a:hover,
-.view-albums-cont a:hover {
+.view-albums-cont a:hover,
+.taraana-all-events a:hover {
   color: var(--white);
 }
 .taraana-wrapper section {
@@ -623,6 +628,10 @@ section .img-section {
   .view-all-events-cont {
     justify-content: center;
     margin: 0 0 20px 0;
+  }
+  .taraana-back-btn-cont {
+    margin: 1.5rem 0 0 0;
+    padding: 0px;
   }
 }
 @media (max-width: 411px) {

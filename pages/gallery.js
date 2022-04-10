@@ -7,6 +7,7 @@ import { doc, getDoc } from "@firebase/firestore";
 import OtherLayout from "../layouts/otherLayout";
 import useFirestoreDoc from "../hooks/useFirestoreDoc";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function GalleryPage() {
 
@@ -39,7 +40,12 @@ export default function GalleryPage() {
             <main style={{marginTop: '120px'}}>
                 <section className="taraana-gallery-page bg-fill-1" style={{paddingTop: '40px'}}>
                     <div className="container">
-                        <h2 className="t-h1 text-left text-lg-center">{(album ? album.name : "Gallery")}</h2>
+                        <div className="col-lg-2 col-12 d-inline-block" style={{padding: '0px'}}>
+                            <Link href="/"><a className="taraana-back-btn taraana-btn">Back</a></Link>
+                        </div>
+                        <h2 className="col-8 d-inline-block taraana-back-btn-cont t-h1 text-left text-lg-center">
+                            <span>{(album ? album.name : "Gallery")}</span>
+                        </h2>
                         {album ? (
                             <p className="text-lg-center">{album.description}</p>
                         ) : null}

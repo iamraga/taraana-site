@@ -4,9 +4,10 @@ import Moment from 'react-moment';
 
 export default function AllEvents({ events }) {
     
-    let upcomingEvents = events.filter(event => event.eventDate.seconds * 1000 >= new Date().getTime())
+    console.log(events[0])
+    let upcomingEvents = events.filter(event => ((event.eventDate) ? (event.eventDate.seconds) : (event.fromDate.seconds)) * 1000 >= new Date().getTime())
                             .sort((a,b) => a.eventDate - b.eventDate );
-    let pastEvents = events.filter(event => event.eventDate.seconds * 1000 < new Date().getTime())
+    let pastEvents = events.filter(event => ((event.eventDate) ? (event.eventDate.seconds) : (event.fromDate.seconds)) * 1000 < new Date().getTime())
                         .sort((a,b) => b.eventDate - a.eventDate);
     let bgColor = 0;
     let upcomingEventsComp = upcomingEvents.length > 0 ? ( upcomingEvents.map((event, index) => {
