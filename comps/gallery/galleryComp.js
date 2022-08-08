@@ -44,7 +44,7 @@ export default function Gallery() {
     //Reordering albums based on album-order
     const sortedAlbums = albumOrder[0] ? albumOrder[0].order.map(eachAlbum => {
         return albums.filter(dbAlbum => dbAlbum.id === eachAlbum.id)[0];
-    }) : [];
+    }) : albums;
 
     const albumsComp = sortedAlbums.map(album => {
         return (
