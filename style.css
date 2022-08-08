@@ -103,7 +103,8 @@ a.taraana-back-btn {
 .text-section a:hover,
 .view-all-events-cont a:hover,
 .view-albums-cont a:hover,
-.taraana-all-events a:hover {
+.taraana-all-events a:hover,
+.taraana-gallery-page a:hover {
   color: var(--white);
 }
 .taraana-wrapper section {
@@ -872,6 +873,19 @@ section .img-section {
   }
 }
 /*Gallery carousel styles end here*/
+
+/* */
+.taraana-videos .video-unit {
+  height: auto;
+  margin: 0 auto;
+  /* To override slick inline css*/
+  width: auto !important;
+  display: flex !important;
+  justify-content: center;
+  overflow: hidden;
+  max-width: 100%;
+}
+/* */
 
 /* Single Album page css starts */
 

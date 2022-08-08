@@ -33,7 +33,13 @@ export default function Albums() {
     }, [albumId]);
     
     let albums = useFirestore('albums').docs;
+    const albumOrder = albums.filter(album => (album.id === "album-order"));
     albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
+
+    //Reordering albums based on album-order
+    const sortedAlbums = albumOrder[0] ? albumOrder[0].order.map(eachAlbum => {
+        return albums.filter(dbAlbum => dbAlbum.id === eachAlbum.id)[0];
+    }) : [];
 
     let albumsComp;
     if(albumId === '') { //List all albums
@@ -52,7 +58,7 @@ export default function Albums() {
                     <Row justify="center">
                         <Col span={24}>
                             <Row gutter={16}>
-                                { albums.map((album) => (
+                                { sortedAlbums.map((album) => (
                                     <Col span={8} key={album.id} style={{padding: '8px'}}>
                                         <div onClick={() => {setAlbumId(album.id)}}>
                                             <a>
@@ -91,7 +97,7 @@ export default function Albums() {
                     <Col span={10}>
                         <Row justify="end">
                             <Col span={10} style={{textAlign: 'end'}}><CreateAlbum isEdit={false} /></Col>
-                            {/* <Col span={10} style={{textAlign: 'end'}}><ReorderAlbum albums={albums} /></Col> */}
+                            <Col span={10} style={{textAlign: 'end'}}><ReorderAlbum albums={albums} albumOrder={albumOrder} /></Col>
                         </Row>
                     </Col>
                 </Row>

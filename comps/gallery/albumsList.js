@@ -9,9 +9,15 @@ export default function AlbumsList({ albums }) {
         logEvent(analytics, 'visited_gallery');
     }, []);
 
+    const albumOrder = albums.filter(album => (album.id === "album-order"));
     albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
 
-    const albumsComp = albums.map(album => {
+    //Reordering albums based on album-order
+    const sortedAlbums = albumOrder[0] ? albumOrder[0].order.map(eachAlbum => {
+        return albums.filter(dbAlbum => dbAlbum.id === eachAlbum.id)[0];
+    }) : [];
+
+    const albumsComp = sortedAlbums.map(album => {
         return (
             <EachAlbum key={album.id} album={album} />
         )
