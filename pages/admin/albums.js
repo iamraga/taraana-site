@@ -17,7 +17,10 @@ export default function Albums() {
     const [albumId, setAlbumId] = useState('');
     const [album, setAlbum] = useState({});
     const [pageTitle, setPageTitle] = useState('Albums');
-    
+    const [sortedAlbums, setSortedAlbums] = useState([]);
+    const [albumOrder, setAlbumOrder] = useState([]);
+    let albums = useFirestore('albums').docs;
+
     useEffect(() => {
         if(albumId !== '') {
             const docRef = doc(firestore, `albums/${albumId}`);
@@ -32,14 +35,18 @@ export default function Albums() {
         }
     }, [albumId]);
     
-    let albums = useFirestore('albums').docs;
-    const albumOrder = albums.filter(album => (album.id === "album-order"));
-    albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
+    useEffect(() => {
+        //Reordering albums based on album-order
+        const tempAlbumOrder = albums.filter(album => (album.id === "album-order"));
+        albums = albums.filter(album => (album.id !== "album-order")); //Ignoring album-order entity
+        const tempSortedAlbums = tempAlbumOrder[0] ? tempAlbumOrder[0].order.map(eachAlbum => {
+            return albums.filter(dbAlbum => dbAlbum.id === eachAlbum.id)[0];
+        }) : albums;
 
-    //Reordering albums based on album-order
-    const sortedAlbums = albumOrder[0] ? albumOrder[0].order.map(eachAlbum => {
-        return albums.filter(dbAlbum => dbAlbum.id === eachAlbum.id)[0];
-    }) : albums;
+        setAlbumOrder(tempAlbumOrder);
+        setSortedAlbums(tempSortedAlbums);
+    }, [albums]);
+    
 
     let albumsComp;
     if(albumId === '') { //List all albums

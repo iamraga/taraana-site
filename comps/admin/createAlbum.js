@@ -3,7 +3,7 @@ import { Modal, Button, Input, message, Form, DatePicker } from 'antd';
 import moment from 'moment';
 import { FolderAddOutlined } from '@ant-design/icons';
 import { firestore, serverTimestamp } from '../../utils/firebase';
-import { collection, doc, updateDoc, addDoc } from 'firebase/firestore';
+import { collection, doc, updateDoc, addDoc, getDoc } from 'firebase/firestore';
 
 export default function CreateAlbum({isEdit, album, setAlbum}) {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -35,7 +35,12 @@ export default function CreateAlbum({isEdit, album, setAlbum}) {
                 imageCount: 0,
                 createdAt: serverTimestamp()
             };
-            addDoc(albumCollection, newAlbum);
+            addDoc(albumCollection, newAlbum)
+                .then(async addedAlbumRef => {
+                    const addedAlbum = await getDoc(addedAlbumRef);
+                    addNewAlbumToOrder(addedAlbum.id, addedAlbum.data().name);
+                });
+
             message.success(`${albumName} album created successfully`);
         }
         else {
@@ -59,6 +64,19 @@ export default function CreateAlbum({isEdit, album, setAlbum}) {
         
         setIsModalVisible(false);
         form.resetFields();
+    }
+
+    const addNewAlbumToOrder = async (newAlbumId, newAlbumName) => {
+        const albumOrderRef = doc(firestore, `albums/album-order`);
+        const albumOrder = await getDoc(albumOrderRef);
+        const orderArray = albumOrder.data().order;
+        
+        orderArray.push({
+            id: newAlbumId,
+            name: newAlbumName
+        });
+
+        updateDoc(albumOrderRef, { order: orderArray });
     }
 
     const handleCancel = () => {

@@ -9,7 +9,7 @@ import Link from 'next/link';
 import CreateAlbum from './createAlbum';
 import { deleteSingleDoc } from '../../hooks/common';
 import useFirestore from '../../hooks/useFirestore';
-import { collection, getDocs, getDoc } from 'firebase/firestore';
+import { collection, getDocs, getDoc, doc, updateDoc } from 'firebase/firestore';
 import { ref, deleteObject } from 'firebase/storage';
 
 const { Title } = Typography;
@@ -39,6 +39,16 @@ export default function SingleAlbumView({ album, setAlbum, setAlbumId }) {
         snapshot.forEach(image => {
             deleteSingleDoc(`albums/${albumId}/images/${image.id}`);
         });
+        
+        //Removing from album order
+        const albumOrderRef = doc(firestore, `albums/album-order`);
+        const albumOrder = await getDoc(albumOrderRef);
+        const orderArray = albumOrder.data().order;
+        
+        const updatedOrder = orderArray.filter(each => each.id !== album.albumId)
+        console.log(updatedOrder);
+        updateDoc(albumOrderRef, { order: updatedOrder });
+        
         deleteSingleDoc(`albums/${album.albumId}`);
     }
 
