@@ -50,8 +50,13 @@ export default function Events() {
                 <div className="col-12 col-md-10 event-bottom-border">
                     <h3>{event.name}</h3>
                     <div style={{marginBottom: '0.5rem'}}>
-                        <span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Venue: </span>
-                        <span style={{fontFamily: 'Merriweather', fontSize: '18px'}}>{event.venue}</span>
+                        <div style={{display: 'flex', alignItems: 'center'}}>
+                            <span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Venue: </span>
+                            <span style={{fontFamily: 'Merriweather', fontSize: '18px', marginLeft: '0.5rem'}}>{event.venue}</span>
+                            <a title="View on Google maps" href={event.venueUrl} className="img-fluid" style={{marginLeft: '0.5rem'}} target="_blank">
+                                <img width={28} height={28} src="./assets/icons/google-map.png" alt="google maps icon" />
+                            </a>
+                        </div>
                     </div>
                     <div style={{marginBottom: '0.5rem'}}>
                         <span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Time: </span>
