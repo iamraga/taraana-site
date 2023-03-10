@@ -22,6 +22,16 @@ export default function Faculty() {
                     </div>
                 </li>
                 <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
+                    <div className="faculty-dp faculty-dhanya mr-lg-5"></div>
+                    <div className="desc-section">
+                        <h3>Dhanya Krishnan</h3>
+                        <p className="mb-0">
+                        Dhanya has been receiving her training in Kathak from Shritha Baskar since 2017. She has also attended workshops conducted by Pt. Birju Maharaj, Smt. Saswati Sen, Smt. Durga Arya, and other notable Gurus. 
+                        Besides teaching at Taraana, she also works as a Content Writer in an IT firm in Chennai. 
+                        </p>
+                    </div>
+                </li>
+                <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
                     <div className="faculty-dp faculty-kriteka mr-lg-5"></div>
                     <div className="desc-section">
                         <h3>Kriteka M. Iyer</h3>
