@@ -18,6 +18,17 @@ export default function OtherLayout({ children, title }) {
                 var mobileNavOption = $(this).find('a').text();
                 $(".mobile-navigation span:first-child").text(mobileNavOption);
             });
+            let mobileScrollNavActive = "About";
+            if(title.startsWith("Examinations")) {
+                mobileScrollNavActive = "Examinations";
+            }
+            else if(title.startsWith("Gallery")) {
+                mobileScrollNavActive = "Gallery"
+            }
+            else if(title.startsWith("Events")) {
+                mobileScrollNavActive = "Events"
+            }
+            $(".mobile-navigation span:first-child").text(mobileScrollNavActive);
         });
     }, []);
 
