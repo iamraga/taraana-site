@@ -31,10 +31,13 @@ export default function HomeLayout({ children }) {
             })
             var $item = $('#taraanaDesktopNav ul li, .taraana-home-cta, .taraana-faculty-ul');
             $item.on('click', 'a', function(event) {
-                var $section = $($(this).attr('href'));
-                var sectionTop = $section.offset().top;   
-                $('html, body').stop().animate({scrollTop: sectionTop}, 1000);
-                event.preventDefault();
+                var hrefValue = $(this).attr('href');
+                if(hrefValue.startsWith("#")) {
+                    var $section = $(hrefValue);
+                    var sectionTop = $section.offset().top;   
+                    $('html, body').stop().animate({scrollTop: sectionTop}, 1000);
+                    event.preventDefault();
+                }
             });
             $(window).scroll(function() {
                 var $item = $('.taraana-navigation ul li');
@@ -110,6 +113,7 @@ export default function HomeLayout({ children }) {
                                 <li className="list-group-item"> <a href="#about">About</a> </li>
                                 {/* <li className="list-group-item"> <a href="#bio">Bio</a> </li> */}
                                 <li className="list-group-item"> <a href="#courses">Courses</a> </li>
+                                <li className="list-group-item"> <Link href="/exams"><a href="/exams">Examinations</a></Link> </li>
                                 <li className="list-group-item"> <a href="#faculty">Faculty</a> </li>
                                 <li className="list-group-item"> <a href="#gallery">Gallery</a> </li>
                                 <li className="list-group-item"> <a href="#events">Events</a> </li>
@@ -121,6 +125,7 @@ export default function HomeLayout({ children }) {
                                 <li className="list-group-item"> <a href="#about">About</a> </li>
                                 {/* <li className="list-group-item"> <a href="#bio">Bio</a> </li> */}
                                 <li className="list-group-item"> <a href="#courses">Courses</a> </li>
+                                <li className="list-group-item"> <Link href="/exams"><a href="/exams">Examinations</a></Link> </li>
                                 <li className="list-group-item"> <a href="#faculty">Faculty</a> </li>
                                 <li className="list-group-item"> <a href="#gallery">Gallery</a> </li>
                                 <li className="list-group-item"> <a href="#events">Events</a> </li>

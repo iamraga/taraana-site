@@ -48,6 +48,9 @@ body {
   line-height: 28px;
   background-color: #f9f9f8 !important;
 }
+*:before {
+  box-sizing: border-box;
+}
 /*------components and theme defintions------*/
 p {
   font: 18px/30px Merriweather;
@@ -321,6 +324,9 @@ section .img-section {
   .animation-image {
     margin-bottom: 2rem;
   }
+  .istd-logo-container {
+    padding: 0 36px 20px 36px;
+  }
 }
 /*section styles end here*/
 
@@ -408,9 +414,6 @@ section .img-section {
   background-size: cover !important;
   border-radius: 50%;
 }
-.faculty-kriteka {
-  background: url("./public/assets/images/Kriteka-dp.jpg");
-}
 .faculty-asmi {
   background: url("./public/assets/images/asmi-dp.jpg");
 }
@@ -436,10 +439,12 @@ section .img-section {
 .taraana-faculty-ul-item .img-section img {
   width: 144px;
 }
-.taraana-faculty-ul-item a:hover {
+.taraana-faculty-ul-item a:hover,
+.taraana-exams a:hover {
   color: var(--headingHighlight);
 }
-.taraana-faculty-ul-item a:visited {
+.taraana-faculty-ul-item a:visited,
+.taraana-exams a:visited {
   color: var(--headingHighlight);
 }
 @media (max-width: 991px) {
@@ -944,6 +949,80 @@ section .img-section {
 }
 
 /* Single Album page css ends */
+
+/* Istd logo */
+
+.istd-logo-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.istd-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0;
+  width: 100%;
+}
+
+.istd-logo a {
+  align-items: center;
+  width: 28rem;
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+}
+
+.istd-logo a .emblem {
+  animation: spin 20s linear infinite;
+  display: inline-block;
+  margin-right: 1rem;
+  width: 23%;
+  background: transparent;
+}
+
+.istd-logo a .emblem:before {
+  content: "";
+  background: url(./public/assets/Logo/logo-graphic.svg) no-repeat;
+  background-size: contain;
+  display: block;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.istd-logo a .istd-title {
+  display: inline-block;
+  width: 72.18045112781954%;
+}
+
+.istd-logo a .istd-title::before {
+  background: url(./public/assets/Logo/istd-logo-primary.svg) no-repeat;
+  background-size: contain;
+  content: "";
+  display: block;
+  padding-top: 19.791666666666664%;
+  width: 100%;
+}
+
+.taraana-all-exams {
+  padding: 80px 0px 25px 0px;
+}
+
+#taraana-exams-2 {
+  padding: 0px 0px 80px 0px;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  } 
+}
+
+/* Istd logo end */
 
 /* Admin console styles start */
 

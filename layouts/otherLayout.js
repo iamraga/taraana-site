@@ -49,22 +49,22 @@ export default function OtherLayout({ children, title }) {
                         <div className="taraana-navigation  d-none d-md-block" id="taraanaDesktopNav">
                             <ul className="list-group list-group-horizontal-md">
                                 <li className="list-group-item"> <Link href="/"><a>Home</a></Link></li>
-                                <li className="list-group-item"> <Link href="/#about"><a>About</a></Link></li>
                                 <li className="list-group-item"> <Link href="/#courses"><a>Courses</a></Link> </li>
+                                <li className={(title.startsWith("Examinations")) ? "list-group-item activeNav" : "list-group-item"}> <Link href="/exams"><a>Examinations</a></Link> </li>
                                 <li className="list-group-item"> <Link href="/#faculty"><a>Faculty</a></Link> </li>
-                                <li className="list-group-item"> <Link href="/#gallery"><a>Gallery</a></Link> </li>
-                                <li className="list-group-item"> <Link href="/#events"><a>Events</a></Link> </li>
+                                <li className={(title.startsWith("Gallery")) ? "list-group-item activeNav" : "list-group-item"}> <Link href="/#gallery"><a>Gallery</a></Link> </li>
+                                <li className={(title.startsWith("Events")) ? "list-group-item activeNav" : "list-group-item"}> <Link href="/#events"><a>Events</a></Link> </li>
                                 <li className="list-group-item pr-0"> <Link href="/#contact"><a>Contact</a></Link> </li>
                             </ul>
                         </div>
                         <div className="taraana-navigation" id="taraanaMobileNav">
                             <ul className="list-group list-group-horizontal-md">
                                 <li className="list-group-item"> <Link href="/"><a>Home</a></Link></li>
-                                <li className="list-group-item"> <Link href="/#about"><a>About</a></Link> </li>
                                 <li className="list-group-item"> <Link href="/#courses"><a>Courses</a></Link> </li>
+                                <li className={(title.startsWith("Examinations")) ? "list-group-item activeNav" : "list-group-item"}> <Link href="/exams"><a>Examinations</a></Link> </li>
                                 <li className="list-group-item"> <Link href="/#faculty"><a>Faculty</a></Link> </li>
-                                <li className="list-group-item"> <Link href="/#gallery"><a>Gallery</a></Link> </li>
-                                <li className="list-group-item"> <Link href="/#events"><a>Events</a></Link> </li>
+                                <li className={(title.startsWith("Gallery")) ? "list-group-item activeNav" : "list-group-item"}> <Link href="/#gallery"><a>Gallery</a></Link> </li>
+                                <li className={(title.startsWith("Events")) ? "list-group-item activeNav" : "list-group-item"}> <Link href="/#events"><a>Events</a></Link> </li>
                                 <li className="list-group-item pr-0"> <Link href="/#contact"><a>Contact</a></Link> </li>
                             </ul>
                         </div>
