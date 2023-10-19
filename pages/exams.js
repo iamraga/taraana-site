@@ -1,12 +1,6 @@
-import Link from "next/link";
-import AllEvents from "../comps/events/allEvents";
-import useFirestore from "../hooks/useFirestore";
 import OtherLayout from "../layouts/otherLayout";
-import { Divider } from "antd";
 
 export default function Exams() {
-
-    let events = useFirestore('events').docs;
 
     return (
         <OtherLayout title="Examinations - Taraana Academy of Kathak">
@@ -26,7 +20,7 @@ export default function Exams() {
                         </div>
                         <div className="mt-lg-5 taraana-exams">
                             <p>At Taraana Academy, we offer formal examinations for Kathak, that include practical dance, theory, and stage performance exams in affiliation with one of the world's leading dance examination boards - the Imperial Society Of Teachers Of Dance (ISTD). 
-                                <Link href="https://www.istd.org/home/" target="_blank"><a> Learn More about ISTD</a></Link>.</p>
+                                <a href="https://www.istd.org/home/" target="_blank"> Learn More about ISTD</a>.</p>
                             <p>
                             This provides an opportunity for all students of Taraana Academy to follow an academic career in Kathak and pursue a certification or a diploma course in Kathak. While it is not compulsory for our students to give examinations, we encourage students to do so.
                             </p>
