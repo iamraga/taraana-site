@@ -31,6 +31,26 @@ export default function Faculty() {
                         </p>
                     </div>
                 </li>
+                <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
+                    <div className="faculty-dp faculty-komal mr-lg-5"></div>
+                    <div className="desc-section">
+                        <h3>Komal Parmar</h3>
+                        <p className="mb-0">
+                        Komal has been learning Kathak under Shrita Baskar since 2019 . She has attended workshops conducted by Smt. Durga Arya, Sri. Avenav Mukherjee, Smt. Ragini Maharaj and Smt. Nayantara Parpia. She is known to be one of the most hard working students and now teacher, too. 
+                        Her passion for Kathak has also been inherited by her daughter who also is a student at Taraana Academy.
+                        </p>
+                    </div>
+                </li>
+                <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
+                    <div className="faculty-dp faculty-varsha mr-lg-5"></div>
+                    <div className="desc-section">
+                        <h3>Varsha Ramesh</h3>
+                        <p className="mb-0">
+                        Varsha Ramesh has been learning and training in Kathak under Shrita Baskar since 2017. She is known to bring elegance and poise to every performance. 
+                        Varsha has participated in workshops led by late Pt. Birju Maharaj, Smt. Durga Arya and many other renowned Gurus. Varsha also works as an accountant for her family firm.
+                        </p>
+                    </div>
+                </li> 
             </ul>
         </>
   );

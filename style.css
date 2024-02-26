@@ -423,6 +423,12 @@ section .img-section {
 .faculty-dhanya {
   background: url("./public/assets/images/dhanya-dp.jpg");
 }
+.faculty-komal {
+  background: url("./public/assets/images/komal-dp.jpg");
+}
+.faculty-varsha {
+  background: url("./public/assets/images/varsha-dp.jpg");
+}
 .taraana-faculty-ul {
   width: 75%;
 }
