@@ -51,6 +51,15 @@ export default function Faculty() {
                         </p>
                     </div>
                 </li> 
+                <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
+                    <div className="faculty-dp faculty-amrita mr-lg-5"></div>
+                    <div className="desc-section">
+                        <h3>Amrita Khatri</h3>
+                        <p className="mb-0">
+                        Amrita has been learning Kathak under Shrita Bhaskar since 2022. Besides teaching at Taraana, she is also pursuing an education in ’Early Childcare & Education’.
+                        </p>
+                    </div>
+                </li>
             </ul>
         </>
   );
