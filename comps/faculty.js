@@ -56,7 +56,8 @@ export default function Faculty() {
                     <div className="desc-section">
                         <h3>Amrita Khatri</h3>
                         <p className="mb-0">
-                        Amrita has been learning Kathak under Shrita Bhaskar since 2022. Besides teaching at Taraana, she is also pursuing an education in ’Early Childcare & Education’.
+                        Amrita has been learning Kathak under Shrita Bhaskar since 2022. Besides teaching at Taraana, she is also pursuing an education in ’Early Childcare & Education’. 
+                        Most appropriately, Amrita handles Taraana’s children batches and they all love classes with her.
                         </p>
                     </div>
                 </li>
