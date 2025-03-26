@@ -52,12 +52,13 @@ export default function Faculty() {
                     </div>
                 </li> 
                 <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
-                    <div className="faculty-dp faculty-amrita mr-lg-5"></div>
+                    <div className="faculty-dp faculty-sajani mr-lg-5"></div>
                     <div className="desc-section">
-                        <h3>Amrita Khatri</h3>
+                        <h3>Sajani Nair</h3>
                         <p className="mb-0">
-                        Amrita has been learning Kathak under Shrita Bhaskar since 2022. Besides teaching at Taraana, she is also pursuing an education in ’Early Childcare & Education’. 
-                        Most appropriately, Amrita handles Taraana’s children batches and they all love classes with her.
+                        Sajani Nair has been learning Kathak  for nearly 8 1/2 years (2016) under the guidance of Guru Shrita Baskar at Taraana. 
+                        She has also had the privilege of attending workshops conducted by renowned Gurus such as Pt .Birju Maharaj Ji, Smt. Nayantara Parpia, Smt. Durga Arya, Ragini Maharaj, and Smt.Aditi Mangaldas, further enriching her knowledge and skills. 
+                        Besides teaching at Taraana, Sajani also works as Programme Lead Manager at Cognizant Tech Solutions.
                         </p>
                     </div>
                 </li>

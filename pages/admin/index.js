@@ -6,11 +6,10 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 
 export default function Index() {
-    
+    const router = useRouter();
     useEffect(() => {
         try {
             const auth = getAuth(firebaseApp);
-            const router = useRouter();
             onAuthStateChanged(auth, (user) => {
                 if(user) {
                     router.push('/admin/albums');

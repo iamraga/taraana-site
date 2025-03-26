@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import EnquiryForm from '../comps/enquiryForm';
 import ContactInfo from '../comps/contactInfo';
@@ -8,8 +8,12 @@ import Purpose from '../comps/purpose';
 import Faculty from '../comps/faculty';
 import Gallery from '../comps/gallery/galleryComp';
 import HomeLayout from '../layouts/homeLayout';
+import { Modal, Button } from 'antd';
 
 export default function Index() {
+
+    // const [showTicketModal, setShowTicketModal] = useState(true);
+
     return (
         <HomeLayout>
             <main>
@@ -115,6 +119,28 @@ export default function Index() {
                         <iframe className="mb-5" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15545.922811956934!2d80.2382525!3d13.0686925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6e6199dfa1945be!2sTaraana%20Academy%20Of%20Kathak!5e0!3m2!1sen!2sin!4v1635701629405!5m2!1sen!2sin" width="100%" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
                     </div>
                 </section>
+                {/* Ticket modal */}
+                {/* {showTicketModal && (
+                    <Modal
+                    centered
+                    closable
+                    open={showTicketModal}
+                    zIndex={1032}
+                    footer={null}
+                    onOk={() => setShowTicketModal(false)}
+                    onCancel={() => setShowTicketModal(false)}
+                  >
+                    <div>
+                        <a href="https://in.bookmyshow.com/events/arani-sparking-the-hidden-fires/ET00408950" target='_blank'>
+                            <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+                                <img src='/assets/images/bms-vertical.jpg' style={{marginBottom: '0.5rem', maxWidth: '90%', height: 'auto', maxHeight: '80vh'}} />
+                                <a href="https://in.bookmyshow.com/events/arani-sparking-the-hidden-fires/ET00408950" target='_blank' className="taraana-btn">Click here to book your tickets</a>
+                            </div>
+                        </a>
+                    </div>
+                  </Modal>
+                )} */}
+                {/* Ticket modal end */}
             </main>
         </HomeLayout>
     )

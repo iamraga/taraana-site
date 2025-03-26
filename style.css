@@ -429,8 +429,8 @@ section .img-section {
 .faculty-varsha {
   background: url("./public/assets/images/varsha-dp.jpg");
 }
-.faculty-amrita {
-  background: url("./public/assets/images/amrita-dp.jpg");
+.faculty-sajani {
+  background: url("./public/assets/images/sajani-dp.jpg");
 }
 .taraana-faculty-ul {
   width: 75%;
@@ -1032,6 +1032,11 @@ section .img-section {
 }
 
 /* Istd logo end */
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: center;
+}
 
 /* Admin console styles start */
 
