@@ -432,6 +432,9 @@ section .img-section {
 .faculty-sajani {
   background: url("./public/assets/images/sajani-dp.jpg");
 }
+.faculty-ananya {
+  background: url("./public/assets/images/ananya-dp.jpeg");
+}
 .taraana-faculty-ul {
   width: 75%;
 }

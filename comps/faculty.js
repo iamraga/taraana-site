@@ -56,9 +56,19 @@ export default function Faculty() {
                     <div className="desc-section">
                         <h3>Sajani Nair</h3>
                         <p className="mb-0">
-                        Sajani Nair has been learning Kathak  for nearly 8 1/2 years (2016) under the guidance of Guru Shrita Baskar at Taraana. 
+                        Sajani Nair has been learning Kathak, since 2016, under the guidance of Guru Shrita Baskar at Taraana. 
                         She has also had the privilege of attending workshops conducted by renowned Gurus such as Pt .Birju Maharaj Ji, Smt. Nayantara Parpia, Smt. Durga Arya, Ragini Maharaj, and Smt.Aditi Mangaldas, further enriching her knowledge and skills. 
                         Besides teaching at Taraana, Sajani also works as Programme Lead Manager at Cognizant Tech Solutions.
+                        </p>
+                    </div>
+                </li>
+                <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
+                    <div className="faculty-dp faculty-ananya mr-lg-5"></div>
+                    <div className="desc-section">
+                        <h3>Ananya Krishnan</h3>
+                        <p className="mb-0">
+                        Ananya Krishnan has been training under her Guru Shrita Baskar at Taraana since 2022. 
+                        She has attended workshop conducted by Ms. Nayanthara Parpia. Besides teaching, She is also a counselling psychologist working as a private practitioner.
                         </p>
                     </div>
                 </li>
