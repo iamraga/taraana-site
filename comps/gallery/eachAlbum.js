@@ -27,7 +27,7 @@ export default function EachAlbum({ album }) {
                     query: {id: album.id}
                 }}
             >
-                <a style={{display: 'flex', alignItems: 'center'}}>
+                <a style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                     <div className="ver_mas text-center flex">
                         <button>View Album</button>
                     </div>

@@ -5,10 +5,23 @@ export default function ContactInfo() {
         <>
             <div className="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-4">
                 <img src="./assets/icons/location.png" alt="location icon" className="img-fluid" />
-                <p className="mb-0">Shenstone Park, No : 7,Harrington Road,
-                    <br/> Chetpet (Lady Andal Gate 4)
-                    <br/>Chennai - 600031
-                </p>
+                <div>
+                    <p style={{marginBottom: '10px !important'}}><span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Nungambakkam Branch: </span></p>
+                    <p className="mb-0">New No. 13, Old No. 7, Sir Mutha Venkatasubbarao Hall,
+                        <br/> Harrington Road, Chetpet, Chennai,
+                        <br/>Tamil Nadu, 600031
+                    </p>
+                </div>
+            </div>
+            <div className="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-4">
+                <img src="./assets/icons/location.png" alt="location icon" className="img-fluid" />
+                <div>
+                    <p style={{marginBottom: '10px !important'}}><span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>ECR Branch: </span></p>
+                    <p className="mb-0">Tattva Studio: 3/487, SH 49, Kazura Garden,
+                        <br/> Neelankarai, Chennai
+                        <br/>Tamil Nadu - 600115
+                    </p>
+                </div>
             </div>
             <div className="contact-detail d-flex flex-row flex-md-row align-items-center align-items-md-normal mb-4">
                 <a href="tel:+91 95000 81900" className="img-fluid">

@@ -7,8 +7,8 @@ export default function Faculty() {
                 <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
                     <div className="faculty-dp faculty-shritha mr-lg-5"></div>
                     <div className="desc-section">
-                        <h3>Shritha Baskar</h3>
-                        <p className="mb-0">Shritha Baskar began her training at the age of five under Guru Smt. Ketaki Hazra, a disciple of Smt. Bela Arnab. Shritha earned herself a Senior Diploma in Kathak Dance from the Surabharati Sangeet Parishad, Kolkata, at the age of seventeen. <br />Read more about Shritha <a id="faculty-read-more" href="#founder-about">here</a>.</p>
+                        <h3>Shrita Baskar</h3>
+                        <p className="mb-0">Shrita Baskar began her training at the age of five under Guru Smt. Ketaki Hazra, a disciple of Smt. Bela Arnab. Shrita earned herself a Senior Diploma in Kathak Dance from the Surabharati Sangeet Parishad, Kolkata, at the age of seventeen. <br />Read more about Shrita <a id="faculty-read-more" href="#founder-about">here</a>.</p>
                     </div>
                 </li>
                 <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
@@ -16,7 +16,7 @@ export default function Faculty() {
                     <div className="desc-section">
                         <h3>Asmi Mehra</h3>
                         <p className="mb-0">
-                            Asmi has been learning Kathak under the guidance of Shritha Baskar since 2016 and has attended several workshops conducted by Pt.Birju Maharaj, Smt. Durga Arya to name a few. 
+                            Asmi has been learning Kathak under the guidance of Shrita Baskar since 2016 and has attended several workshops conducted by Pt.Birju Maharaj, Smt. Durga Arya to name a few. 
                             Being one of the most senior dancers of the academy, Asmi also has been teaching students of Taraana Academy since 2020.
                         </p>
                     </div>
@@ -26,7 +26,7 @@ export default function Faculty() {
                     <div className="desc-section">
                         <h3>Dhanya Krishnan</h3>
                         <p className="mb-0">
-                        Dhanya has been receiving her training in Kathak from Shritha Baskar since 2017. She has also attended workshops conducted by Pt. Birju Maharaj, Smt. Saswati Sen, Smt. Durga Arya, and other notable Gurus. 
+                        Dhanya has been receiving her training in Kathak from Shrita Baskar since 2017. She has also attended workshops conducted by Pt. Birju Maharaj, Smt. Saswati Sen, Smt. Durga Arya, and other notable Gurus. 
                         Besides teaching at Taraana, she also works as a Content Writer in an IT firm in Chennai. 
                         </p>
                     </div>
@@ -69,6 +69,16 @@ export default function Faculty() {
                         <p className="mb-0">
                         Ananya Krishnan has been training under her Guru Shrita Baskar at Taraana since 2022. 
                         She has attended workshop conducted by Ms. Nayanthara Parpia. Besides teaching, She is also a counselling psychologist working as a private practitioner.
+                        </p>
+                    </div>
+                </li>
+                <li className="taraana-faculty-ul-item d-flex flex-column flex-lg-row align-items-lg-center">
+                    <div className="faculty-dp faculty-abilasha mr-lg-5"></div>
+                    <div className="desc-section">
+                        <h3>Abilasha Ramasubramanian</h3>
+                        <p className="mb-0">
+                        Dr.Abilasha Ramasubramanian is a disciple of Guru. Shrita Baskar since 2020. Apart from training in Taraana, she has attended many workshops by renowned artists like Smt Aditi Mangaldas, Smt. Yogini Gandhi, Smt. Gauri Diwakar Shri.Dheerendra Tiwari, and Raghini Maharaj ji.
+                        She has been a part of numerous stage performances since 2021 and cleared ISTD examinations upto Grade 2. Also trained in Bharatnatyam, she has been extremely passionate about learning this art, since childhood. Professionally, an Oral Pathologist, Professor and Head of Academics, from Saveetha Dental College and Hospitals.
                         </p>
                     </div>
                 </li>

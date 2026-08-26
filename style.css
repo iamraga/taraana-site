@@ -435,6 +435,9 @@ section .img-section {
 .faculty-ananya {
   background: url("./public/assets/images/ananya-dp.jpeg");
 }
+.faculty-abilasha {
+  background: url("./public/assets/images/abilasha-dp.jpg");
+}
 .taraana-faculty-ul {
   width: 75%;
 }

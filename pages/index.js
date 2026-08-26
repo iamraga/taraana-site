@@ -38,7 +38,7 @@ export default function Index() {
                     <div className="text-section">
                         <div className="about-badge-cont sp-margin-left">About Taraana Academy</div>
                         <h2 className="t-h2 sp-margin-left">At Taraana, we strongly believe that a strong dancer is created in the <span className="head-highlight">studio</span>  and a star performer is born <span className="head-highlight">onstage</span>.</h2>
-                        <p>Taraana was founded in 2015 by Kathak danseuse – Shritha Baskar , along with her mother– Vasantha Baskar. A joint vision – Taraana Academy – was born out of a Skype conversation with the rest of the family.</p>
+                        <p>Taraana was founded in 2015 by Kathak danseuse – Shrita Baskar , along with her mother– Vasantha Baskar. A joint vision – Taraana Academy – was born out of a Skype conversation with the rest of the family.</p>
                         <p>Taraana has evolved into a premier Kathak Academy catering to over students of differing backgrounds ages ranging from 6 to 60.</p>
                         <p>A Kathak academy in Chennai that focuses on classical dance as a form of therapy; Taraana also facilitates Yoga for Dance and Hindustani Music sessions. Through regular classes, workshops, and events we make training in Kathak available to all keen learners in the city.</p>
                     </div>
@@ -49,11 +49,11 @@ export default function Index() {
                 <div className="d-flex flex-column flex-lg-row container">
                     <div className="text-section">
                         <div className="about-badge-cont">About the Founder</div>
-                        <h2 className="t-h2 sp-margin-right">Shritha currently trains under the guidance of <span className="head-highlight">Guru Smt. Nayantara Parpia</span> (disciple of Smt. Yogini Gandhi and Pt. Birju Maharaj).</h2>
-                        <p>Shritha Baskar is a Kathak danseuse born and brought up in Dubai. She began training at the age of five under Guru Smt. Ketaki Hazra, a disciple of Smt. Bela Arnab. Being trained in the Jaipur and Lucknow Gharana of Kathak, Shritha earned herself a Senior Diploma in Kathak Dance from the Surabharati Sangeet Parishad, Kolkata, at the age of seventeen.</p>
+                        <h2 className="t-h2 sp-margin-right">Shrita currently trains under the guidance of <span className="head-highlight">Guru Smt. Nayantara Parpia</span> (disciple of Smt. Yogini Gandhi and Pt. Birju Maharaj).</h2>
+                        <p>Shrita Baskar is a Kathak danseuse born and brought up in Dubai. She began training at the age of five under Guru Smt. Ketaki Hazra, a disciple of Smt. Bela Arnab. Being trained in the Jaipur and Lucknow Gharana of Kathak, Shrita earned herself a Senior Diploma in Kathak Dance from the Surabharati Sangeet Parishad, Kolkata, at the age of seventeen.</p>
                         <p>She has several performances to her credit, including regular recitals for the Diplomatic Corps, the Indian Embassy of various countries and the Festival of India around regions of the Arabian Gulf.</p>
-                        <p>Shritha simultaneously took pleasure in teaching Kathak and semi classical dance to the students of the ‘Dubai Centre for Special Needs’ and ‘Special Needs Families’. Her work with the differently-abled has gained her many more accolades in the United Arab Emirates.</p>
-                        <p>Moving to Chennai in 2011 only made it more opportune for Shritha to regularly attend workshops conducted by Pandit Birju Maharaj and Vidushi Saswati Sen and many other senior dancers. Adept in both Nrtta and Abhinaya, Shritha’s performances have been well lauded.</p>
+                        <p>Shrita simultaneously took pleasure in teaching Kathak and semi classical dance to the students of the ‘Dubai Centre for Special Needs’ and ‘Special Needs Families’. Her work with the differently-abled has gained her many more accolades in the United Arab Emirates.</p>
+                        <p>Moving to Chennai in 2011 only made it more opportune for Shrita to regularly attend workshops conducted by Pandit Birju Maharaj and Vidushi Saswati Sen and many other senior dancers. Adept in both Nrtta and Abhinaya, Shrita’s performances have been well lauded.</p>
                     </div>
                     <div className="img-section text-center"><img src="./assets/images/hero3.png" alt="Founder - Taraana Academy" className="img-fluid leader-img" /></div>
                 </div>
@@ -116,9 +116,23 @@ export default function Index() {
                 <section className="taraana-reach-us bg-fill-2">
                     <div className="container">
                         <h2 className="t-h2 text-lg-center">Reach us</h2>
-                        <iframe className="mb-5" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15545.922811956934!2d80.2382525!3d13.0686925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6e6199dfa1945be!2sTaraana%20Academy%20Of%20Kathak!5e0!3m2!1sen!2sin!4v1635701629405!5m2!1sen!2sin" width="100%" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
+                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                            <div style={{width: '45%'}}>
+                                <p style={{textAlign: 'center', marginBottom: '10px !important', width: '100%'}}><span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>Nungambakkam Branch</span></p>
+                                <iframe className="mb-5" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15545.922811956934!2d80.2382525!3d13.0686925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6e6199dfa1945be!2sTaraana%20Academy%20Of%20Kathak!5e0!3m2!1sen!2sin!4v1635701629405!5m2!1sen!2sin" width="100%" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
+                            </div>
+                            <div style={{width: '45%'}}>
+                                <p style={{textAlign: 'center', marginBottom: '10px !important'}}><span style={{fontFamily: 'Made-Dillan', fontSize: '20px'}}>ECR Branch</span></p>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2414585301776!2d80.25219027513398!3d12.956395287357614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d81b772f029%3A0x7e69aca6d8bf33b3!2sTattva%20-%20The%20Studio!5e0!3m2!1sen!2sin!4v1768119036423!5m2!1sen!2sin" width="100%" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </section>
+                <div className="contact-strap py-2 d-none d-md-block">
+                    <div className="container d-flex justify-content-center">
+                        <div className="details d-flex align-items-center"><span style={{fontSize: "20px"}}>©</span><span style={{marginLeft: "5px"}}>Taraana Academy of Kathak owned by Shrita Baskar</span></div>
+                    </div>
+                </div>
                 {/* Ticket modal */}
                 {/* {showTicketModal && (
                     <Modal
